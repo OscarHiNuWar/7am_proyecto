@@ -1,0 +1,7 @@
+J:\proyectoAM\proyectoAM\test\Samples\FixedLayoutSamples\General operations\Create and save PDF document\bin\Debug\CreateAndSavePDFDocument.exe
+J:\proyectoAM\proyectoAM\test\Samples\FixedLayoutSamples\General operations\Create and save PDF document\bin\Debug\CreateAndSavePDFDocument.pdb
+J:\proyectoAM\proyectoAM\test\Samples\FixedLayoutSamples\General operations\Create and save PDF document\bin\Debug\Apitron.PDF.Kit.dll
+J:\proyectoAM\proyectoAM\test\Samples\FixedLayoutSamples\General operations\Create and save PDF document\bin\Debug\Apitron.PDF.Kit.xml
+J:\proyectoAM\proyectoAM\test\Samples\FixedLayoutSamples\General operations\Create and save PDF document\obj\x86\Debug\CreateAndSavePDFDocument.csprojResolveAssemblyReference.cache
+J:\proyectoAM\proyectoAM\test\Samples\FixedLayoutSamples\General operations\Create and save PDF document\obj\x86\Debug\CreateAndSavePDFDocument.exe
+J:\proyectoAM\proyectoAM\test\Samples\FixedLayoutSamples\General operations\Create and save PDF document\obj\x86\Debug\CreateAndSavePDFDocument.pdb

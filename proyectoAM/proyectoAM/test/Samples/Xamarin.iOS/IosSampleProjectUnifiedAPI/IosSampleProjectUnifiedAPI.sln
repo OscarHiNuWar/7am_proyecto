@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IosSampleProjectUnifiedAPI", "IosSampleProjectUnifiedAPI.csproj", "{F20DA017-0016-417E-821B-AB689C1998AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F20DA017-0016-417E-821B-AB689C1998AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F20DA017-0016-417E-821B-AB689C1998AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F20DA017-0016-417E-821B-AB689C1998AF}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{F20DA017-0016-417E-821B-AB689C1998AF}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{F20DA017-0016-417E-821B-AB689C1998AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F20DA017-0016-417E-821B-AB689C1998AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F20DA017-0016-417E-821B-AB689C1998AF}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{F20DA017-0016-417E-821B-AB689C1998AF}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+EndGlobal

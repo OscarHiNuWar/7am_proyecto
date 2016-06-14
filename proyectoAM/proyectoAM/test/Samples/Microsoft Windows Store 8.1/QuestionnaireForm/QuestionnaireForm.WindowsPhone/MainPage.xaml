@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="QuestionnaireForm.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:QuestionnaireForm"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="DodgerBlue">
+        <StackPanel Margin="20">
+            <TextBlock Text="Apitron PDF Kit for .NET sample, saving and loading questionnaire as PDF form" FontSize="{ThemeResource HubSectionHeaderFontSize}" TextWrapping="Wrap" Margin="0,0,0,5"/>            
+            <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Product:" FontSize="18"/>
+            <ComboBox HorizontalAlignment="Stretch"  ItemsSource="{Binding Products, Mode=OneTime}" SelectedValue="{Binding SelectedProduct, Mode=TwoWay}"/>
+            <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Usage period:" FontSize="18"/>
+            <ComboBox HorizontalAlignment="Stretch"  ItemsSource="{Binding UsagePeriods, Mode=OneTime}" SelectedValue="{Binding UsagePeriod, Mode=TwoWay}"/>
+            <TextBlock HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="Satisfaction level:" FontSize="18"/>
+            <ComboBox HorizontalAlignment="Stretch"  ItemsSource="{Binding SatisfactionLevels, Mode=OneTime}" SelectedValue="{Binding SatisfactionLevel, Mode=TwoWay}"/>
+            <TextBlock HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="Your company name (optional):" FontSize="18"/>
+            <TextBox HorizontalAlignment="Stretch"  FontSize="20" Text="{Binding UserCompanyName, Mode=TwoWay}"/>
+            <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Feedback (optional):" FontSize="18"/>
+            <TextBox HorizontalAlignment="Stretch"  FontSize="20" Height="115" Text="{Binding Feedback, Mode=TwoWay}"  AcceptsReturn="True" />
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Save" FontSize="20" Margin="5,5" Click="saveFormDataClick" x:Name="btnSaveFormData"/>
+                <Button Content="Clear" FontSize="20" Margin="5,5" x:Name="btnClearForm" Click="btnClearForm_Click"/>
+                <Button Content="Load" FontSize="20" Margin="5,5" x:Name="btnLoadFormData" Click="btnLoadFormData_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

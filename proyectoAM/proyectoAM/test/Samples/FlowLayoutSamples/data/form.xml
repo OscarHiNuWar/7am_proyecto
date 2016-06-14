@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FlowDocument xmlns="Apitron.PDF.Kit.FlowLayout.v1">
+  <Resources />
+  <Styles>
+    <Style selector="flowdocument">
+      <Color value="Black" />
+    </Style>
+    <Style selector="grid">
+      <InnerBorder thickness="1" />
+      <InnerBorderColor value="Black" />
+    </Style>
+    <Style selector="#docheader">
+      <Align value="Center" />
+      <Display value="Block" />
+      <Font resourceId="Times-Bold" size="25" />
+    </Style>
+    <Style selector="#bodyheader">
+      <Align value="Center" />
+      <Display value="Block" />
+      <Font resourceId="Times-Bold" size="20" />
+      <Margin value="0,100,0,50" />
+    </Style>
+    <Style selector=".body">
+      <Font resourceId="Times-Roman" size="14" />
+      <LineHeight value="20" />
+    </Style>
+    <Style selector=".fieldText">
+      <Display value="InlineBlock" />
+      <Padding value="0,0,0,2" />
+    </Style>
+  </Styles>
+  <Fields>
+    <TextField>
+      <Text value="[issueDate]" />
+      <DoNotScroll value="False" />
+      <DoNotSpellCheck value="False" />
+      <IsComb value="False" />
+      <IsFileSelect value="False" />
+      <IsMultiline value="False" />
+      <IsPassword value="False" />
+      <IsRichText value="False" />
+      <MaxLen value="0" />
+      <FieldName value="issueDate" />
+      <FontResourceId value="Helvetica" />
+    </TextField>
+    <TextField>
+      <Text value="[applicant]" />
+      <DoNotScroll value="False" />
+      <DoNotSpellCheck value="False" />
+      <IsComb value="False" />
+      <IsFileSelect value="False" />
+      <IsMultiline value="False" />
+      <IsPassword value="False" />
+      <IsRichText value="False" />
+      <MaxLen value="0" />
+      <FieldName value="applicantName" />
+      <FontResourceId value="Helvetica" />
+      <QuaddingJustification value="Centered" />
+    </TextField>
+    <TextField>
+      <Text value="[position]" />
+      <DoNotScroll value="False" />
+      <DoNotSpellCheck value="False" />
+      <IsComb value="False" />
+      <IsFileSelect value="False" />
+      <IsMultiline value="False" />
+      <IsPassword value="False" />
+      <IsRichText value="False" />
+      <MaxLen value="0" />
+      <FieldName value="applicantPosition" />
+      <FontResourceId value="Helvetica" />
+      <QuaddingJustification value="Centered" />
+    </TextField>
+    <TextField>
+      <Text value="[dateFrom]" />
+      <DoNotScroll value="False" />
+      <DoNotSpellCheck value="False" />
+      <IsComb value="False" />
+      <IsFileSelect value="False" />
+      <IsMultiline value="False" />
+      <IsPassword value="False" />
+      <IsRichText value="False" />
+      <MaxLen value="0" />
+      <FieldName value="dateFrom" />
+      <FontResourceId value="Helvetica" />
+      <QuaddingJustification value="Centered" />
+    </TextField>
+    <TextField>
+      <Text value="[dateTo]" />
+      <DoNotScroll value="False" />
+      <DoNotSpellCheck value="False" />
+      <IsComb value="False" />
+      <IsFileSelect value="False" />
+      <IsMultiline value="False" />
+      <IsPassword value="False" />
+      <IsRichText value="False" />
+      <MaxLen value="0" />
+      <FieldName value="dateTo" />
+      <FontResourceId value="Helvetica" />
+      <QuaddingJustification value="Centered" />
+    </TextField>
+    <TextField>
+      <Text value="[issuer]" />
+      <DoNotScroll value="False" />
+      <DoNotSpellCheck value="False" />
+      <IsComb value="False" />
+      <IsFileSelect value="False" />
+      <IsMultiline value="False" />
+      <IsPassword value="False" />
+      <IsRichText value="False" />
+      <MaxLen value="0" />
+      <FieldName value="issuerName" />
+      <FontResourceId value="Helvetica" />
+      <QuaddingJustification value="Left" />
+    </TextField>
+    <TextField>
+      <Text value="[issuer position]" />
+      <DoNotScroll value="False" />
+      <DoNotSpellCheck value="False" />
+      <IsComb value="False" />
+      <IsFileSelect value="False" />
+      <IsMultiline value="False" />
+      <IsPassword value="False" />
+      <IsRichText value="False" />
+      <MaxLen value="0" />
+      <FieldName value="issuerPosition" />
+      <FontResourceId value="Helvetica" />
+      <QuaddingJustification value="Left" />
+    </TextField>
+  </Fields>
+  <Elements>
+    <TextBlock>
+      <Properties>
+        <Id value="docheader" />
+        <Text value="BIG COMPANY INC." />
+      </Properties>
+    </TextBlock>
+    <TextBlock>
+      <Properties>
+        <Id value="bodyheader" />
+        <Text value="Letter of reference" />
+      </Properties>
+    </TextBlock>
+    <TextBlock>
+      <Properties>
+        <Text value="To whom it may concern: " />
+      </Properties>
+    </TextBlock>
+    <Br>
+      <Properties>
+        <Height value="20" />
+      </Properties>
+    </Br>
+    <Section>
+      <Elements>
+        <TextBlock>
+          <Properties>
+            <Text value="I confirm that" />
+          </Properties>
+        </TextBlock>
+        <TextBox>
+          <Properties>
+            <Width value="120" />
+            <Class value="fieldText" />
+            <FieldName value="applicantName" />
+          </Properties>
+        </TextBox>
+        <TextBlock>
+          <Properties>
+            <Text value="worked in our company in the position of" />
+          </Properties>
+        </TextBlock>
+        <TextBox>
+          <Properties>
+            <Width value="125" />
+            <Class value="fieldText" />
+            <FieldName value="applicantPosition" />
+          </Properties>
+        </TextBox>
+        <TextBlock>
+          <Properties>
+            <Text value="from" />
+          </Properties>
+        </TextBlock>
+        <TextBox>
+          <Properties>
+            <Width value="60" />
+            <Class value="fieldText" />
+            <FieldName value="dateFrom" />
+          </Properties>
+        </TextBox>
+        <TextBlock>
+          <Properties>
+            <Text value="to" />
+          </Properties>
+        </TextBlock>
+        <TextBox>
+          <Properties>
+            <Width value="60" />
+            <Class value="fieldText" />
+            <FieldName value="dateTo" />
+          </Properties>
+        </TextBox>
+        <Br>
+          <Properties>
+            <Height value="20" />
+          </Properties>
+        </Br>
+        <TextBox>
+          <Properties>
+            <FieldName value="issuerName" />
+          </Properties>
+        </TextBox>
+        <TextBox>
+          <Properties>
+            <FieldName value="issuerPosition" />
+          </Properties>
+        </TextBox>
+	<TextBox>
+          <Properties>
+            <FieldName value="issueDate" />
+          </Properties>
+        </TextBox>
+      </Elements>
+      <Properties>
+        <Class value="body" />
+      </Properties>
+    </Section>
+  </Elements>
+  <Properties>
+    <Margin value="20,10%,20,20" />
+  </Properties>
+</FlowDocument>

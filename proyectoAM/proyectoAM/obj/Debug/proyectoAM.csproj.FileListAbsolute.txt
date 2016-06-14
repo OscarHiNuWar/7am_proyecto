@@ -1,0 +1,12 @@
+c:\users\7am\documents\visual studio 2015\Projects\proyectoAM\proyectoAM\bin\Debug\proyectoAM.exe.config
+J:\proyectoAM\proyectoAM\bin\Debug\proyectoAM.exe.config
+J:\proyectoAM\proyectoAM\bin\Debug\proyectoAM.exe
+J:\proyectoAM\proyectoAM\bin\Debug\proyectoAM.pdb
+J:\proyectoAM\proyectoAM\bin\Debug\MySql.Data.dll
+J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.csprojResolveAssemblyReference.cache
+J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Properties.Resources.resources
+J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.csproj.GenerateResource.Cache
+J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.exe
+J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.pdb
+J:\proyectoAM\proyectoAM\bin\Debug\System.Data.SQLite.dll
+J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Form1.resources

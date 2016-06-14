@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{A56B70D5-1F15-4D33-AC88-653C28750BC6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ProductCatalogWithTableOfContents</RootNamespace>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
+    <AssemblyName>ProductCatalogWithTableOfContents</AssemblyName>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <TargetFrameworkVersion>v4.2</TargetFrameworkVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="Apitron.PDF.Kit">
+      <HintPath>..\..\..\Xamarin\Apitron.PDF.Kit.dll</HintPath>
+    </Reference>
+    </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Main.axml" />
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Icon.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Assets\data\" />
+    <Folder Include="Assets\data\products\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\data\back.png" />
+    <AndroidAsset Include="Assets\data\cart.png" />
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Beer and strong drinks\Amstel_12 x 0.33l_10.59.jpg">
+      <Link>Assets\data\products\Beer and strong drinks\Amstel_12 x 0.33l_10.59.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Beer and strong drinks\Bacardi_1 x 0.7l_5.25.jpg">
+      <Link>Assets\data\products\Beer and strong drinks\Bacardi_1 x 0.7l_5.25.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Beer and strong drinks\Courvoisier VSOP_1 x 0.5l_20.jpg">
+      <Link>Assets\data\products\Beer and strong drinks\Courvoisier VSOP_1 x 0.5l_20.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Beer and strong drinks\Heineken_24 x 0.5l_25.99.jpg">
+      <Link>Assets\data\products\Beer and strong drinks\Heineken_24 x 0.5l_25.99.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Beer and strong drinks\Malibu Coconut Liqueur_1 x 0.75l_7.59.jpg">
+      <Link>Assets\data\products\Beer and strong drinks\Malibu Coconut Liqueur_1 x 0.75l_7.59.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Beer and strong drinks\Marquis XO_1 x 0.35l_13.99.jpg">
+      <Link>Assets\data\products\Beer and strong drinks\Marquis XO_1 x 0.35l_13.99.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Beer and strong drinks\Russian Vodka_1 x 0.75l_9.99.jpg">
+      <Link>Assets\data\products\Beer and strong drinks\Russian Vodka_1 x 0.75l_9.99.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Beer and strong drinks\Stroh Rum_1 x 0.25l_5.99.jpg">
+      <Link>Assets\data\products\Beer and strong drinks\Stroh Rum_1 x 0.25l_5.99.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Bread &amp; desserts\Apple cake_500gr_8.99.jpg">
+      <Link>Assets\data\products\Bread &amp; desserts\Apple cake_500gr_8.99.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Bread &amp; desserts\Brown bread_600gr_3.99.jpg">
+      <Link>Assets\data\products\Bread &amp; desserts\Brown bread_600gr_3.99.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Bread &amp; desserts\Cakes with cream_6 x 50gr_5.99.jpg">
+      <Link>Assets\data\products\Bread &amp; desserts\Cakes with cream_6 x 50gr_5.99.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Bread &amp; desserts\Chocolate pillows_2 x 50gr_4.49.jpg">
+      <Link>Assets\data\products\Bread &amp; desserts\Chocolate pillows_2 x 50gr_4.49.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Bread &amp; desserts\Dark bread_600gr_3.99.jpg">
+      <Link>Assets\data\products\Bread &amp; desserts\Dark bread_600gr_3.99.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Bread &amp; desserts\Pudding_300gr_6.69.jpg">
+      <Link>Assets\data\products\Bread &amp; desserts\Pudding_300gr_6.69.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Bread &amp; desserts\Small cakes_4 x 40gr_2.99.jpg">
+      <Link>Assets\data\products\Bread &amp; desserts\Small cakes_4 x 40gr_2.99.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Bread &amp; desserts\Wheat bread_400gr_2.25.jpg">
+      <Link>Assets\data\products\Bread &amp; desserts\Wheat bread_400gr_2.25.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Fresh drinks\Coca-cola pack_20 x 0.33l_19.99.jpg">
+      <Link>Assets\data\products\Fresh drinks\Coca-cola pack_20 x 0.33l_19.99.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Fresh drinks\Fanta_1l_2.99.jpg">
+      <Link>Assets\data\products\Fresh drinks\Fanta_1l_2.99.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Fresh drinks\Monster energy_0.33l_1.99.jpg">
+      <Link>Assets\data\products\Fresh drinks\Monster energy_0.33l_1.99.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Fresh drinks\Pepsi small pack_2 x 1l_3.99.jpg">
+      <Link>Assets\data\products\Fresh drinks\Pepsi small pack_2 x 1l_3.99.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Fresh drinks\Red Bull small pack_4 x 0.33l_7.99.jpg">
+      <Link>Assets\data\products\Fresh drinks\Red Bull small pack_4 x 0.33l_7.99.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Fruits &amp; vegetables\Broccoli_300gr_2.49.jpg">
+      <Link>Assets\data\products\Fruits &amp; vegetables\Broccoli_300gr_2.49.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Fruits &amp; vegetables\Cauliflower_1kg_2.49.jpg">
+      <Link>Assets\data\products\Fruits &amp; vegetables\Cauliflower_1kg_2.49.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Fruits &amp; vegetables\Cucumber_500gr_2.49.jpg">
+      <Link>Assets\data\products\Fruits &amp; vegetables\Cucumber_500gr_2.49.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Fruits &amp; vegetables\Garlic_100gr_1.49.jpg">
+      <Link>Assets\data\products\Fruits &amp; vegetables\Garlic_100gr_1.49.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Fruits &amp; vegetables\Mango_1kg_3.49.jpg">
+      <Link>Assets\data\products\Fruits &amp; vegetables\Mango_1kg_3.49.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Fruits &amp; vegetables\Paprika_500gr_4.49.jpg">
+      <Link>Assets\data\products\Fruits &amp; vegetables\Paprika_500gr_4.49.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Fruits &amp; vegetables\Pears_1kg_1.79.jpg">
+      <Link>Assets\data\products\Fruits &amp; vegetables\Pears_1kg_1.79.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Fruits &amp; vegetables\Pumpkin_1kg_0.25.jpg">
+      <Link>Assets\data\products\Fruits &amp; vegetables\Pumpkin_1kg_0.25.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Fruits &amp; vegetables\Scotch kale_1kg_4.49.jpg">
+      <Link>Assets\data\products\Fruits &amp; vegetables\Scotch kale_1kg_4.49.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Fruits &amp; vegetables\Spring onions_200gr_0.49.jpg">
+      <Link>Assets\data\products\Fruits &amp; vegetables\Spring onions_200gr_0.49.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Meat &amp; chicken\Forcemeat_500gr_5.99.jpg">
+      <Link>Assets\data\products\Meat &amp; chicken\Forcemeat_500gr_5.99.jpg</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Meat &amp; chicken\Grilled chicken_800gr_4.49.png">
+      <Link>Assets\data\products\Meat &amp; chicken\Grilled chicken_800gr_4.49.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\FlowLayoutSamples\data\products\Meat &amp; chicken\Hamburger_4 x 100gr_8.99.jpg">
+      <Link>Assets\data\products\Meat &amp; chicken\Hamburger_4 x 100gr_8.99.jpg</Link>
+    </AndroidAsset>
+  </ItemGroup>
+</Project>
