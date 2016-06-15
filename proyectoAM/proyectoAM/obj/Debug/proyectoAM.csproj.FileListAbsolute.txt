@@ -10,3 +10,8 @@ J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.exe
 J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.pdb
 J:\proyectoAM\proyectoAM\bin\Debug\System.Data.SQLite.dll
 J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Form1.resources
+J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.InvoiceGenerator.resources
+J:\proyectoAM\proyectoAM\bin\Debug\itextsharp.dll
+J:\proyectoAM\proyectoAM\bin\Debug\itextsharp.pdfa.dll
+J:\proyectoAM\proyectoAM\bin\Debug\itextsharp.xtra.dll
+J:\proyectoAM\proyectoAM\bin\Debug\itextsharp.xml

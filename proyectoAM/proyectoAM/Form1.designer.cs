@@ -47,7 +47,7 @@
             this.dtVence = new System.Windows.Forms.DateTimePicker();
             this.Tbla = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtSubtotal = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -56,9 +56,9 @@
             this.btnExportar = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtItebis = new System.Windows.Forms.TextBox();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.txtNCF = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.nudCantidad = new System.Windows.Forms.NumericUpDown();
@@ -219,6 +219,7 @@
             this.Tbla.Location = new System.Drawing.Point(15, 188);
             this.Tbla.Name = "Tbla";
             this.Tbla.ReadOnly = true;
+            this.Tbla.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.Tbla.Size = new System.Drawing.Size(902, 341);
             this.Tbla.TabIndex = 18;
             this.Tbla.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Tbla_CellContentDoubleClick);
@@ -232,13 +233,13 @@
             this.label10.TabIndex = 19;
             this.label10.Text = "SUB-TOTAL";
             // 
-            // textBox5
+            // txtSubtotal
             // 
-            this.textBox5.Location = new System.Drawing.Point(469, 161);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(128, 20);
-            this.textBox5.TabIndex = 20;
+            this.txtSubtotal.Location = new System.Drawing.Point(469, 161);
+            this.txtSubtotal.Name = "txtSubtotal";
+            this.txtSubtotal.ReadOnly = true;
+            this.txtSubtotal.Size = new System.Drawing.Size(128, 20);
+            this.txtSubtotal.TabIndex = 20;
             // 
             // btnAgregar
             // 
@@ -315,28 +316,28 @@
             this.label13.TabIndex = 28;
             this.label13.Text = "TOTAL";
             // 
-            // textBox1
+            // txtItebis
             // 
-            this.textBox1.Location = new System.Drawing.Point(644, 161);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(109, 20);
-            this.textBox1.TabIndex = 29;
+            this.txtItebis.Location = new System.Drawing.Point(644, 161);
+            this.txtItebis.Name = "txtItebis";
+            this.txtItebis.ReadOnly = true;
+            this.txtItebis.Size = new System.Drawing.Size(109, 20);
+            this.txtItebis.TabIndex = 29;
             // 
-            // textBox2
+            // txtTotal
             // 
-            this.textBox2.Location = new System.Drawing.Point(807, 161);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(110, 20);
-            this.textBox2.TabIndex = 30;
+            this.txtTotal.Location = new System.Drawing.Point(807, 161);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(110, 20);
+            this.txtTotal.TabIndex = 30;
             // 
-            // textBox3
+            // txtNCF
             // 
-            this.textBox3.Location = new System.Drawing.Point(327, 15);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(149, 20);
-            this.textBox3.TabIndex = 2;
+            this.txtNCF.Location = new System.Drawing.Point(327, 15);
+            this.txtNCF.Name = "txtNCF";
+            this.txtNCF.Size = new System.Drawing.Size(149, 20);
+            this.txtNCF.TabIndex = 2;
             // 
             // label14
             // 
@@ -380,10 +381,10 @@
             this.ClientSize = new System.Drawing.Size(937, 567);
             this.Controls.Add(this.nudCantidad);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtNCF);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtTotal);
+            this.Controls.Add(this.txtItebis);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.btnExportar);
@@ -392,7 +393,7 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txtSubtotal);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.Tbla);
             this.Controls.Add(this.dtVence);
@@ -442,7 +443,7 @@
         private System.Windows.Forms.DateTimePicker dtVence;
         private System.Windows.Forms.DataGridView Tbla;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtSubtotal;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Label label11;
@@ -451,9 +452,9 @@
         private System.Windows.Forms.Button btnExportar;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtItebis;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.TextBox txtNCF;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.NumericUpDown nudCantidad;
