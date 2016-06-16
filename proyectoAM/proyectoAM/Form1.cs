@@ -385,7 +385,7 @@ namespace proyectoAM
             //GRAN TABLA!!!
             PdfPTable grantable = new PdfPTable(Tbla.Columns.Count);
             grantable.WidthPercentage = 100f;
-            float[] widths = new float[] { 25f, 45f, 5f, 25f};
+            float[] widths = new float[] { 15f, 45f, 15f, 25f};
             grantable.SetWidths(widths);
             grantable.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
 
@@ -429,18 +429,36 @@ namespace proyectoAM
             grantable.HeaderRows = 1;
 
 
-            PdfPCell algo = new PdfPCell();
-            foreach (DataGridViewRow row in Tbla.Rows)
+            
+
+            for (int k = 0; k < Tbla.Rows.Count; k++)
             {
-                /*if ( = 4)
+
+                PdfPCell cante = new PdfPCell(new Phrase(Tbla[0, k].Value.ToString()));
+                cante.HorizontalAlignment = 1;
+                PdfPCell descri = new PdfPCell(new Phrase(Tbla[1, k].Value.ToString()));
+                descri.HorizontalAlignment = 1;
+
+                PdfPCell vaco =new PdfPCell (new Phrase(Tbla[2, k].Value.ToString()));
+
+                PdfPCell tolt = new PdfPCell(new Phrase(Tbla[3, k].Value.ToString()));
+                tolt.BackgroundColor = new iTextSharp.text.BaseColor(149, 160, 150);
+                tolt.HorizontalAlignment = 1;
+
+                grantable.AddCell(cante);
+                grantable.AddCell(descri);
+                grantable.AddCell(vaco);
+                grantable.AddCell(tolt);
+
+                if (k > Tbla.Rows.Count)
                 {
-                    algo.
-                }*/
-                
+                    
+                    break;
+                }
             }
 
-            //Agregar los rows!
-            for (int i = 0; i < Tbla.Rows.Count; i++)
+                    //Agregar los rows!
+                    /*for (int i = 0; i < Tbla.Rows.Count; i++)
             {
                 for (int k = 0; k < Tbla.Columns.Count; k++)
                 {
@@ -455,7 +473,7 @@ namespace proyectoAM
 
                 }
             }
-
+*/
            
             
 
@@ -463,7 +481,7 @@ namespace proyectoAM
             //CANTIDAD
             PdfPCell cantidad = new PdfPCell(new Phrase(canttotal.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.BOLD)));
             cantidad.Colspan = 1;
-            cantidad.HorizontalAlignment = 0; //0=left, 1=center, 2=right*/
+            cantidad.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
 
 
             PdfPTable subt = new PdfPTable(4);
