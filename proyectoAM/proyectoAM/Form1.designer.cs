@@ -64,8 +64,8 @@
             this.nudCantidad = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.cbDescripcion = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
             this.txtFirma = new System.Windows.Forms.TextBox();
@@ -122,8 +122,10 @@
             // 
             this.txtTelefono.Location = new System.Drawing.Point(718, 18);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(128, 20);
+            this.txtTelefono.ReadOnly = true;
+            this.txtTelefono.Size = new System.Drawing.Size(92, 20);
             this.txtTelefono.TabIndex = 4;
+            this.txtTelefono.Text = "809-535-1613";
             this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
             // 
             // label4
@@ -139,8 +141,10 @@
             // 
             this.txtEmail.Location = new System.Drawing.Point(90, 56);
             this.txtEmail.Name = "txtEmail";
+            this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(152, 20);
             this.txtEmail.TabIndex = 5;
+            this.txtEmail.Text = "negocios@agencia7am.com";
             // 
             // label5
             // 
@@ -173,7 +177,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(189, 20);
+            this.label7.Location = new System.Drawing.Point(311, 17);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 13);
             this.label7.TabIndex = 12;
@@ -183,15 +187,15 @@
             // 
             this.cbTrabajo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTrabajo.FormattingEnabled = true;
-            this.cbTrabajo.Location = new System.Drawing.Point(251, 14);
+            this.cbTrabajo.Location = new System.Drawing.Point(378, 14);
             this.cbTrabajo.Name = "cbTrabajo";
-            this.cbTrabajo.Size = new System.Drawing.Size(128, 21);
+            this.cbTrabajo.Size = new System.Drawing.Size(198, 21);
             this.cbTrabajo.TabIndex = 8;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(396, 19);
+            this.label8.Location = new System.Drawing.Point(610, 22);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(132, 13);
             this.label8.TabIndex = 14;
@@ -201,7 +205,7 @@
             // 
             this.cbPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPago.FormattingEnabled = true;
-            this.cbPago.Location = new System.Drawing.Point(541, 14);
+            this.cbPago.Location = new System.Drawing.Point(755, 17);
             this.cbPago.Name = "cbPago";
             this.cbPago.Size = new System.Drawing.Size(127, 21);
             this.cbPago.TabIndex = 9;
@@ -209,7 +213,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(678, 19);
+            this.label9.Location = new System.Drawing.Point(23, 63);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(43, 13);
             this.label9.TabIndex = 16;
@@ -217,9 +221,9 @@
             // 
             // dtVence
             // 
-            this.dtVence.Location = new System.Drawing.Point(727, 16);
+            this.dtVence.Location = new System.Drawing.Point(90, 58);
             this.dtVence.Name = "dtVence";
-            this.dtVence.Size = new System.Drawing.Size(174, 20);
+            this.dtVence.Size = new System.Drawing.Size(201, 20);
             this.dtVence.TabIndex = 10;
             this.dtVence.Value = new System.DateTime(2016, 6, 9, 0, 0, 0, 0);
             // 
@@ -235,6 +239,7 @@
             this.Tbla.Size = new System.Drawing.Size(910, 232);
             this.Tbla.TabIndex = 18;
             this.Tbla.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Tbla_CellContentDoubleClick);
+            this.Tbla.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Tbla_CellDoubleClick);
             // 
             // label10
             // 
@@ -277,7 +282,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(297, 60);
+            this.label11.Location = new System.Drawing.Point(569, 65);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(47, 13);
             this.label11.TabIndex = 23;
@@ -285,10 +290,10 @@
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(361, 57);
+            this.txtPrecio.Location = new System.Drawing.Point(623, 62);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(128, 20);
-            this.txtPrecio.TabIndex = 11;
+            this.txtPrecio.TabIndex = 12;
             this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress_1);
             // 
             // cbMoneda
@@ -297,7 +302,7 @@
             this.cbMoneda.FormattingEnabled = true;
             this.cbMoneda.Location = new System.Drawing.Point(90, 14);
             this.cbMoneda.Name = "cbMoneda";
-            this.cbMoneda.Size = new System.Drawing.Size(68, 21);
+            this.cbMoneda.Size = new System.Drawing.Size(201, 21);
             this.cbMoneda.TabIndex = 7;
             // 
             // btnExportar
@@ -348,6 +353,7 @@
             // 
             this.txtNCF.Location = new System.Drawing.Point(300, 22);
             this.txtNCF.Name = "txtNCF";
+            this.txtNCF.ReadOnly = true;
             this.txtNCF.Size = new System.Drawing.Size(149, 20);
             this.txtNCF.TabIndex = 2;
             // 
@@ -363,7 +369,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(522, 63);
+            this.label15.Location = new System.Drawing.Point(776, 68);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(62, 13);
             this.label15.TabIndex = 33;
@@ -371,7 +377,7 @@
             // 
             // nudCantidad
             // 
-            this.nudCantidad.Location = new System.Drawing.Point(590, 58);
+            this.nudCantidad.Location = new System.Drawing.Point(844, 63);
             this.nudCantidad.Minimum = new decimal(new int[] {
             1,
             0,
@@ -379,7 +385,7 @@
             0});
             this.nudCantidad.Name = "nudCantidad";
             this.nudCantidad.Size = new System.Drawing.Size(52, 20);
-            this.nudCantidad.TabIndex = 12;
+            this.nudCantidad.TabIndex = 13;
             this.nudCantidad.Value = new decimal(new int[] {
             1,
             0,
@@ -417,9 +423,9 @@
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.cbMoneda);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.cbPago);
-            this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.dtVence);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.cbPago);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.txtPrecio);
             this.groupBox2.Location = new System.Drawing.Point(15, 114);
@@ -428,22 +434,22 @@
             this.groupBox2.TabIndex = 35;
             this.groupBox2.TabStop = false;
             // 
+            // cbDescripcion
+            // 
+            this.cbDescripcion.FormattingEnabled = true;
+            this.cbDescripcion.Location = new System.Drawing.Point(384, 58);
+            this.cbDescripcion.Name = "cbDescripcion";
+            this.cbDescripcion.Size = new System.Drawing.Size(169, 21);
+            this.cbDescripcion.TabIndex = 11;
+            // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(21, 60);
+            this.label16.Location = new System.Drawing.Point(298, 61);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(80, 13);
             this.label16.TabIndex = 34;
             this.label16.Text = "DESCRIPCIÒN";
-            // 
-            // cbDescripcion
-            // 
-            this.cbDescripcion.FormattingEnabled = true;
-            this.cbDescripcion.Location = new System.Drawing.Point(107, 57);
-            this.cbDescripcion.Name = "cbDescripcion";
-            this.cbDescripcion.Size = new System.Drawing.Size(169, 21);
-            this.cbDescripcion.TabIndex = 35;
             // 
             // groupBox3
             // 
@@ -473,7 +479,7 @@
             this.txtFirma.Location = new System.Drawing.Point(86, 220);
             this.txtFirma.Name = "txtFirma";
             this.txtFirma.Size = new System.Drawing.Size(174, 20);
-            this.txtFirma.TabIndex = 39;
+            this.txtFirma.TabIndex = 14;
             // 
             // Form1
             // 
