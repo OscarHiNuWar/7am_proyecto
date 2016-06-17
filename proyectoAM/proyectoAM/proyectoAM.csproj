@@ -60,6 +60,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios\Clientes\agregar_cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Clientes\agregar_cliente.Designer.cs">
+      <DependentUpon>agregar_cliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="clases\addFactura.cs" />
     <Compile Include="clases\conDB.cs" />
     <Compile Include="conexion.cs" />
@@ -70,10 +76,22 @@
     <Compile Include="Form1.designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Clientes\consultar_clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Clientes\consultar_clientes.Designer.cs">
+      <DependentUpon>consultar_clientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\Clientes\agregar_cliente.resx">
+      <DependentUpon>agregar_cliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Clientes\consultar_clientes.resx">
+      <DependentUpon>consultar_clientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -93,6 +111,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\Font\Trebuchet MS Bold.ttf" />
+    <None Include="Resources\Font\Trebuchet MS.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

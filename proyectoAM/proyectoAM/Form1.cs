@@ -31,7 +31,7 @@ namespace proyectoAM
         string rnc; //Aca va el dato "RNC" de la tabla cliente
         string telefono;
         string email;
-        string compania;
+       // string compania;
         string moneda;
         string trabajo;
         string pago;
@@ -46,9 +46,6 @@ namespace proyectoAM
         DataTable addColumns()
         {
             tabla = new DataTable();
-            //Parte Superior de la Tabla
-            
-           
             //Parte Inferior de la Tabla
             tabla.Columns.Add("Cantidad");
             tabla.Columns.Add("Descripcion");
@@ -175,16 +172,17 @@ namespace proyectoAM
                 if (cbMoneda.Text == "Pesos Dominicanos")
                 {
                     din = "RD$ ";
-                    txtSubtotal.Text = "RD$ " + Convert.ToString(subtotal) + ".00";
-                    txtItebis.Text = "RD$ " + Convert.ToString(subitbis) + ".00";
-                    txtTotal.Text = "RD$ " + Convert.ToString(total) + ".00";
+                    // txtSubtotal.Text = "RD$ " + Convert.ToString(subtotal) + ".00";
+                    txtSubtotal.Text = "RD$" + Convert.ToString(string.Format("{0:0.00}", subtotal));
+                    txtItebis.Text = "RD$" + Convert.ToString(string.Format("{0:0.00}",subitbis));
+                    txtTotal.Text = "RD$" + Convert.ToString(string.Format("{0:0.00}",total));
                 }
                 else
                 {
                     din = "    $ ";
-                    txtSubtotal.Text = "$ " + Convert.ToString(subtotal) + ".00";
-                    txtItebis.Text = "$ " + Convert.ToString(subitbis) + ".00";
-                    txtTotal.Text = "$ " + Convert.ToString(total) + ".00";
+                    txtSubtotal.Text = "$ " + Convert.ToString(string.Format("{0:0.00}",subtotal));
+                    txtItebis.Text = "$ " + Convert.ToString(string.Format("{0:0.00}", subitbis));
+                    txtTotal.Text = "$ " + Convert.ToString(string.Format("{0:0.00}", total));
                 }
             
             moneda = cbMoneda.Text.ToString();
@@ -208,6 +206,8 @@ namespace proyectoAM
         private void button1_Click(object sender, EventArgs e)
         {
             exporta();
+            ///
+
         }
 
         
@@ -267,6 +267,38 @@ namespace proyectoAM
 
         public void exporta()
         {
+
+            Paragraph espacio = new Paragraph("\n\n");
+            Paragraph espacio2 = new Paragraph("\n");
+
+            var color = new BaseColor(0, 0, 0);
+
+
+            //EL FONT!
+            BaseFont trebutchet = BaseFont.CreateFont("../../Resources/Font/Trebuchet MS.ttf", BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            BaseFont trebutchetbold = BaseFont.CreateFont("../../Resources/Font/Trebuchet MS Bold.ttf", BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+
+            //Letra de Titulo
+            iTextSharp.text.Font titulo = new iTextSharp.text.Font(trebutchetbold, 16, iTextSharp.text.Font.BOLD);
+
+            //Letra del texto general
+            iTextSharp.text.Font texto = new iTextSharp.text.Font(trebutchet, 8, iTextSharp.text.Font.NORMAL);
+
+            //Letra del texto Cliente
+            iTextSharp.text.Font cliente = new iTextSharp.text.Font(trebutchetbold, 11, iTextSharp.text.Font.BOLD);
+
+            //Letra del texto Totales
+            iTextSharp.text.Font numero = new iTextSharp.text.Font(trebutchet, 9, iTextSharp.text.Font.NORMAL);
+
+            //Letra del texto tablatitulo
+            iTextSharp.text.Font tablatitulo = new iTextSharp.text.Font(trebutchetbold, 7, iTextSharp.text.Font.BOLD);
+
+            //Letra del texto Firma
+            iTextSharp.text.Font textfirma = new iTextSharp.text.Font(trebutchet, 11, iTextSharp.text.Font.UNDERLINE);
+
+           
+            
+
             var date = DateTime.Now; // will give the date for today
             string dateWithFormat = Convert.ToString(date.Date);
             Document doc = new Document(iTextSharp.text.PageSize.A4, 10, 10, 42, 35);
@@ -274,103 +306,121 @@ namespace proyectoAM
             
             doc.Open();
 
-            iTextSharp.text.Image am = iTextSharp.text.Image.GetInstance("logo7am.jpg");
+            iTextSharp.text.Image am = iTextSharp.text.Image.GetInstance("logo7am2.jpg");
             am.ScalePercent(25f);
-            am.SetAbsolutePosition(doc.PageSize.Width - 36f - 72f, doc.PageSize.Height - 36f - 50f);
+            am.SetAbsolutePosition(doc.PageSize.Width - 36f - 122f, doc.PageSize.Height - 36f - 110f);
             doc.Add(am);
 
             /*if(string.IsNullOrEmpty(cbNombre.Text) ) { Paragraph parag = new Paragraph("FACTURA\nNOMBRE: " + cbNombre.SelectedItem.ToString() + "\n"); doc.Add(parag); }
             else {  Paragraph parag = new Paragraph("FACTURA\n\nNOMBRE: " + cbNombre.Text.ToString() + "\n\n"); doc.Add(parag); }*/
+            /*Paragraph NFC = new Paragraph("NFC: " + txtNCF.Text + "\n\n"); doc.Add(NFC);
+             Paragraph tel = new Paragraph("TELÉFONO: " + txtTelefono.Text + "\n\n"); doc.Add(tel);*/
 
-
-            Paragraph factura = new Paragraph(" FACTURA\n\n"); doc.Add(factura);
-            if (string.IsNullOrEmpty(cbCompania.Text)) { Paragraph parag = new Paragraph(" COMPAÑIA: " + cbNombre.SelectedItem.ToString() + "\n\n"); doc.Add(parag); }
-            else { Paragraph parag = new Paragraph(" COMPAÑIA: " + cbNombre.Text.ToString() + "\n\n"); doc.Add(parag); }
-            Paragraph RNC = new Paragraph(" RNC: " + txtRnc.Text + "\n\n"); doc.Add(RNC);
-           /*Paragraph NFC = new Paragraph("NFC: " + txtNCF.Text + "\n\n"); doc.Add(NFC);
-            Paragraph tel = new Paragraph("TELÉFONO: " + txtTelefono.Text + "\n\n"); doc.Add(tel);*/
-            
 
             PdfPTable adjust = new PdfPTable(2);
             //adjust.HorizontalAlignment = 1;
-            adjust.WidthPercentage = 100f;
+            adjust.WidthPercentage = 85f;
 
+            PdfPCell factura = new PdfPCell(new Phrase("\nFACTURA\n\n", titulo));
+            factura.HorizontalAlignment = 0;
+            factura.Colspan = 1;
+            factura.Border = 0;
+            
 
-            PdfPCell rnce = new PdfPCell( new Phrase("NFC: " + txtNCF.Text + "\n\n\n"));
+            PdfPCell rnc = new PdfPCell(new Phrase("RNC: \n" + txtRnc.Text + "\n\n", texto));
+            rnc.HorizontalAlignment =0;
+            rnc.Colspan = 1;
+            rnc.Border = 0;
+
+            PdfPCell empty = new PdfPCell(new Phrase("\n"));
+            empty.Colspan=1;
+            empty.Border = 0;
+
+            PdfPCell rnce = new PdfPCell( new Phrase("NFC: " + "" + txtNCF.Text + "\n\n\n", texto));
             rnce.HorizontalAlignment = 0;
             rnce.Colspan = 1;
             rnce.Border = 0;
 
             var now = DateTime.Now;
             var newdate = now.Date;
-            PdfPCell fechahoy = new PdfPCell(new Phrase("Fecha: " + newdate.ToString("dd/MM/yyyy") + "\n"));
+            PdfPCell fechahoy = new PdfPCell(new Phrase("Fecha: " + newdate.ToString("dd/MM/yyyy") + "\n\n", texto));
             fechahoy.Colspan = 1;
             fechahoy.HorizontalAlignment = 2;
             fechahoy.Border = 0;
 
-            PdfPCell telefono = new PdfPCell(new Phrase("TELEFONO: " + txtTelefono.Text + "\n\n\n"));
+            PdfPCell telefono = new PdfPCell(new Phrase("TELEFONO: \n" + "" + txtTelefono.Text + "\n\n", texto));
             telefono.HorizontalAlignment = 0;
             telefono.Colspan = 1;
             telefono.Border = 0;
 
-            PdfPCell lugar = new PdfPCell(new Phrase("SANTO DOMINGO,\nREPUBLICA DOMINICANA\n"));
+            PdfPCell lugar = new PdfPCell(new Phrase("SANTO DOMINGO,\nREPUBLICA DOMINICANA\n", texto));
             lugar.Colspan = 1;
             lugar.HorizontalAlignment = 2;
             lugar.Border = 0;
 
+            adjust.AddCell(empty); adjust.AddCell(empty);
+            adjust.AddCell(empty); adjust.AddCell(empty);
+            adjust.AddCell(factura);adjust.AddCell(empty);
+            adjust.AddCell(rnc); adjust.AddCell(empty);
             adjust.AddCell(rnce);
             adjust.AddCell(fechahoy);
-
             adjust.AddCell(telefono);
             adjust.AddCell(lugar);
 
-
+            
+            PdfPCell email = new PdfPCell(new Phrase("EMAIL:\n"+ txtEmail.Text + "\n\n", texto)); email.Border = 0; email.HorizontalAlignment = 0; email.Colspan = 2; adjust.AddCell(email);
+            if (string.IsNullOrEmpty(cbCompania.Text)) { PdfPCell parag = new PdfPCell(new Phrase( ("CLIENTE: "  + cbNombre.SelectedItem.ToString()), cliente)); parag.Border = 0; parag.HorizontalAlignment = 0; parag.Colspan = 2; adjust.AddCell(parag); }
+            else { PdfPCell parag = new PdfPCell(new Phrase ("CLIENTE: " + cbNombre.Text.ToString(), cliente)); parag.Border = 0; parag.HorizontalAlignment = 0; parag.Colspan = 2; adjust.AddCell(parag); }
             doc.Add(adjust);
-
-            Paragraph email = new Paragraph(" EMAIL: " + txtEmail.Text + "\n\n"); doc.Add(email);
-
 
             PdfPTable pdfTable = new PdfPTable(4);
             pdfTable.HorizontalAlignment = 1;
-            pdfTable.WidthPercentage = 100f;
-
-
-
+            pdfTable.WidthPercentage = 85f;
+    
             //ACA VA MONEDA
-            PdfPCell moneda = new PdfPCell(new Phrase("MONEDA", new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.BOLD)));
+            PdfPCell moneda = new PdfPCell(new Phrase("MONEDA", tablatitulo));
             moneda.Colspan = 1;
             moneda.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
-            PdfPCell cmoneda = new PdfPCell(new Phrase(cbMoneda.SelectedItem.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL)));
+            moneda.Padding = 5;
+            PdfPCell cmoneda = new PdfPCell(new Phrase(cbMoneda.SelectedItem.ToString(), texto));
             cmoneda.Colspan = 1;
             cmoneda.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
+            cmoneda.PaddingTop = 5;
+            cmoneda.PaddingBottom = 8;
 
 
             //ACA VA TRABAJO
-            PdfPCell trabajo = new PdfPCell(new Phrase("TRABAJO", new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.BOLD)));
+            PdfPCell trabajo = new PdfPCell(new Phrase("TRABAJO", tablatitulo));
             trabajo.Colspan = 1;
             trabajo.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
-            PdfPCell ctrabajo = new PdfPCell(new Phrase(cbTrabajo.SelectedItem.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL)));
+            trabajo.Padding = 5;
+            PdfPCell ctrabajo = new PdfPCell(new Phrase(cbTrabajo.SelectedItem.ToString(), texto));
             ctrabajo.Colspan = 1;
             ctrabajo.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
+            ctrabajo.Padding = 5;
 
 
             //ACA VA CONDICIONES
-            PdfPCell condicion = new PdfPCell(new Phrase("CONDICIONES DE PAGO", new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.BOLD)));
+            PdfPCell condicion = new PdfPCell(new Phrase("CONDICIONES DE PAGO", tablatitulo));
             condicion.Colspan = 1;
             condicion.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
-            PdfPCell cpago = new PdfPCell(new Phrase(cbPago.SelectedItem.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL)));
+            condicion.Padding = 5;
+            PdfPCell cpago = new PdfPCell(new Phrase(cbPago.SelectedItem.ToString(), texto));
             cpago.Colspan = 1;
             cpago.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
+            cpago.Padding = 5;
 
 
             //ACA VENCIMIENTO
-            PdfPCell vence = new PdfPCell(new Phrase("FECHA DE VENCIMIENTO", new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.BOLD)));
+            PdfPCell vence = new PdfPCell(new Phrase("FECHA DE VENCIMIENTO", tablatitulo));
             vence.Colspan = 1;
             vence.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
+            vence.Padding = 5;
             var midato = dtVence.Value.ToString("dd/MM/yyyy");
-            PdfPCell cvence = new PdfPCell(new Phrase(midato, new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL)));
+            PdfPCell cvence = new PdfPCell(new Phrase(midato, texto));
             cvence.Colspan = 1;
             cvence.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
+            cvence.Padding = 5;
 
 
             pdfTable.AddCell(moneda);
@@ -384,10 +434,11 @@ namespace proyectoAM
 
             //GRAN TABLA!!!
             PdfPTable grantable = new PdfPTable(Tbla.Columns.Count);
-            grantable.WidthPercentage = 100f;
-            float[] widths = new float[] { 15f, 45f, 15f, 25f};
+            grantable.WidthPercentage = 85f;
+            float[] widths = new float[] { 25f, 42f, 10f, 28f};
             grantable.SetWidths(widths);
             grantable.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
+
 
             //Add the headers from the DataGridView to the table
             /* for (int j=0;j<Tbla.Columns.Count; j++)
@@ -395,18 +446,18 @@ namespace proyectoAM
                  grantable.AddCell(new Phrase(Tbla.Columns[j].HeaderText));
              }*/
 
-
             //CANTIDDAD
-            PdfPCell cant = new PdfPCell(new Phrase("CANTIDAD", new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.BOLD)));
+            PdfPCell cant = new PdfPCell(new Phrase("CANTIDAD", tablatitulo));
             cant.Colspan = 1;
             cant.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
+            cant.Padding = 5;
             grantable.AddCell(cant);
 
             //DESCRIPCION
-            PdfPCell descripcion = new PdfPCell(new Phrase("DESCRIPCIÒN", new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.BOLD)));
+            PdfPCell descripcion = new PdfPCell(new Phrase("DESCRIPCIÒN", tablatitulo));
             descripcion.Colspan = 1;
+            descripcion.Padding = 5;
             //descripcion.Width = 50;
-            
             descripcion.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
             grantable.AddCell(descripcion);
 
@@ -419,150 +470,199 @@ namespace proyectoAM
             grantable.AddCell(vacio);
 
             //PRECIO
-            PdfPCell precio = new PdfPCell(new Phrase("PRECIO", new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.BOLD)));
-            precio.BackgroundColor = new iTextSharp.text.BaseColor(149, 160, 150);
+            PdfPCell precio = new PdfPCell(new Phrase("PRECIO", tablatitulo));
+            precio.BackgroundColor = new iTextSharp.text.BaseColor(219, 229, 241);
             precio.Colspan = 1;
             precio.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
+            precio.Padding = 5;
             grantable.AddCell(precio);
 
             //Flag the first row as a header
             grantable.HeaderRows = 1;
 
-
-            
-
             for (int k = 0; k < Tbla.Rows.Count; k++)
             {
 
-                PdfPCell cante = new PdfPCell(new Phrase(Tbla[0, k].Value.ToString()));
-                cante.HorizontalAlignment = 1;
-                PdfPCell descri = new PdfPCell(new Phrase(Tbla[1, k].Value.ToString()));
-                descri.HorizontalAlignment = 1;
+                PdfPCell cante = new PdfPCell(new Phrase(Tbla[0, k].Value.ToString(), texto));
+                cante.HorizontalAlignment = 0;
+                cante.PaddingTop = 5;
+                cante.PaddingBottom = 8;
+                cante.PaddingLeft = 20;
+                //cante.BorderWidth = 1f;
+                // cante.BorderWidthBottom = 0; 
+
+                PdfPCell descri = new PdfPCell(new Phrase(Tbla[1, k].Value.ToString(), texto));
+                descri.HorizontalAlignment = 0;
+                descri.PaddingTop = 5;
+                descri.PaddingBottom = 8;
+                descri.PaddingLeft = 20;
+                //descri.BorderWidth = 1f;
+                // descri.BorderWidthBottom = 0;
 
                 PdfPCell vaco =new PdfPCell (new Phrase(Tbla[2, k].Value.ToString()));
+                //vaco.BorderWidth = 1f;
+               // vaco.BorderWidthBottom = 0;
 
-                PdfPCell tolt = new PdfPCell(new Phrase(Tbla[3, k].Value.ToString()));
-                tolt.BackgroundColor = new iTextSharp.text.BaseColor(149, 160, 150);
-                tolt.HorizontalAlignment = 1;
+
+                PdfPCell tolt = new PdfPCell(new Phrase(Tbla[3, k].Value.ToString(), texto));
+                tolt.BackgroundColor = new iTextSharp.text.BaseColor(219, 229, 241);
+                tolt.HorizontalAlignment = 0;
+                tolt.PaddingTop = 5;
+                tolt.PaddingBottom = 8;
+                tolt.PaddingLeft=20;
+                //tolt.BorderWidth = 1;
+                //tolt.BorderWidth = 1f;
+                //tolt.BorderWidthBottom = 0;
+
+                /* PdfPCell empty = new PdfPCell(new Phrase(""));
+                 empty.BackgroundColor = new iTextSharp.text.BaseColor(149, 160, 150);
+                 empty.HorizontalAlignment = 1;
+                 ///tolt.BorderWidth = 1;
+                 empty.BorderWidthBottom = 0;
+                 empty.BorderWidthLeft = 0;
+                 empty.BorderWidthRight = 0;
+                 empty.BorderWidthTop = 1f;*/
+
+
+                /* if (k == Tbla.Rows.Count-1)
+                 {
+
+                     cante.BorderWidthTop = 1;
+                     descri.BorderWidthTop = 1;
+                     vaco.BorderWidthTop = 1;
+                     tolt.BorderWidthTop = 1;
+
+                 }*/
 
                 grantable.AddCell(cante);
                 grantable.AddCell(descri);
                 grantable.AddCell(vaco);
                 grantable.AddCell(tolt);
 
+                
+
                 if (k > Tbla.Rows.Count)
                 {
-                    
+                   // grantable.AddCell(empty);
                     break;
                 }
             }
 
                     //Agregar los rows!
-                    /*for (int i = 0; i < Tbla.Rows.Count; i++)
-            {
-                for (int k = 0; k < Tbla.Columns.Count; k++)
-                {
-                    
-
-                    if (Tbla[k, i].Value != null)
-                    {
-                        
-                        grantable.AddCell(new Phrase(Tbla[k, i].Value.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL)));
-                       
-                    }
-
-                }
-            }
-*/
-           
-            
-
+                   
 
             //CANTIDAD
-            PdfPCell cantidad = new PdfPCell(new Phrase(canttotal.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.BOLD)));
+            PdfPCell cantidad = new PdfPCell(new Phrase(canttotal.ToString(), tablatitulo));
             cantidad.Colspan = 1;
             cantidad.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
 
 
             PdfPTable subt = new PdfPTable(4);
-            subt.WidthPercentage = 100f;
+            subt.WidthPercentage = 85f;
             subt.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
+            float[] widths2 = new float[] { 70f, 0f, 15f, 15f };
+            subt.SetWidths(widths2);
             
+
             PdfPCell clear = new PdfPCell(new Phrase(""));
             clear.Border = 0;
-            clear.Colspan = 2;
+            clear.Colspan = 1;
             
-
 
             //SUBTOTAL
-            PdfPCell subtotal = new PdfPCell(new Phrase("SUB - TOTAL:", new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.BOLD)));
+            PdfPCell subtotal = new PdfPCell(new Phrase("SUB - TOTAL:", tablatitulo));
             subtotal.Colspan = 1;
             subtotal.HorizontalAlignment = 0; //0=left, 1=center, 2=right*/
+            subtotal.PaddingTop = 5;
+            subtotal.PaddingBottom = 6;
+            subtotal.PaddingLeft = 10;
             //subtotal.BackgroundColor = new iTextSharp.text.BaseColor(149, 160, 150);
-            
-            PdfPCell sub = new PdfPCell(new Phrase(txtSubtotal.Text, new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL)));
+
+            PdfPCell sub = new PdfPCell(new Phrase(txtSubtotal.Text, numero));
             sub.Colspan = 1;
             sub.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
-            sub.BackgroundColor = new iTextSharp.text.BaseColor(149, 160, 150);
+            sub.BackgroundColor = new iTextSharp.text.BaseColor(219, 229, 241);
+            sub.PaddingTop = 5;
+            sub.PaddingBottom = 6;
+            sub.PaddingLeft = 10;
 
-           
+
+            subt.AddCell(clear);
             subt.AddCell(clear);
             subt.AddCell(subtotal);
             subt.AddCell(sub);
 
             PdfPTable ite = new PdfPTable(4);
-            ite.WidthPercentage = 100f;
+            ite.WidthPercentage = 85f;
             ite.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
+            float[] widths3 = new float[] { 70f, 0f, 15f, 15f };
+            ite.SetWidths(widths3);
+            //ite.PaddingTop = 5;
 
             //ITBIS
-            PdfPCell itbis = new PdfPCell(new Phrase("ITBIS: ", new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.BOLD)));
+            PdfPCell itbis = new PdfPCell(new Phrase("ITBIS: ", tablatitulo));
             itbis.Colspan = 1;
             itbis.HorizontalAlignment = 0; //0=left, 1=center, 2=right*/
             //itbis.BackgroundColor = new iTextSharp.text.BaseColor(149, 160, 150);
-           
-            PdfPCell it = new PdfPCell(new Phrase(txtItebis.Text, new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL)));
+            itbis.PaddingTop = 5;
+            itbis.PaddingBottom = 6;
+            itbis.PaddingLeft = 10;
+
+
+            PdfPCell it = new PdfPCell(new Phrase(txtItebis.Text, numero));
             it.Colspan = 1;
             it.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
-            it.BackgroundColor = new iTextSharp.text.BaseColor(149, 160, 150);
+            it.BackgroundColor = new iTextSharp.text.BaseColor(219, 229, 241);
+            it.PaddingTop = 5;
+            it.PaddingBottom = 6;
+            it.PaddingLeft = 10;
 
+            ite.AddCell(clear);
             ite.AddCell(clear);
             ite.AddCell(itbis);
             ite.AddCell(it);
 
-            
-
 
             PdfPTable tol = new PdfPTable(4);
-            tol.WidthPercentage = 100f;
+            tol.WidthPercentage = 85f;
             tol.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
+            float[] widths4 = new float[] { 70f, 0f, 15f, 15f };
+            tol.SetWidths(widths4);
+            
 
             //TOTAL
-            PdfPCell total = new PdfPCell(new Phrase("TOTAL: ", new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.BOLD)));
+            PdfPCell total = new PdfPCell(new Phrase("TOTAL: ", tablatitulo));
             total.Colspan = 1;
             total.HorizontalAlignment = 0; //0=left, 1=center, 2=right*/
             //total.BackgroundColor = new iTextSharp.text.BaseColor(149, 160, 150);
-            
-            PdfPCell to = new PdfPCell(new Phrase(txtTotal.Text, new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL)));
+            total.PaddingTop = 5;
+            total.PaddingBottom = 6;
+            total.PaddingLeft = 10;
+
+            PdfPCell to = new PdfPCell(new Phrase(txtTotal.Text, numero));
             to.Colspan = 1;
             to.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
-            to.BackgroundColor = new iTextSharp.text.BaseColor(149, 160, 150);
+            to.BackgroundColor = new iTextSharp.text.BaseColor(219, 229, 241);
+            to.PaddingTop = 5;
+            to.PaddingBottom = 6;
+            to.PaddingLeft = 10;
 
-            
+
+            tol.AddCell(clear);
             tol.AddCell(clear);
             tol.AddCell(total);
             tol.AddCell(to);
 
-            grantable.AddCell(cantidad);
+           /* grantable.AddCell(cantidad);
             grantable.AddCell(clear);
             grantable.AddCell(clear);
-            grantable.AddCell(clear);
+            grantable.AddCell(clear);*/
 
-            Paragraph espacio = new Paragraph("\n\n"); doc.Add(espacio);
- 
 
             //Aca se agrega todo al PDF. El orden es muy importante, so cuidado donde muevan los doc.add!
+            doc.Add(espacio2);
             doc.Add(pdfTable);
-            doc.Add(espacio);
+            doc.Add(espacio2);
             doc.Add(grantable);
             doc.Add(espacio);
             doc.Add(subt);
@@ -570,7 +670,16 @@ namespace proyectoAM
             doc.Add(tol);
             doc.Add(espacio);
 
-            Paragraph firma = new Paragraph("Factura por: " + txtFirma.Text + "                                                                                             ", new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.UNDERLINE)); doc.Add(firma);
+            PdfPTable firm = new PdfPTable(2);
+            firm.WidthPercentage = 85f;
+            PdfPCell prefirma = new PdfPCell(new Phrase("Factura por: "));
+            PdfPCell firma = new PdfPCell(new Phrase(txtFirma.Text, textfirma));
+            float[] widths5 = new float[] { 15f,85f };
+            firm.SetWidths(widths5);
+            prefirma.Border = 0; firma.Border = 0;
+            firm.AddCell(prefirma);firm.AddCell(firma);
+            doc.Add(firm);
+
 
 
             doc.Close();

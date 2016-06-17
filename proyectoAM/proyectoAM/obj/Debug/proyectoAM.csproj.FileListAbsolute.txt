@@ -14,3 +14,5 @@ J:\proyectoAM\proyectoAM\bin\Debug\itextsharp.dll
 J:\proyectoAM\proyectoAM\bin\Debug\itextsharp.pdfa.dll
 J:\proyectoAM\proyectoAM\bin\Debug\itextsharp.xtra.dll
 J:\proyectoAM\proyectoAM\bin\Debug\itextsharp.xml
+J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.agregar_cliente.resources
+J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Clientes.consultar_clientes.resources
