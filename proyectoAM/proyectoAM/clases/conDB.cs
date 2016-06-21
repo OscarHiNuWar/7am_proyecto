@@ -16,13 +16,14 @@ namespace proyectoAM
     {
             try
             {
-                string server = "localhost";
+               /* string server = "localhost";
                 string db = "7am_proyecto";
-                //string uid = "root";
-                string pass = "llego_el_pavo01";
+                string uid = "root";
+                string pass = "llego_el_pavo01";*/
 
-                MySqlConnection conectar = new MySqlConnection("Server=" + server + "; database=" + db + "; User=root ; Password=" + pass + ";");
+                MySqlConnection conectar = new MySqlConnection("Server=localhost; User=root; Password=llego_el_pavo01; database=7am_proyecto;");
 
+                
                 conectar.Open();
                // return conectar;
             }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Santana_Version_Final.factura.clases
+namespace proyectoAM
 {
     class facturacion
     {
@@ -19,29 +19,108 @@ namespace Santana_Version_Final.factura.clases
     
     public void conectame() { cn = con.getConexion(); cn.Open(); }
 
-    public int agregar(string[] data)
+    public bool agregaruser(string[] data)
     {
         conectame();
         try
         {
-
-
-
-            string sql = "INSERT INTO [nombre](datos) VALUES('" + data[0] + "','" + data[1] + "','" + data[2] + "');SELECT last_insert_rowid()";
+            string sql = "INSERT INTO cliente(compania,nfc,rnc,email,telefono) VALUES('" + data[0] + "','" + data[1] + "','" + data[2] + "','" + data[3] + "','" + data[4] + "');SELECT last_insert_rowid()";
             cmd = new SQLiteCommand(sql, cn);
 
             id = Convert.ToInt32(cmd.ExecuteScalar());
             cn.Close();
-            return id;
+            return true;
 
         }
         catch (SQLiteException ex)
         {
             MessageBox.Show(ex.ToString());
         }
-        return 0;
+        return false;
 
+        }
 
+        public bool agregardescripcion(string[] data)
+        {
+            conectame();
+            try
+            {
+                string sql = "INSERT INTO [nombre](datos) VALUES('" + data[0] + "','" + data[1] + "','" + data[2] + "');SELECT last_insert_rowid()";
+                cmd = new SQLiteCommand(sql, cn);
+
+                id = Convert.ToInt32(cmd.ExecuteScalar());
+                cn.Close();
+                return true;
+
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return false;
+
+        }
+
+        public bool agregardetalle(string[] data)
+        {
+            conectame();
+            try
+            {
+                string sql = "INSERT INTO [nombre](datos) VALUES('" + data[0] + "','" + data[1] + "','" + data[2] + "');SELECT last_insert_rowid()";
+                cmd = new SQLiteCommand(sql, cn);
+
+                id = Convert.ToInt32(cmd.ExecuteScalar());
+                cn.Close();
+                return true;
+
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return false;
+
+        }
+
+        public bool agregarfacturacion(string[] data)
+        {
+            conectame();
+            try
+            {
+                string sql = "INSERT INTO [nombre](datos) VALUES('" + data[0] + "','" + data[1] + "','" + data[2] + "');SELECT last_insert_rowid()";
+                cmd = new SQLiteCommand(sql, cn);
+
+                id = Convert.ToInt32(cmd.ExecuteScalar());
+                cn.Close();
+                return true;
+
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return false;
+
+        }
+
+        public bool agregarfactura(string[] data)
+        {
+            conectame();
+            try
+            {
+                string sql = "INSERT INTO [nombre](datos) VALUES('" + data[0] + "','" + data[1] + "','" + data[2] + "');SELECT last_insert_rowid()";
+                cmd = new SQLiteCommand(sql, cn);
+
+                id = Convert.ToInt32(cmd.ExecuteScalar());
+                cn.Close();
+                return true;
+
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return false;
 
         }
     }

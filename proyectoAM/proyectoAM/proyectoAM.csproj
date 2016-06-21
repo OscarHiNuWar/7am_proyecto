@@ -60,29 +60,56 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cotizacion.Designer.cs">
+      <DependentUpon>Cotizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Clientes\agregar_cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Clientes\agregar_cliente.Designer.cs">
+      <DependentUpon>agregar_cliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="clases\addFactura.cs" />
     <Compile Include="clases\conDB.cs" />
     <Compile Include="conexion.cs" />
     <Compile Include="facturacion.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Factura.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Factura.designer.cs">
+      <DependentUpon>Factura.cs</DependentUpon>
     </Compile>
-    <Compile Include="InvoiceGenerator.cs">
+    <Compile Include="Formularios\Clientes\consultar_clientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InvoiceGenerator.Designer.cs">
-      <DependentUpon>InvoiceGenerator.cs</DependentUpon>
+    <Compile Include="Formularios\Clientes\consultar_clientes.Designer.cs">
+      <DependentUpon>consultar_clientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="menuprincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="menuprincipal.Designer.cs">
+      <DependentUpon>menuprincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Cotizacion.resx">
+      <DependentUpon>Cotizacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InvoiceGenerator.resx">
-      <DependentUpon>InvoiceGenerator.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\Clientes\agregar_cliente.resx">
+      <DependentUpon>agregar_cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Factura.resx">
+      <DependentUpon>Factura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Clientes\consultar_clientes.resx">
+      <DependentUpon>consultar_clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="menuprincipal.resx">
+      <DependentUpon>menuprincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -102,6 +129,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\Font\Trebuchet MS Bold.ttf" />
+    <None Include="Resources\Font\Trebuchet MS.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

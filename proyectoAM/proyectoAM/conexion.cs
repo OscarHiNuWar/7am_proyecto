@@ -6,7 +6,7 @@ using System.Text;
 using System.Data.SQLite;
 using System.IO;
 
-namespace Santana_Version_Final.factura
+namespace proyectoAM
 {
     class conexion
     {
@@ -14,9 +14,10 @@ namespace Santana_Version_Final.factura
         {
             string path = Directory.GetCurrentDirectory();
 
-            SQLiteConnection conectar = new SQLiteConnection("Data Source= " + path + "/7amFactura.sqlite");
+            SQLiteConnection conectar = new SQLiteConnection("Data Source= " + path + "/7am_facturacion.sqlite");
             //System.Windows.Forms.MessageBox.Show(path);
             //SQLiteConnection conectar = new SQLiteConnection("Data Source= C:/santana/santana.sqlite");
+            System.Windows.Forms.MessageBox.Show("Conectado");
             return conectar;
         }
 
