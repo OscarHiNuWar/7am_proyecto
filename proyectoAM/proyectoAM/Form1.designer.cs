@@ -236,7 +236,11 @@
             this.Tbla.Name = "Tbla";
             this.Tbla.ReadOnly = true;
             this.Tbla.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+<<<<<<< HEAD
             this.Tbla.Size = new System.Drawing.Size(910, 232);
+=======
+            this.Tbla.Size = new System.Drawing.Size(902, 341);
+>>>>>>> origin/master
             this.Tbla.TabIndex = 18;
             this.Tbla.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Tbla_CellContentDoubleClick);
             this.Tbla.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Tbla_CellDoubleClick);
@@ -252,7 +256,11 @@
             // 
             // txtSubtotal
             // 
+<<<<<<< HEAD
             this.txtSubtotal.Location = new System.Drawing.Point(87, 33);
+=======
+            this.txtSubtotal.Location = new System.Drawing.Point(469, 161);
+>>>>>>> origin/master
             this.txtSubtotal.Name = "txtSubtotal";
             this.txtSubtotal.ReadOnly = true;
             this.txtSubtotal.Size = new System.Drawing.Size(128, 20);
@@ -335,7 +343,11 @@
             // 
             // txtItebis
             // 
+<<<<<<< HEAD
             this.txtItebis.Location = new System.Drawing.Point(262, 33);
+=======
+            this.txtItebis.Location = new System.Drawing.Point(644, 161);
+>>>>>>> origin/master
             this.txtItebis.Name = "txtItebis";
             this.txtItebis.ReadOnly = true;
             this.txtItebis.Size = new System.Drawing.Size(109, 20);
@@ -343,7 +355,11 @@
             // 
             // txtTotal
             // 
+<<<<<<< HEAD
             this.txtTotal.Location = new System.Drawing.Point(425, 33);
+=======
+            this.txtTotal.Location = new System.Drawing.Point(807, 161);
+>>>>>>> origin/master
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
             this.txtTotal.Size = new System.Drawing.Size(110, 20);
@@ -351,9 +367,14 @@
             // 
             // txtNCF
             // 
+<<<<<<< HEAD
             this.txtNCF.Location = new System.Drawing.Point(300, 22);
             this.txtNCF.Name = "txtNCF";
             this.txtNCF.ReadOnly = true;
+=======
+            this.txtNCF.Location = new System.Drawing.Point(327, 15);
+            this.txtNCF.Name = "txtNCF";
+>>>>>>> origin/master
             this.txtNCF.Size = new System.Drawing.Size(149, 20);
             this.txtNCF.TabIndex = 2;
             // 
@@ -486,14 +507,30 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 567);
+<<<<<<< HEAD
             this.Controls.Add(this.txtFirma);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+=======
+            this.Controls.Add(this.nudCantidad);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.txtNCF);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.txtTotal);
+            this.Controls.Add(this.txtItebis);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
+>>>>>>> origin/master
             this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
+<<<<<<< HEAD
+=======
+            this.Controls.Add(this.txtSubtotal);
+            this.Controls.Add(this.label10);
+>>>>>>> origin/master
             this.Controls.Add(this.Tbla);
             this.Name = "Form1";
             this.Text = "Factura";

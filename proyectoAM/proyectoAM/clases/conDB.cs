@@ -16,6 +16,7 @@ namespace proyectoAM
     {
             try
             {
+<<<<<<< HEAD
                  string server = "localhost";
                  string db = "7am_proyecto";
                  string uid = "root";
@@ -28,6 +29,18 @@ namespace proyectoAM
                 //MessageBox.Show("Conectado");
                 return conectar;
 
+=======
+               /* string server = "localhost";
+                string db = "7am_proyecto";
+                string uid = "root";
+                string pass = "llego_el_pavo01";*/
+
+                MySqlConnection conectar = new MySqlConnection("Server=localhost; User=root; Password=llego_el_pavo01; database=7am_proyecto;");
+
+                
+                conectar.Open();
+               // return conectar;
+>>>>>>> origin/master
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {

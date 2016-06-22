@@ -154,14 +154,22 @@
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+<<<<<<< HEAD
             this.saveToolStripMenuItem.Text = "Nuevo Cliente";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+=======
+            this.saveToolStripMenuItem.Text = "&Save";
+>>>>>>> origin/master
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+<<<<<<< HEAD
             this.saveAsToolStripMenuItem.Text = "Consultar Clientes";
+=======
+            this.saveAsToolStripMenuItem.Text = "Save &As";
+>>>>>>> origin/master
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
             // 
             // toolStripSeparator4

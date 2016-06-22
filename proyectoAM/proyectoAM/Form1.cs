@@ -46,12 +46,25 @@ namespace proyectoAM
         DataTable addColumns()
         {
             tabla = new DataTable();
+<<<<<<< HEAD
             //Parte Inferior de la Tabla
+=======
+            //tabla.Columns.Add("ID");
+            //tabla.Columns.Add("Moneda");
+>>>>>>> origin/master
             tabla.Columns.Add("Cantidad");
             tabla.Columns.Add("Descripcion");
             tabla.Columns.Add("");
             tabla.Columns.Add("Precio");
+<<<<<<< HEAD
  
+=======
+            //tabla.Columns.Add("Condiciones de Pago");
+            // tabla.Columns.Add("Vence");
+
+
+            /*tabla.Columns.Add("Descripcion");*/
+>>>>>>> origin/master
             return tabla;
         }
 
@@ -116,7 +129,10 @@ namespace proyectoAM
             //btnExportar.Enabled = false;
             //DataTable tabla = agrego.muestra();
             //Programc pdf = new Programc();
+<<<<<<< HEAD
             //con.conectame();
+=======
+>>>>>>> origin/master
             Tbla.DataSource = addColumns();
             addNombre();
             addCompania();
@@ -125,10 +141,14 @@ namespace proyectoAM
             addMoneda();
             addDescripcion();
             user = Environment.UserName.ToString();
+<<<<<<< HEAD
             DateTime date2 = DateTime.Now; // will give the date for today
             dtVence.Value = date2;
             numnfc += 1;
             txtNCF.Text = codenfc + Convert.ToString(numnfc);
+=======
+            //Tbla.Columns[0].Visible = false;
+>>>>>>> origin/master
         }
 
 
@@ -185,13 +205,25 @@ namespace proyectoAM
                     txtTotal.Text = "$ " + Convert.ToString(string.Format("{0:0.00}", total));
                 }
             
+<<<<<<< HEAD
+=======
+
+            txtSubtotal.Text = Convert.ToString(subtotal);
+            txtItebis.Text = Convert.ToString(subitbis);
+            txtTotal.Text = Convert.ToString(total);
+>>>>>>> origin/master
             moneda = cbMoneda.Text.ToString();
             trabajo = cbTrabajo.SelectedItem.ToString();
             pago = cbPago.SelectedItem.ToString();
             vence = dtVence.Value.ToString().Remove(8);
 
+<<<<<<< HEAD
             tabla.Rows.Add(Convert.ToString(cantidad), cbDescripcion.Text.ToString(), "", din+Convert.ToString(precio) + ".00");
             canttotal = canttotal + Convert.ToInt32(nudCantidad.Text.ToString());
+=======
+            tabla.Rows.Add(  Convert.ToString(cantidad),  cbTrabajo.Text.ToString(), Convert.ToString(precio));
+
+>>>>>>> origin/master
             reset();
             }
         }
@@ -205,9 +237,155 @@ namespace proyectoAM
 
         private void button1_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             exporta();
             ///
 
+=======
+            Document doc = new Document(iTextSharp.text.PageSize.A4, 10, 10, 42, 35);
+            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("C:\\Users\\" + user + " /Documents/Oscar.pdf", FileMode.Create));
+            doc.Open();
+
+            iTextSharp.text.Image am = iTextSharp.text.Image.GetInstance("logo7am.jpg");
+            am.ScalePercent(25f);
+            am.SetAbsolutePosition(doc.PageSize.Width - 36f - 72f, doc.PageSize.Height - 36f - 50f);
+            doc.Add(am);
+
+            if(string.IsNullOrEmpty(cbNombre.Text) ) { Paragraph parag = new Paragraph("FACTURA\nNOMBRE: " + cbNombre.SelectedItem.ToString() + "\n"); doc.Add(parag); }
+            else {  Paragraph parag = new Paragraph("FACTURA\n\nNOMBRE: " + cbNombre.Text.ToString() + "\n\n"); doc.Add(parag); }
+
+            Paragraph RNC = new Paragraph("RNC: " + txtRnc.Text+ "\n\n"); doc.Add(RNC);
+            Paragraph NFC = new Paragraph("NFC: " + txtNCF.Text + "\n\n"); doc.Add(NFC);
+            Paragraph tel = new Paragraph("TELÉFONO: "+txtTelefono.Text+ "\n\n"); doc.Add(tel);
+            Paragraph email = new Paragraph("EMAIL: "+txtEmail.Text+ "\n\n"); doc.Add(email);
+
+            if (string.IsNullOrEmpty(cbCompania.Text)) { Paragraph parag = new Paragraph("COMPAÑIA: " + cbCompania.SelectedItem.ToString() + "\n\n");  doc.Add(parag); }
+            else { Paragraph parag = new Paragraph("COMPAÑIA: " + cbCompania.Text.ToString() + "\n\n"); doc.Add(parag); }
+
+            PdfPTable pdfTable = new PdfPTable(4);
+            pdfTable.HorizontalAlignment = 1;
+            pdfTable.WidthPercentage = 100f;
+           
+
+            //ACA VA MONEDA
+            PdfPCell moneda = new PdfPCell(new Phrase("MONEDA", new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.BOLD)));
+            moneda.Colspan = 1;
+            moneda.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
+            PdfPCell cmoneda = new PdfPCell(new Phrase(cbMoneda.SelectedItem.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL)));
+            cmoneda.Colspan = 1;
+            cmoneda.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
+
+
+            //ACA VA TRABAJO
+            PdfPCell trabajo = new PdfPCell(new Phrase("TRABAJO", new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.BOLD)));
+            trabajo.Colspan = 1;
+            trabajo.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
+            PdfPCell ctrabajo = new PdfPCell(new Phrase(cbTrabajo.SelectedItem.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL)));
+            ctrabajo.Colspan = 1;
+            ctrabajo.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
+
+
+            //ACA VA CONDICIONES
+            PdfPCell condicion = new PdfPCell(new Phrase("CONDICIONES DE PAGO", new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.BOLD)));
+            condicion.Colspan = 1;
+            condicion.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
+            PdfPCell cpago = new PdfPCell(new Phrase(cbPago.SelectedItem.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL)));
+            cpago.Colspan = 1;
+            cpago.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
+
+
+            //ACA VENCIMIENTO
+            PdfPCell vence = new PdfPCell(new Phrase("FECHA DE VENCIMIENTO", new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.BOLD)));
+            vence.Colspan = 1;
+            vence.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
+            PdfPCell cvence = new PdfPCell(new Phrase(dtVence.Text.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL)));
+            cvence.Colspan = 1;
+            cvence.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
+
+
+            pdfTable.AddCell(moneda);
+            pdfTable.AddCell(trabajo);
+            pdfTable.AddCell(condicion);
+            pdfTable.AddCell(vence);
+            pdfTable.AddCell(cmoneda);
+            pdfTable.AddCell(ctrabajo);
+            pdfTable.AddCell(cpago);
+            pdfTable.AddCell(cvence);
+
+            //GRAN TABLA!!!
+
+            PdfPTable grantable = new PdfPTable(Tbla.Columns.Count);
+            grantable.WidthPercentage = 100f;
+            
+
+            //Add the headers from the DataGridView to the table
+            for (int j=0;j<Tbla.Columns.Count; j++)
+            {
+                grantable.AddCell(new Phrase(Tbla.Columns[j].HeaderText));
+            }
+
+            //Flag the first row as a header
+            grantable.HeaderRows = 1;
+
+            //Agregar los rows!
+            for (int i=0; i<Tbla.Rows.Count; i++)
+            {
+                for (int k=0; k < Tbla.Columns.Count; k++)
+                {
+                    if(Tbla[k,i].Value != null)
+                    {
+                        grantable.AddCell(new Phrase(Tbla[k, i].Value.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL)));
+                    }
+                }
+            }
+
+            doc.Add(pdfTable);
+            Paragraph espacio = new Paragraph("\n\n"); doc.Add(espacio);
+            doc.Add(grantable);
+            doc.Add(espacio);
+
+
+            //SUBTOTAL
+           /* PdfPCell subtotal = new PdfPCell(new Phrase("SUB - TOTAL:", new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL)));
+            subtotal.Colspan = 1;
+            subtotal.HorizontalAlignment = 0; //0=left, 1=center, 2=right*/
+           /* PdfPCell sub = new PdfPCell(new Phrase(txtSubtotal.Text, new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL)));
+            sub.Colspan = 1;
+            sub.HorizontalAlignment = 0; //0=left, 1=center, 2=right*/
+
+            //ITBIS
+           /* PdfPCell itbis = new PdfPCell(new Phrase("ITBIS: ", new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL)));
+            subtotal.Colspan = 1;
+            subtotal.HorizontalAlignment = 0; //0=left, 1=center, 2=right*/
+           /* PdfPCell it = new PdfPCell(new Phrase(txtItebis.Text, new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL)));
+            it.Colspan = 1;
+            it.HorizontalAlignment = 0; //0=left, 1=center, 2=right*/
+
+            //ITBIS
+           /* PdfPCell total = new PdfPCell(new Phrase("TOTAL: ", new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL)));
+            subtotal.Colspan = 1;
+            subtotal.HorizontalAlignment = 0; //0=left, 1=center, 2=right*/
+           /* PdfPCell to = new PdfPCell(new Phrase(txtTotal.Text, new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 9f, iTextSharp.text.Font.NORMAL)));
+            to.Colspan = 1;
+            to.HorizontalAlignment = 0; //0=left, 1=center, 2=right*/
+
+            Paragraph subtotal = new Paragraph("SUB-TOTAL: " + txtSubtotal.Text + "\n"); doc.Add(subtotal);
+            Paragraph itbis = new Paragraph("ITBIS: " + txtItebis.Text + "\n"); doc.Add(itbis);
+            Paragraph total = new Paragraph("TOTAL: " + txtTotal.Text + "\n"); doc.Add(total);
+            /*doc.Add(subtotal);
+            doc.Add(itbis);
+            doc.Add(total);
+
+            doc.Add(sub);
+            doc.Add(it);
+            doc.Add(to);*/
+
+            doc.Close();
+        
+            MessageBox.Show("Factura exportada");
+            
+
+>>>>>>> origin/master
         }
 
         

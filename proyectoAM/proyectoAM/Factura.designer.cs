@@ -69,7 +69,10 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
             this.txtFirma = new System.Windows.Forms.TextBox();
+<<<<<<< HEAD
             this.txtidcli = new System.Windows.Forms.TextBox();
+=======
+>>>>>>> origin/master
             ((System.ComponentModel.ISupportInitialize)(this.Tbla)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -88,13 +91,19 @@
             // 
             // cbNombre
             // 
+<<<<<<< HEAD
             this.cbNombre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+=======
+>>>>>>> origin/master
             this.cbNombre.FormattingEnabled = true;
             this.cbNombre.Location = new System.Drawing.Point(90, 22);
             this.cbNombre.Name = "cbNombre";
             this.cbNombre.Size = new System.Drawing.Size(152, 21);
             this.cbNombre.TabIndex = 1;
+<<<<<<< HEAD
             this.cbNombre.SelectedIndexChanged += new System.EventHandler(this.cbNombre_SelectedIndexChanged);
+=======
+>>>>>>> origin/master
             // 
             // label2
             // 
@@ -387,7 +396,10 @@
             // 
             // groupBox1
             // 
+<<<<<<< HEAD
             this.groupBox1.Controls.Add(this.txtidcli);
+=======
+>>>>>>> origin/master
             this.groupBox1.Controls.Add(this.txtrnccom);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.cbNombre);
@@ -484,6 +496,7 @@
             this.txtFirma.Size = new System.Drawing.Size(174, 20);
             this.txtFirma.TabIndex = 14;
             // 
+<<<<<<< HEAD
             // txtidcli
             // 
             this.txtidcli.Location = new System.Drawing.Point(513, 63);
@@ -492,6 +505,8 @@
             this.txtidcli.TabIndex = 33;
             this.txtidcli.Visible = false;
             // 
+=======
+>>>>>>> origin/master
             // Factura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -564,7 +579,10 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox txtFirma;
         private System.Windows.Forms.TextBox txtrnccom;
+<<<<<<< HEAD
         private System.Windows.Forms.TextBox txtidcli;
+=======
+>>>>>>> origin/master
     }
 }
 

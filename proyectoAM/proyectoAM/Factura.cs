@@ -11,7 +11,10 @@ using proyectoAM.clases;
 using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+<<<<<<< HEAD
 using MySql.Data.MySqlClient;
+=======
+>>>>>>> origin/master
 
 namespace proyectoAM
 {
@@ -42,6 +45,7 @@ namespace proyectoAM
         // 
         string user;
         int id=0;
+<<<<<<< HEAD
         addCliente cli = new addCliente();
         MySqlDataReader reader;
         MySqlConnection cn;
@@ -51,6 +55,8 @@ namespace proyectoAM
         string idite;
 
         public void conecta() { cn = conDB.conecta(); cn.Open(); }
+=======
+>>>>>>> origin/master
         
 
         DataTable addColumns()
@@ -67,6 +73,7 @@ namespace proyectoAM
 
         void addNombre()
         {
+<<<<<<< HEAD
             /*cbNombre.Items.Add("7AM");
             cbNombre.Items.Add("Coca-cola");
             cbNombre.Items.Add("Pepsi");
@@ -86,6 +93,12 @@ namespace proyectoAM
                 cn.Close();
              }
             catch { }
+=======
+            cbNombre.Items.Add("7AM");
+            cbNombre.Items.Add("Coca-cola");
+            cbNombre.Items.Add("Pepsi");
+            cbNombre.Items.Add("Infotep");
+>>>>>>> origin/master
         }
 
         void addCompania()
@@ -138,7 +151,14 @@ namespace proyectoAM
         {
             InitializeComponent();
             btnEliminar.Enabled = false;
+<<<<<<< HEAD
             //DataTable tabla = agrego.muestra();
+=======
+            //btnExportar.Enabled = false;
+            //DataTable tabla = agrego.muestra();
+            //Programc pdf = new Programc();
+            //con.conectame();
+>>>>>>> origin/master
             Tbla.DataSource = addColumns();
             addNombre();
             addCompania();
@@ -150,15 +170,22 @@ namespace proyectoAM
             DateTime date2 = DateTime.Now; // will give the date for today
             dtVence.Value = date2;
             numnfc += 1;
+<<<<<<< HEAD
             //txtNCF.Text = codenfc + Convert.ToString(numnfc);
             
+=======
+            txtNCF.Text = codenfc + Convert.ToString(numnfc);
+>>>>>>> origin/master
         }
 
 
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
             if (txtPrecio.Text == "") { MessageBox.Show("Favor de poner un precio"); }
             else if (cbNombre.Text == "") { MessageBox.Show("Favor de poner un cliente"); }
             else if (cbMoneda.Text == "") { MessageBox.Show("Favor de poner una moneda"); }
@@ -175,11 +202,20 @@ namespace proyectoAM
                 rnc = txtRnc.Text;
                 email = txtEmail.Text;
                 telefono = txtTelefono.Text;
+<<<<<<< HEAD
                 vence = dtVence.Value.ToString().Remove(8);
 
                 
 
                
+=======
+
+               /* if (con.agregaruser(new string[] { nombre, nfc, rnc, email, telefono }))
+                     {
+                         
+                     }*/
+
+>>>>>>> origin/master
 
             btnExportar.Enabled = true;
             id = id + 1;
@@ -194,6 +230,7 @@ namespace proyectoAM
                 string din;
                 if (cbMoneda.Text == "Pesos Dominicanos")
                 {
+<<<<<<< HEAD
                     din = "RD$";
                     // txtSubtotal.Text = "RD$ " + Convert.ToString(subtotal) + ".00";
                     txtSubtotal.Text = "" + Convert.ToString(string.Format("{0:C}", subtotal));
@@ -206,16 +243,38 @@ namespace proyectoAM
                     txtSubtotal.Text = " " + Convert.ToString(string.Format("{0:C}", subtotal));
                     txtItebis.Text = " " + Convert.ToString(string.Format("{0:C}", subitbis));
                     txtTotal.Text = " " + Convert.ToString(string.Format("{0:C}", total));
+=======
+                    din = "RD$ ";
+                    // txtSubtotal.Text = "RD$ " + Convert.ToString(subtotal) + ".00";
+                    txtSubtotal.Text = "RD$" + Convert.ToString(string.Format("{0:n0}", subtotal));
+                    txtItebis.Text = "RD$" + Convert.ToString(string.Format("{0:n0}", subitbis));
+                    txtTotal.Text = "RD$" + Convert.ToString(string.Format("{0:n0}", total));
+                }
+                else
+                {
+                    din = "    $ ";
+                    txtSubtotal.Text = "$ " + Convert.ToString(string.Format("{0:n0}", subtotal));
+                    txtItebis.Text = "$ " + Convert.ToString(string.Format("{0:n0}", subitbis));
+                    txtTotal.Text = "$ " + Convert.ToString(string.Format("{0:n0}", total));
+>>>>>>> origin/master
                 }
             
             moneda = cbMoneda.Text.ToString();
             trabajo = cbTrabajo.SelectedItem.ToString();
             pago = cbPago.SelectedItem.ToString();
+<<<<<<< HEAD
             
 
             tabla.Rows.Add(Convert.ToString(cantidad), cbDescripcion.Text.ToString(), "", Convert.ToString(string.Format("{0:C}", precio)));
             canttotal = canttotal + Convert.ToInt32(nudCantidad.Text.ToString());
             
+=======
+            vence = dtVence.Value.ToString().Remove(8);
+
+            tabla.Rows.Add(Convert.ToString(cantidad), cbDescripcion.Text.ToString(), "", din+Convert.ToString(string.Format("{0:n0}", precio)));
+            canttotal = canttotal + Convert.ToInt32(nudCantidad.Text.ToString());
+            reset();
+>>>>>>> origin/master
             }
         }
 
@@ -224,6 +283,7 @@ namespace proyectoAM
             btnAgregar.Enabled = true;
         }
 
+<<<<<<< HEAD
         public void guarda()
         {
             try
@@ -266,15 +326,23 @@ namespace proyectoAM
                 // MessageBox.Show("Agregado a Base de datos");
             }
         }
+=======
+
+>>>>>>> origin/master
 
         private void button1_Click(object sender, EventArgs e)
         {
             exporta();
+<<<<<<< HEAD
            if( MessageBox.Show("¿Desea guardar esta Factura?", "Save", MessageBoxButtons.YesNo) == DialogResult.Yes){
                 guarda();
                 MessageBox.Show("Factura Guardada.");
             }
             reset();
+=======
+            ///
+
+>>>>>>> origin/master
         }
 
         
@@ -726,6 +794,7 @@ namespace proyectoAM
 
             PdfPCell linea = new PdfPCell(new Phrase(""));
             linea.Border = 0;
+<<<<<<< HEAD
             //linea.BorderWidthBottom = .5f;
             //div.AddCell(linea);
             //doc.Add(div);
@@ -734,6 +803,16 @@ namespace proyectoAM
             PdfPTable firm = new PdfPTable(2);
             firm.WidthPercentage = 85f;
             PdfPCell prefirma = new PdfPCell(new Phrase("Facturado por: ", textfirma));
+=======
+            linea.BorderWidthBottom = .5f;
+            div.AddCell(linea);
+            doc.Add(div);
+            doc.Add(espacio2);
+
+            PdfPTable firm = new PdfPTable(2);
+            firm.WidthPercentage = 85f;
+            PdfPCell prefirma = new PdfPCell(new Phrase("Factura por: "));
+>>>>>>> origin/master
             PdfPCell firma = new PdfPCell(new Phrase(txtFirma.Text, textfirma));
             float[] widths5 = new float[] { 15f,85f };
             firm.SetWidths(widths5);
@@ -745,7 +824,11 @@ namespace proyectoAM
             clien.WidthPercentage = 85f;
             float[] widths7 = new float[] { 21f, 79f };
             clien.SetWidths(widths7);
+<<<<<<< HEAD
             PdfPCell preclient = new PdfPCell(new Phrase("Firma del Cliente: ", textfirma));
+=======
+            PdfPCell preclient = new PdfPCell(new Phrase("Firma del Cliente: "));
+>>>>>>> origin/master
             preclient.HorizontalAlignment = 0;
             PdfPCell client = new PdfPCell(new Phrase("\n"));
             client.HorizontalAlignment = 0;
@@ -760,6 +843,7 @@ namespace proyectoAM
             nota.Border = 0;
 
 
+<<<<<<< HEAD
             //clien.AddCell(preclient); clien.AddCell(client);
             end.AddCell(nota);
 
@@ -769,11 +853,28 @@ namespace proyectoAM
             doc.Add(espacio2);
             //doc.Add(clien);
             //doc.Add(espacio2);
+=======
+            clien.AddCell(preclient); clien.AddCell(client);
+            end.AddCell(nota);
+
+
+            doc.Add(firm);
+            doc.Add(espacio2);
+            doc.Add(clien);
+            doc.Add(espacio2);
+            doc.Add(end);
+
+
+
+
+
+>>>>>>> origin/master
 
             doc.Close();
 
             MessageBox.Show("Factura Creada en Mis Documentos como: Factura " + cbNombre.Text + " " + date.ToString("dd-MM-yyyy") + ".pdf");
         }
+<<<<<<< HEAD
 
         private void cbNombre_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -782,6 +883,9 @@ namespace proyectoAM
             rnc = cli.mostrarrnc(nom);
             txtRnc.Text = rnc;*/
         }
+=======
+        
+>>>>>>> origin/master
     }
     
 }

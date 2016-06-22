@@ -12,6 +12,7 @@ namespace proyectoAM.Formularios.Clientes
 {
     public partial class consultar_clientes : Form
     {
+<<<<<<< HEAD
         DataTable table = new DataTable();
         clases.addCliente cli = new clases.addCliente();
 
@@ -24,6 +25,11 @@ namespace proyectoAM.Formularios.Clientes
         private void consultar_clientes_Load(object sender, EventArgs e)
         {
 
+=======
+        public consultar_clientes()
+        {
+            InitializeComponent();
+>>>>>>> origin/master
         }
     }
 }

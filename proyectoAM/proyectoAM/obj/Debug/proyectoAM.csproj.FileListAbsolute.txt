@@ -18,4 +18,7 @@ J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Clientes.consultar_cli
 J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.menuprincipal.resources
 J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Cotizacion.resources
 J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Factura.resources
+<<<<<<< HEAD
 J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Clientes.add_cliente.resources
+=======
+>>>>>>> origin/master

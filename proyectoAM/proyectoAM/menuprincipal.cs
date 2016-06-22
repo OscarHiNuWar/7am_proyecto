@@ -38,9 +38,19 @@ namespace proyectoAM
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             Formularios.Clientes.consultar_clientes consulta = new Formularios.Clientes.consultar_clientes();
             consulta.MdiParent = this;
             consulta.Show();
+=======
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                string FileName = saveFileDialog.FileName;
+            }
+>>>>>>> origin/master
         }
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
@@ -97,6 +107,7 @@ namespace proyectoAM
                 childForm.Close();
             }
         }
+<<<<<<< HEAD
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -104,5 +115,7 @@ namespace proyectoAM
             adcli.MdiParent = this;
             adcli.Show();
         }
+=======
+>>>>>>> origin/master
     }
 }
