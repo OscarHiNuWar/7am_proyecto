@@ -2,10 +2,10 @@
 -- version 4.0.4
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 10-06-2016 a las 18:31:43
--- Versión del servidor: 5.6.12-log
--- Versión de PHP: 5.4.12
+-- Host: localhost
+-- Generation Time: Jun 21, 2016 at 09:44 PM
+-- Server version: 5.6.12-log
+-- PHP Version: 5.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `7am_proyecto`
+-- Database: `7am_proyecto`
 --
 CREATE DATABASE IF NOT EXISTS `7am_proyecto` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `7am_proyecto`;
@@ -25,61 +25,79 @@ USE `7am_proyecto`;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cliente`
+-- Table structure for table `cliente`
 --
 
 CREATE TABLE IF NOT EXISTS `cliente` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(30) NOT NULL,
-  `apellido` varchar(30) NOT NULL,
-  `tel` int(11) NOT NULL,
-  `email` varchar(40) NOT NULL,
-  `compania` varchar(255) NOT NULL,
+  `nombre` varchar(60) NOT NULL,
+  `rnc` varchar(60) NOT NULL,
+  `telefono` varchar(44) NOT NULL,
+  `correo` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `cliente`
+--
+
+INSERT INTO `cliente` (`id`, `nombre`, `rnc`, `telefono`, `correo`) VALUES
+(1, 'Oscar', '222', '809', 'osc@osc.com'),
+(3, 'Oscare', '222', '809', 'osc@osc.com'),
+(4, '7AM', '255', '250', 'osc@osc.com');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `detalle`
---
-
-CREATE TABLE IF NOT EXISTS `detalle` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_cliente` int(11) NOT NULL,
-  `id_servicio` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `factura`
+-- Table structure for table `factura`
 --
 
 CREATE TABLE IF NOT EXISTS `factura` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_detalle` int(11) NOT NULL,
-  `fecha` date NOT NULL,
-  `moneda` varchar(20) NOT NULL,
-  `trabajo` varchar(255) DEFAULT NULL,
-  `conpago` varchar(255) DEFAULT NULL,
-  `vencimiento` date NOT NULL,
-  `total` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `id_item` int(11) NOT NULL,
+  `tipo_pago` varchar(20) NOT NULL,
+  `fech_venc` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `factura`
+--
+
+INSERT INTO `factura` (`id`, `id_cliente`, `id_item`, `tipo_pago`, `fech_venc`) VALUES
+(1, 1, 1, 'Cheque', '21/6/16 ');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `servicio`
+-- Table structure for table `items`
 --
 
-CREATE TABLE IF NOT EXISTS `servicio` (
+CREATE TABLE IF NOT EXISTS `items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cantidad` int(11) NOT NULL,
-  `descripcion` varchar(255) NOT NULL,
+  `descripcion` varchar(30) NOT NULL,
   `precio` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `items`
+--
+
+INSERT INTO `items` (`id`, `cantidad`, `descripcion`, `precio`) VALUES
+(1, 1, 'Diseño de línea grafica', 2500);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nfc`
+--
+
+CREATE TABLE IF NOT EXISTS `nfc` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 

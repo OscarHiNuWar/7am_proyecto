@@ -12,9 +12,18 @@ namespace proyectoAM.Formularios.Clientes
 {
     public partial class consultar_clientes : Form
     {
+        DataTable table = new DataTable();
+        clases.addCliente cli = new clases.addCliente();
+
         public consultar_clientes()
         {
             InitializeComponent();
+            dtvTabla.DataSource = cli.muestra();
+        }
+
+        private void consultar_clientes_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
