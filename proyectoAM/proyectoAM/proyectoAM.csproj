@@ -60,26 +60,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="clases\addCliente.cs" />
     <Compile Include="clases\addItem.cs" />
-=======
->>>>>>> origin/master
     <Compile Include="Cotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Cotizacion.Designer.cs">
       <DependentUpon>Cotizacion.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Formularios\Clientes\add_cliente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Clientes\add_cliente.Designer.cs">
       <DependentUpon>add_cliente.cs</DependentUpon>
     </Compile>
-=======
->>>>>>> origin/master
     <Compile Include="Formularios\Clientes\agregar_cliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,25 +91,20 @@
       <DependentUpon>Factura.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Clientes\consultar_clientes.cs">
-<<<<<<< HEAD
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Clientes\consultar_clientes.Designer.cs">
       <DependentUpon>consultar_clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Clientes\mostrar_factura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Clientes\mostrar_factura.Designer.cs">
+      <DependentUpon>mostrar_factura.cs</DependentUpon>
+    </Compile>
     <Compile Include="menuprincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-=======
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Clientes\consultar_clientes.Designer.cs">
-      <DependentUpon>consultar_clientes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="menuprincipal.cs">
-      <SubType>Form</SubType>
-    </Compile>
->>>>>>> origin/master
     <Compile Include="menuprincipal.Designer.cs">
       <DependentUpon>menuprincipal.cs</DependentUpon>
     </Compile>
@@ -124,12 +113,9 @@
     <EmbeddedResource Include="Cotizacion.resx">
       <DependentUpon>Cotizacion.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
     <EmbeddedResource Include="Formularios\Clientes\add_cliente.resx">
       <DependentUpon>add_cliente.cs</DependentUpon>
     </EmbeddedResource>
-=======
->>>>>>> origin/master
     <EmbeddedResource Include="Formularios\Clientes\agregar_cliente.resx">
       <DependentUpon>agregar_cliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Clientes\consultar_clientes.resx">
       <DependentUpon>consultar_clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Clientes\mostrar_factura.resx">
+      <DependentUpon>mostrar_factura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="menuprincipal.resx">
       <DependentUpon>menuprincipal.cs</DependentUpon>

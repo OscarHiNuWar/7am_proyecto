@@ -31,7 +31,7 @@ namespace proyectoAM.clases
             {
                 //id_cliente,
 
-                string sql = "INSERT INTO factura (id_cliente, id_item, tipo_pago, fech_venc) VALUES('" + data[0] + "','" + data[1] + "','" + data[2] + "','" + data[3] + "')";
+                string sql = "INSERT INTO factura (id_item, tipo_pago, fech_venc) VALUES('" + data[0] + "','" + data[1] + "','" + data[2] + "')";
                 cmd = new MySqlCommand(sql, cn);
 
                 id = Convert.ToInt32(cmd.ExecuteScalar());
@@ -83,7 +83,7 @@ namespace proyectoAM.clases
 
         }
 
-       public void mostrar(string id)
+       public void mostrarfactura(string id)
         {
             conecta();
 
@@ -111,6 +111,18 @@ namespace proyectoAM.clases
             tabla.Columns.Add("Descripcion");
             tabla.Columns.Add("");
             tabla.Columns.Add("Precio");
+            return tabla;
+        }
+
+        DataTable addFact()
+        {
+            tabla = new DataTable();
+            //Parte Inferior de la Tabla
+            tabla.Columns.Add("ID");
+            tabla.Columns.Add("Cliente");
+            tabla.Columns.Add("Tipo Pago");
+            tabla.Columns.Add("Fecha Vencimineto");
+            
 
             return tabla;
         }
@@ -119,15 +131,18 @@ namespace proyectoAM.clases
         {
             try
             {
-                addColumns();
+                addFact();
                 conecta();
                 //addColumns();
-                string sql = "SELECT * FROM factura ORDER BY nombre ASC";
+                // string ide = "SELECT id_cliente FROM cliente;";
+                string sql = "SELECT cliente.id, cliente.nombre, tipo_pago, fech_venc FROM `factura` FULL JOIN cliente ON cliente.id = id_cliente";
+
                 cmd = new MySqlCommand(sql, cn);
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    tabla.Rows.Add(reader["Cantidad"].ToString(), reader["Descripcion"].ToString(), reader["Total"].ToString());
+                    
+                    tabla.Rows.Add(reader["id"].ToString(), reader["nombre"].ToString(), reader["tipo_pago"].ToString(), reader["fech_venc"].ToString());
                 }
                 cn.Close();
                 return tabla;

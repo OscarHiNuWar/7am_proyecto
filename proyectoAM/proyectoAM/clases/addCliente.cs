@@ -19,9 +19,20 @@ namespace proyectoAM.clases
         bool check;
 
         public void conecta() { cn = conDB.conecta(); cn.Open(); }
-    
 
-    public bool agregarCliente(string[] data)
+        DataTable addCli()
+        {
+            tabla = new DataTable();
+            //Parte Inferior de la Tabla
+            tabla.Columns.Add("id");
+            tabla.Columns.Add("Cliente");
+            tabla.Columns.Add("Fecha Vencimiento");
+
+            return tabla;
+        }
+
+
+        public bool agregarCliente(string[] data)
     {
         conecta();
 
@@ -79,24 +90,27 @@ namespace proyectoAM.clases
 
     }
 
-    public void mostrarNombre(string id)
+    public DataTable mostrarNombre(string nombre, string date)
     {
         conecta();
 
         try
         {
-            string sql = "SELECT nombre FROM cliente";
+            addCli();
+            string sql = "SELECT cliente.id, nombre, factura.fech_venc FROM `cliente` JOIN factura ON cliente.nombre='"+nombre+"' AND factura.fech_venc='"+date+"'";
             cmd = new MySqlCommand(sql, cn);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                    
+                    tabla.Rows.Add(reader["id"].ToString(), reader["nombre"].ToString(), reader["fech_venc"].ToString());
             }
+                return tabla;
         }
         catch (MySqlException ex)
         {
             MessageBox.Show("Error en: " + ex);
         }
+            return tabla;
     }
         public string mostrarrnc(string nombre)
         {
@@ -123,28 +137,30 @@ namespace proyectoAM.clases
             tabla = new DataTable();
             //Parte Inferior de la Tabla
             tabla.Columns.Add("id");
-            tabla.Columns.Add("id_cliente");
-            tabla.Columns.Add("id_item");
+            tabla.Columns.Add("Nombre");
+           /* tabla.Columns.Add("id_item");
             tabla.Columns.Add("tipo_pago");
-            tabla.Columns.Add("fech_venc");
+            tabla.Columns.Add("fech_venc");*/
 
             return tabla;
         }
 
-        public DataTable muestra()
+
+
+        public DataTable muestracliente()
         {
         try
         {
             addColumns();
             conecta();
             //addColumns();
-            string sql = "SELECT * FROM factura";
+            string sql = "SELECT id, nombre FROM cliente";
             cmd = new MySqlCommand(sql, cn);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                tabla.Rows.Add(reader["id"].ToString(),  reader["id_cliente"].ToString(), reader["id_item"].ToString(), reader["tipo_pago"].ToString(), reader["fech_venc"].ToString());
-            }
+                    tabla.Rows.Add(reader["id"].ToString(), reader["nombre"].ToString());
+                }
             cn.Close();
             return tabla;
         }
