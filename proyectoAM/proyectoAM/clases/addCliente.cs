@@ -90,18 +90,23 @@ namespace proyectoAM.clases
 
     }
 
-    public DataTable mostrarNombre(string nombre, string date)
+    
+
+    public DataTable mostrarNombre()
     {
         conecta();
 
         try
         {
             addCli();
-            string sql = "SELECT cliente.id, nombre, factura.fech_venc FROM `cliente` JOIN factura ON cliente.nombre='"+nombre+"' AND factura.fech_venc='"+date+"'";
-            cmd = new MySqlCommand(sql, cn);
+                // string sql = "SELECT factura.id, cliente.nombre, factura.tipo_pago, factura.fech_venc FROM `factura`, cliente, items WHERE cliente.nombre=cliente.nombre and cliente.id='" + id + "' and items.id_cliente=cliente.id and factura.id_item = items.id";
+                //SELECT factura.id, cliente.nombre, factura.tipo_pago, factura.fech_venc FROM `factura`, cliente, items WHERE items.id = factura.id_item and cliente.id = items.id_cliente and factura.fech_venc='22/6/16'
+                string sql = "SELECT DISTINCT factura.id, cliente.nombre, factura.tipo_pago, factura.fech_venc FROM `factura`, cliente, items WHERE items.id_cliente = cliente.id and factura.fech_venc = items.fech_venc ";
+                cmd = new MySqlCommand(sql, cn);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
+
                     tabla.Rows.Add(reader["id"].ToString(), reader["nombre"].ToString(), reader["fech_venc"].ToString());
             }
                 return tabla;
@@ -121,7 +126,7 @@ namespace proyectoAM.clases
                 string sql = "SELECT rnc FROM cliente WHERE nombre='" + nombre + "'";
                 cmd = new MySqlCommand(sql, cn);
                 reader = cmd.ExecuteReader();
-                string rc = reader.GetString(nombre);
+                string rc = reader.GetString(sql);
                 cn.Close();
                 return rc;
             }
@@ -137,31 +142,38 @@ namespace proyectoAM.clases
             tabla = new DataTable();
             //Parte Inferior de la Tabla
             tabla.Columns.Add("id");
-            tabla.Columns.Add("Nombre");
-           /* tabla.Columns.Add("id_item");
-            tabla.Columns.Add("tipo_pago");
-            tabla.Columns.Add("fech_venc");*/
+            //tabla.Columns.Add("ID Items");
+            tabla.Columns.Add("Cliente");
+            tabla.Columns.Add("Tipo de Pago");
+            tabla.Columns.Add("Fecha Vencimiento");
+
+            /* tabla.Columns.Add("id_item");
+             tabla.Columns.Add("tipo_pago");
+             */
 
             return tabla;
         }
 
 
 
-        public DataTable muestracliente()
+        public DataTable muestracliente(string nombre, string fecha)
         {
         try
         {
             addColumns();
             conecta();
-            //addColumns();
-            string sql = "SELECT id, nombre FROM cliente";
-            cmd = new MySqlCommand(sql, cn);
-            reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                    tabla.Rows.Add(reader["id"].ToString(), reader["nombre"].ToString());
+                //addColumns();
+                // string sql = "SELECT `nombre` FROM `cliente` WHERE 1";
+                string sql = "SELECT factura.id, cliente.nombre, factura.tipo_pago, factura.fech_venc FROM `factura`, cliente, items WHERE cliente.nombre LIKE '%"+nombre+"%' or factura.fech_venc LIKE '%"+fecha+"%'";
+                cmd = new MySqlCommand(sql, cn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id += 1;
+                    tabla.Rows.Add(reader["id"].ToString(), reader["nombre"].ToString(), reader["tipo_pago"].ToString(), reader["fech_venc"].ToString());
                 }
-            cn.Close();
+                reader.Close();
+                cn.Close();
             return tabla;
         }
         catch (MySqlException ex)

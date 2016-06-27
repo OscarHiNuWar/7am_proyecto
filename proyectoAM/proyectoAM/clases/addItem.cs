@@ -35,7 +35,8 @@ namespace proyectoAM.clases
                 string cantidad = data[1].ToString();
                 string descripcion = data[2].ToString();
                 string precio = data[3].ToString();
-                string sql = "INSERT INTO items (id_cliente, cantidad, descripcion, precio) VALUES('" + idcli + "','" + cantidad + "','" + descripcion + "','" + precio + "')";
+                string vence = data[4].ToString();
+                string sql = "INSERT INTO items (id_cliente, cantidad, descripcion, precio, fech_venc) VALUES('" + idcli + "','" + cantidad + "','" + descripcion + "','" + precio + "', '"+vence+"')";
                 cmd = new MySqlCommand(sql, cn);
                 cmd.ExecuteNonQuery();
 
@@ -59,6 +60,7 @@ namespace proyectoAM.clases
             table.Columns.Add("Cantidad");
             table.Columns.Add("Descripcion");
             table.Columns.Add("Precio");
+            table.Columns.Add("Fecha Vencimiento");
             return table;
         }
 
@@ -69,23 +71,23 @@ namespace proyectoAM.clases
         }
 
 
-        public DataTable muestra(string id, string nombre)
+        public DataTable muestra(string id, string nombre, string fecha)
         {
             try
             {
                 addItems();
                 conecta();
                 //addColumns();
-                // string ide = "SELECT id_cliente FROM cliente;";
-                string sql = "SELECT cliente.id, cliente.nombre, items.cantidad, items.descripcion, items.precio FROM items JOIN cliente WHERE cliente.id='"+id+"' and cliente.nombre='"+nombre+ "' and items.id_cliente ='" + id +"'";
-
+                // string sql = "SELECT * FROM cliente;";
+                string sql = "SELECT DISTINCT factura.id, cliente.nombre, items.cantidad, items.descripcion, items.precio, factura.fech_venc FROM items, cliente, factura WHERE factura.id = '"+id+"' AND factura.id_item=factura.id AND items.id_cliente = cliente.id AND cliente.nombre = '"+nombre+"' AND items.fech_venc = '"+fecha+"'";
+           
                 cmd = new MySqlCommand(sql, cn);
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-
-                    table.Rows.Add(reader["id"].ToString(), reader["nombre"].ToString(), reader["cantidad"].ToString(), reader["descripcion"].ToString(), reader["precio"].ToString());
+                    table.Rows.Add(reader["id"].ToString(), reader["nombre"].ToString(), reader["cantidad"].ToString(), reader["descripcion"].ToString(), reader["precio"].ToString(), reader["fech_venc"].ToString());
                 }
+                reader.Close();
                 cn.Close();
                 return table;
             }

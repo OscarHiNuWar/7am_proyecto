@@ -1,5 +1,7 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
+using MySql.Data.MySqlClient;
+using proyectoAM.clases;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,7 +40,16 @@ namespace proyectoAM
         // 
         string user;
         int id = 0;
+        addCliente cli = new addCliente();
+        MySqlDataReader reader;
+        MySqlConnection cn;
+        MySqlCommand cmd;
+        addFactura fact = new addFactura();
+        addItem itm = new addItem();
+        double esub, eitbis, pretotal;
+        string din;
 
+        public void conecta() { cn = conDB.conecta(); cn.Open(); }
 
         DataTable addColumns()
         {
@@ -48,34 +59,29 @@ namespace proyectoAM
             tabla.Columns.Add("Descripcion");
             tabla.Columns.Add("");
             tabla.Columns.Add("Precio");
+            tabla.Columns.Add("Precio-SinMoneda");
 
             return tabla;
         }
 
         void addNombre()
         {
-            cbNombre.Items.Add("7AM");
-            cbNombre.Items.Add("Coca-cola");
-            cbNombre.Items.Add("Pepsi");
-            cbNombre.Items.Add("Infotep");
+            try
+            {
+                conecta();
+                string sql = "SELECT nombre FROM cliente";
+                cmd = new MySqlCommand(sql, cn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    cbNombre.Items.Add(reader.GetString("nombre"));
+                }
+                cn.Close();
+            }
+            catch { }
         }
 
-        void addCompania()
-        {
-            /*cbCompania.Items.Add("7AM");
-            cbCompania.Items.Add("Coca-cola");
-            cbCompania.Items.Add("Pepsi");
-            cbCompania.Items.Add("Infotep");*/
-        }
-
-        void addTrabajo()
-        {
-            cbTrabajo.Items.Add("Desarrollo de Pagina Web");
-            cbTrabajo.Items.Add("Continuacion de Red Social");
-            cbTrabajo.Items.Add("Posicionamiento");
-            //cbTrabajo.Items.Add("Infotep");
-        }
-
+  
         void addCondicionPago()
         {
             cbPago.Items.Add("Efectivo");
@@ -84,8 +90,8 @@ namespace proyectoAM
 
         void addMoneda()
         {
-            cbMoneda.Items.Add("Pesos Dominicanos");
-            cbMoneda.Items.Add("Dolares");
+            cbMoneda.Items.Add("RD$");
+            cbMoneda.Items.Add("US$");
         }
 
         void addDescripcion()
@@ -103,6 +109,7 @@ namespace proyectoAM
             txtPrecio.Text = null;
             nudCantidad.Value = 1;
             cbDescripcion.Text = null;
+            txtidcli.Text = "";
             //btnAgregar.Enabled = false;
         }
 
@@ -117,8 +124,6 @@ namespace proyectoAM
             //con.conectame();
             Tbla.DataSource = addColumns();
             addNombre();
-            addCompania();
-            addTrabajo();
             addCondicionPago();
             addMoneda();
             addDescripcion();
@@ -136,22 +141,22 @@ namespace proyectoAM
             if (txtPrecio.Text == "") { MessageBox.Show("Favor de poner un precio"); }
             else if (cbNombre.Text == "") { MessageBox.Show("Favor de poner un cliente"); }
             else if (cbMoneda.Text == "") { MessageBox.Show("Favor de poner una moneda"); }
-            else if (cbTrabajo.Text == "") { MessageBox.Show("Favor de poner un Trabajo"); }
+            
             else if (cbPago.Text == "") { MessageBox.Show("Favor de poner una condicion de pago"); }
             else if (cbDescripcion.Text == "") { MessageBox.Show("Favor de poner un articulo"); }
 
             else
             {
 
-                if (cbNombre.SelectedItem.ToString() != "")
+                if (cbNombre.SelectedItem == "MONEDA" || cbNombre.SelectedItem == null)
                 {
-                    nombre = cbNombre.SelectedItem.ToString();
+                    nombre = cbNombre.Text;
                 }
-                else { nombre = cbNombre.Text; }
-               
-                email = txtEmail.Text;
-                telefono = txtTelefono.Text;
+                else { nombre = cbNombre.SelectedItem.ToString(); }
+                
+                string rnc = txtRnc.Text;
 
+                vence = dtVence.Value.ToString().Remove(8);
                 /* if (con.agregaruser(new string[] { nombre, nfc, rnc, email, telefono }))
                       {
 
@@ -166,31 +171,31 @@ namespace proyectoAM
 
 
                 subtotal = (precio * cantidad) + subtotal;
-                subitbis = (subtotal * itbis) + subitbis;
+                subitbis = (subtotal * itbis);
                 total = (subtotal + subitbis);
                 string din;
-                if (cbMoneda.Text == "Pesos Dominicanos")
+                if (cbMoneda.Text == "RD$")
                 {
-                    din = "RD$ ";
+                    din = "RD$";
                     // txtSubtotal.Text = "RD$ " + Convert.ToString(subtotal) + ".00";
-                    txtSubtotal.Text = "RD$" + Convert.ToString(string.Format("{0:n0}", subtotal));
-                    txtItebis.Text = "RD$" + Convert.ToString(string.Format("{0:n0}", subitbis));
-                    txtTotal.Text = "RD$" + Convert.ToString(string.Format("{0:n0}", total));
+                    txtSubtotal.Text = Convert.ToString(string.Format("{0:N}", subtotal));
+                    txtItebis.Text = Convert.ToString(string.Format("{0:N}", subitbis));
+                    txtTotal.Text = Convert.ToString(string.Format("{0:N}", total));
                 }
                 else
                 {
-                    din = "    $ ";
-                    txtSubtotal.Text = "$ " + Convert.ToString(string.Format("{0:n0}", subtotal));
-                    txtItebis.Text = "$ " + Convert.ToString(string.Format("{0:n0}", subitbis));
-                    txtTotal.Text = "$ " + Convert.ToString(string.Format("{0:n0}", total));
+                    din = "US$";
+                    txtSubtotal.Text = Convert.ToString(string.Format("{0:N}", subtotal));
+                    txtItebis.Text = Convert.ToString(string.Format("{0:N}", subitbis));
+                    txtTotal.Text = Convert.ToString(string.Format("{0:N}", total));
                 }
 
                 moneda = cbMoneda.Text.ToString();
-                trabajo = cbTrabajo.SelectedItem.ToString();
+                trabajo = "--";
                 pago = cbPago.SelectedItem.ToString();
                 vence = dtVence.Value.ToString().Remove(8);
 
-                tabla.Rows.Add(Convert.ToString(cantidad), cbDescripcion.Text.ToString(), "", din + Convert.ToString(string.Format("{0:n0}", precio)));
+                tabla.Rows.Add(Convert.ToString(cantidad), cbDescripcion.Text.ToString(), din, Convert.ToString(string.Format("{0:n0}", precio)));
                 canttotal = canttotal + Convert.ToInt32(nudCantidad.Text.ToString());
                 reset();
             }
@@ -303,7 +308,7 @@ namespace proyectoAM
             fechahoy.HorizontalAlignment = 2;
             fechahoy.Border = 0;
 
-            PdfPCell telefono = new PdfPCell(new Phrase("TELEFONO: \n" + txtTelefono.Text + "\n\n", texton));
+            PdfPCell telefono = new PdfPCell(new Phrase("TELEFONO: \n 809 - 535 - 1613\n\n", texton));
             telefono.HorizontalAlignment = 0;
             telefono.Colspan = 1;
             telefono.Border = 0;
@@ -324,14 +329,16 @@ namespace proyectoAM
              
 
 
-            PdfPCell email = new PdfPCell(new Phrase("EMAIL:\n" + txtEmail.Text + "\n\n", texton)); email.Border = 0; email.HorizontalAlignment = 0; email.Colspan = 1; adjust.AddCell(email); adjust.AddCell(empty);  
-            if (string.IsNullOrEmpty(cbNombre.Text)) { PdfPCell parag = new PdfPCell(new Phrase(("CLIENTE: " + cbNombre.SelectedItem.ToString() + " " + txtrnccom.Text), cliente)); parag.Border = 0; parag.HorizontalAlignment = 0; parag.Colspan = 1; adjust.AddCell(parag); }
-            else { PdfPCell parag = new PdfPCell(new Phrase("CLIENTE: " + cbNombre.Text.ToString() + " " + txtrnccom.Text, cliente)); parag.Border = 0; parag.HorizontalAlignment = 0; parag.Colspan = 1; adjust.AddCell(parag); }
+            PdfPCell email = new PdfPCell(new Phrase("EMAIL:\n info@agencia7am.com \n\n", texton)); email.Border = 0; email.HorizontalAlignment = 0; email.Colspan = 1; adjust.AddCell(email); adjust.AddCell(empty);  
+            if (string.IsNullOrEmpty(cbNombre.Text)) { PdfPCell parag = new PdfPCell(new Phrase(("CLIENTE: " + cbNombre.SelectedItem.ToString() + " " + txtbuscar.Text), cliente)); parag.Border = 0; parag.HorizontalAlignment = 0; parag.Colspan = 1; adjust.AddCell(parag); }
+            else { PdfPCell parag = new PdfPCell(new Phrase("CLIENTE: " + cbNombre.Text.ToString() + " " + txtbuscar.Text, cliente)); parag.Border = 0; parag.HorizontalAlignment = 0; parag.Colspan = 1; adjust.AddCell(parag); }
             adjust.AddCell(fechahoy);
             doc.Add(adjust);
 
-            PdfPTable pdfTable = new PdfPTable(4);
+            PdfPTable pdfTable = new PdfPTable(5);
             pdfTable.HorizontalAlignment = 1;
+            float[] widthsa = new float[] { 25f, 25f, 25f, 25f, 0f };
+            pdfTable.SetWidths(widthsa);
             pdfTable.WidthPercentage = 85f;
 
             //ACA VA MONEDA
@@ -351,7 +358,7 @@ namespace proyectoAM
             trabajo.Colspan = 1;
             trabajo.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
             trabajo.Padding = 5;
-            PdfPCell ctrabajo = new PdfPCell(new Phrase(cbTrabajo.SelectedItem.ToString(), texto));
+            PdfPCell ctrabajo = new PdfPCell(new Phrase("--", texto));
             ctrabajo.Colspan = 1;
             ctrabajo.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
             ctrabajo.Padding = 5;
@@ -384,15 +391,17 @@ namespace proyectoAM
             pdfTable.AddCell(trabajo);
             pdfTable.AddCell(condicion);
             pdfTable.AddCell(vence);
+            pdfTable.AddCell("");
             pdfTable.AddCell(cmoneda);
             pdfTable.AddCell(ctrabajo);
             pdfTable.AddCell(cpago);
             pdfTable.AddCell(cvence);
+            pdfTable.AddCell("");
 
             //GRAN TABLA!!!
             PdfPTable grantable = new PdfPTable(Tbla.Columns.Count);
             grantable.WidthPercentage = 85f;
-            float[] widths = new float[] { 10f, 54f, 20f, 16f };
+            float[] widths = new float[] { 10f, 54f, 20f, 16f, 0f };
             grantable.SetWidths(widths);
             grantable.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
 
@@ -438,6 +447,9 @@ namespace proyectoAM
             precio.Padding = 5;
             grantable.AddCell(precio);
 
+            PdfPCell va = new PdfPCell(new Phrase(""));
+            grantable.AddCell(va);
+
             //Flag the first row as a header
             grantable.HeaderRows = 1;
 
@@ -460,7 +472,7 @@ namespace proyectoAM
                 //descri.BorderWidth = 1f;
                 // descri.BorderWidthBottom = 0;
 
-                PdfPCell vaco = new PdfPCell(new Phrase(Tbla[2, k].Value.ToString()));
+                PdfPCell vaco = new PdfPCell(new Phrase(""));
                 //vaco.BorderWidth = 1f;
                 // vaco.BorderWidthBottom = 0;
 
@@ -472,12 +484,13 @@ namespace proyectoAM
                 tolt.PaddingBottom = 8;
                 tolt.PaddingLeft = 20;
 
+                PdfPCell v = new PdfPCell(new Phrase(""));
 
                 grantable.AddCell(cante);
                 grantable.AddCell(descri);
                 grantable.AddCell(vaco);
                 grantable.AddCell(tolt);
-
+                grantable.AddCell(v);
 
 
                 if (k > Tbla.Rows.Count)
@@ -519,7 +532,7 @@ namespace proyectoAM
 
 
 
-            PdfPCell sub = new PdfPCell(new Phrase(txtSubtotal.Text, numero));
+            PdfPCell sub = new PdfPCell(new Phrase(din + txtSubtotal.Text, numero));
             sub.Colspan = 1;
             sub.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
             sub.BackgroundColor = new iTextSharp.text.BaseColor(219, 229, 241);
@@ -550,7 +563,7 @@ namespace proyectoAM
             itbis.PaddingLeft = 10;
 
 
-            PdfPCell it = new PdfPCell(new Phrase(txtItebis.Text, numero));
+            PdfPCell it = new PdfPCell(new Phrase(din + txtItebis.Text, numero));
             it.Colspan = 1;
             it.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
             it.BackgroundColor = new iTextSharp.text.BaseColor(219, 229, 241);
@@ -580,7 +593,7 @@ namespace proyectoAM
             total.PaddingBottom = 6;
             total.PaddingLeft = 10;
 
-            PdfPCell to = new PdfPCell(new Phrase(txtTotal.Text, numero));
+            PdfPCell to = new PdfPCell(new Phrase(din + txtTotal.Text, numero));
             to.Colspan = 1;
             to.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
             to.BackgroundColor = new iTextSharp.text.BaseColor(219, 229, 241);
@@ -621,39 +634,17 @@ namespace proyectoAM
             firm.WidthPercentage = 85f;
             firm.DefaultCell.BorderWidth = 0;
             PdfPCell prefirma = new PdfPCell(new Phrase("Firma por: "));
-            PdfPCell firma = new PdfPCell(new Phrase(txtFirma.Text, textfirma));
+            PdfPCell firma = new PdfPCell(new Phrase("Madelyn", textfirma));
             float[] widths5 = new float[] { 15f, 85f };
             firm.SetWidths(widths5);
             prefirma.Border = 0; firma.Border = 0; firma.BorderWidthBottom = .5f;
             firm.AddCell(prefirma); firm.AddCell(firma);
 
-
-            PdfPTable clien = new PdfPTable(2);
-            clien.WidthPercentage = 85f;
-            float[] widths7 = new float[] { 21f, 79f };
-            clien.SetWidths(widths7);
-            PdfPCell preclient = new PdfPCell(new Phrase("Firma del Cliente: "));
-            preclient.HorizontalAlignment = 0;
-            PdfPCell client = new PdfPCell(new Phrase("\n"));
-            client.HorizontalAlignment = 0;
-            preclient.Border = 0;
-
-            client.Border = 0;
-            client.BorderWidthBottom = .5f;
-
-            /*PdfPTable end = new PdfPTable(1);
-            end.WidthPercentage = 85f;
-            PdfPCell nota = new PdfPCell(new Phrase("NOTA:\nFavor de realizar los pagos en cheques a nombre de 7AM AGENCIA MULTIMEDIA SRL.", notafinal));
-            nota.Border = 0;*/
-
-
-            clien.AddCell(preclient); clien.AddCell(client);
-            //end.AddCell(nota);
-
+            
 
             doc.Add(firm);
             doc.Add(espacio2);
-            doc.Add(clien);
+            
             doc.Add(espacio2);
             //doc.Add(end);
 
@@ -667,5 +658,29 @@ namespace proyectoAM
             MessageBox.Show("Cotización Creada en Mis Documentos como: Cotización " + cbNombre.Text + " " + date.ToString("dd-MM-yyyy") + ".pdf");
         }
 
+        private void txtrnccom_TextChanged(object sender, EventArgs e)
+        {
+            buscar(txtbuscar.Text);
+        }
+
+        public void buscar(string nombre)
+        {
+            try
+            {
+
+                cn.Open();
+                string sql = "SELECT nombre FROM `cliente` WHERE nombre like '%" + nombre + "%'";
+                cmd = new MySqlCommand(sql, cn);
+                reader = cmd.ExecuteReader();
+                reader.Read();
+                cbNombre.Text = reader["nombre"].ToString();
+                reader.Close();
+                cn.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error en: " + ex);
+            }
+        }
     }
 }

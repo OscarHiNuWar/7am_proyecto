@@ -104,5 +104,18 @@ namespace proyectoAM
             adcli.MdiParent = this;
             adcli.Show();
         }
+
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Formularios.Alerta.alerta al = new Formularios.Alerta.alerta();
+           // al.MdiParent = this;
+            //al.Show();
+            al.Hide();
+        }
+
+        private void menuprincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

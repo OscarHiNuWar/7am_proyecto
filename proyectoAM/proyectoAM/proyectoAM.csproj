@@ -68,6 +68,18 @@
     <Compile Include="Cotizacion.Designer.cs">
       <DependentUpon>Cotizacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Alerta\alerta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Alerta\alerta.Designer.cs">
+      <DependentUpon>alerta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Alerta\crear_alerta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Alerta\crear_alerta.Designer.cs">
+      <DependentUpon>crear_alerta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Clientes\add_cliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +114,12 @@
     <Compile Include="Formularios\Clientes\mostrar_factura.Designer.cs">
       <DependentUpon>mostrar_factura.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Login\login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Login\login.Designer.cs">
+      <DependentUpon>login.cs</DependentUpon>
+    </Compile>
     <Compile Include="menuprincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +130,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Cotizacion.resx">
       <DependentUpon>Cotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Alerta\alerta.resx">
+      <DependentUpon>alerta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Alerta\crear_alerta.resx">
+      <DependentUpon>crear_alerta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Clientes\add_cliente.resx">
       <DependentUpon>add_cliente.cs</DependentUpon>
@@ -128,6 +152,9 @@
     <EmbeddedResource Include="Formularios\Clientes\mostrar_factura.resx">
       <DependentUpon>mostrar_factura.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Login\login.resx">
+      <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="menuprincipal.resx">
       <DependentUpon>menuprincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,6 +166,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -156,8 +184,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="logo7am.jpg" />
     <Content Include="Resources\logo7am.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

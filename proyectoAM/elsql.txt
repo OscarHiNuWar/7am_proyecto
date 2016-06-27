@@ -1,0 +1,1 @@
+SELECT DISTINCT factura.id, cliente.nombre, items.cantidad, items.descripcion, items.precio, factura.fech_venc FROM items, cliente, factura WHERE factura.id = '2' AND factura.id_item = factura.id AND cliente.nombre = '7am' AND items.id_cliente = cliente.id AND items.fech_venc = '24/6/16'

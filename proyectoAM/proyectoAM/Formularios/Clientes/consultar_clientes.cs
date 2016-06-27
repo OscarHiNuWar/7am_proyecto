@@ -23,7 +23,11 @@ namespace proyectoAM.Formularios.Clientes
         public consultar_clientes()
         {
             InitializeComponent();
-            dtvTabla.DataSource = cli.muestracliente();
+
+            //dtvTabla.DataSource = cli.muestracliente(ide, cliente);
+            dtvTabla.DataSource = cli.mostrarNombre();
+            //ide = dtvTabla.CurrentRow.Cells[0].Value.ToString();
+            //cliente = dtvTabla.CurrentRow.Cells[1].Value.ToString();
             dtvTabla.Columns[0].Visible = false;
         }
 
@@ -44,15 +48,17 @@ namespace proyectoAM.Formularios.Clientes
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ide = txtBuscar.Text;
-            tiempo = dtpTiempo.Value.ToString("dd/MM/yyyy");
-            dtvTabla.DataSource = cli.mostrarNombre(ide, tiempo);
+            cliente = txtBuscar.Text;
+            tiempo = dtpTiempo.Value.ToString("dd/M/yyyy");
+            dtvTabla.DataSource = cli.muestracliente(cliente, tiempo);
         }
 
         private void dtvTabla_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             ide = dtvTabla.CurrentRow.Cells[0].Value.ToString();
             cliente = dtvTabla.CurrentRow.Cells[1].Value.ToString();
+            //tiempo = dtpTiempo.Value.ToString("dd/M/yy");
+            tiempo = dtvTabla.CurrentRow.Cells[2].Value.ToString();
             mostrar_factura mf = new mostrar_factura();
             mf.ShowDialog();
         }
