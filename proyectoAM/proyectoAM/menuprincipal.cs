@@ -13,6 +13,7 @@ namespace proyectoAM
     public partial class menuprincipal : Form
     {
         private int childFormNumber = 0;
+       
 
         public menuprincipal()
         {
@@ -24,9 +25,15 @@ namespace proyectoAM
             /*Form childForm = new Form();
             childForm.MdiParent = this;
             childForm.Text = "Window " + childFormNumber++;*/
+            
             Factura fact = new Factura();
             fact.MdiParent = this;
-            fact.Show();
+            try
+            {
+                fact.Show();
+            }
+            catch { }
+            
         }
 
         private void OpenFile(object sender, EventArgs e)
@@ -116,6 +123,18 @@ namespace proyectoAM
         private void menuprincipal_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Formularios.Comprobante.Comprobante com = new Formularios.Comprobante.Comprobante();
+            com.Show();
+        }
+
+        private void printSetupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Formularios.cotizacion.consultar_cotizacion conco = new Formularios.cotizacion.consultar_cotizacion();
+            conco.Show();
         }
     }
 }

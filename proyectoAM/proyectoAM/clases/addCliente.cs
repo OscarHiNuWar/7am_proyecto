@@ -117,6 +117,32 @@ namespace proyectoAM.clases
         }
             return tabla;
     }
+
+        public DataTable mostrarCotiza()
+        {
+            conecta();
+
+            try
+            {
+                addCli();
+                // string sql = "SELECT factura.id, cliente.nombre, factura.tipo_pago, factura.fech_venc FROM `factura`, cliente, items WHERE cliente.nombre=cliente.nombre and cliente.id='" + id + "' and items.id_cliente=cliente.id and factura.id_item = items.id";
+                //SELECT factura.id, cliente.nombre, factura.tipo_pago, factura.fech_venc FROM `factura`, cliente, items WHERE items.id = factura.id_item and cliente.id = items.id_cliente and factura.fech_venc='22/6/16'
+                string sql = "SELECT DISTINCT cotizacion.id, cliente.nombre, cotizacion.tipo_pago, cotizacion.fech_venc FROM `cotizacion`, cliente, items WHERE items.id_cliente = cliente.id and cotizacion.fech_venc = items.fech_venc ";
+                cmd = new MySqlCommand(sql, cn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    tabla.Rows.Add(reader["id"].ToString(), reader["nombre"].ToString(), reader["fech_venc"].ToString());
+                }
+                return tabla;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error en: " + ex);
+            }
+            return tabla;
+        }
         public string mostrarrnc(string nombre)
         {
             conecta();

@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="clases\addCliente.cs" />
     <Compile Include="clases\addItem.cs" />
+    <Compile Include="clases\comprobante.cs" />
     <Compile Include="Cotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +115,24 @@
     <Compile Include="Formularios\Clientes\mostrar_factura.Designer.cs">
       <DependentUpon>mostrar_factura.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Comprobante\Comprobante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Comprobante\Comprobante.Designer.cs">
+      <DependentUpon>Comprobante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\cotizacion\consultar_cotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\cotizacion\consultar_cotizacion.Designer.cs">
+      <DependentUpon>consultar_cotizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\cotizacion\mostrar_cotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\cotizacion\mostrar_cotizacion.Designer.cs">
+      <DependentUpon>mostrar_cotizacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Login\login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +170,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Clientes\mostrar_factura.resx">
       <DependentUpon>mostrar_factura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Comprobante\Comprobante.resx">
+      <DependentUpon>Comprobante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\cotizacion\consultar_cotizacion.resx">
+      <DependentUpon>consultar_cotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\cotizacion\mostrar_cotizacion.resx">
+      <DependentUpon>mostrar_cotizacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Login\login.resx">
       <DependentUpon>login.cs</DependentUpon>

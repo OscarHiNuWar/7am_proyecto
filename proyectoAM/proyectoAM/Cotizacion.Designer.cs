@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtbuscar = new System.Windows.Forms.TextBox();
             this.cbNombre = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtRnc = new System.Windows.Forms.TextBox();
@@ -38,11 +40,12 @@
             this.nudCantidad = new System.Windows.Forms.NumericUpDown();
             this.label15 = new System.Windows.Forms.Label();
             this.cbMoneda = new System.Windows.Forms.ComboBox();
-            this.dtVence = new System.Windows.Forms.DateTimePicker();
-            this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.dtVence = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtidcli = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtSubtotal = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -53,12 +56,9 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.Tbla = new System.Windows.Forms.DataGridView();
-            this.txtbuscar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbPago = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.txtidcli = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
@@ -81,6 +81,23 @@
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(520, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "Buscar:";
+            // 
+            // txtbuscar
+            // 
+            this.txtbuscar.Location = new System.Drawing.Point(566, 20);
+            this.txtbuscar.Name = "txtbuscar";
+            this.txtbuscar.Size = new System.Drawing.Size(178, 20);
+            this.txtbuscar.TabIndex = 32;
+            this.txtbuscar.TextChanged += new System.EventHandler(this.txtrnccom_TextChanged);
+            // 
             // cbNombre
             // 
             this.cbNombre.FormattingEnabled = true;
@@ -89,6 +106,7 @@
             this.cbNombre.Size = new System.Drawing.Size(152, 21);
             this.cbNombre.TabIndex = 1;
             this.cbNombre.Text = "CLIENTE";
+            this.cbNombre.SelectedIndexChanged += new System.EventHandler(this.cbNombre_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -174,6 +192,22 @@
             this.cbMoneda.TabIndex = 7;
             this.cbMoneda.Text = "MONEDA";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(194, 49);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(47, 13);
+            this.label11.TabIndex = 23;
+            this.label11.Text = "PRECIO";
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Location = new System.Drawing.Point(247, 46);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(128, 20);
+            this.txtPrecio.TabIndex = 12;
+            // 
             // dtVence
             // 
             this.dtVence.Location = new System.Drawing.Point(11, 31);
@@ -191,22 +225,6 @@
             this.label9.TabIndex = 16;
             this.label9.Text = "VENCE";
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(194, 49);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(47, 13);
-            this.label11.TabIndex = 23;
-            this.label11.Text = "PRECIO";
-            // 
-            // txtPrecio
-            // 
-            this.txtPrecio.Location = new System.Drawing.Point(247, 46);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(128, 20);
-            this.txtPrecio.TabIndex = 12;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.txtidcli);
@@ -221,6 +239,14 @@
             this.groupBox3.Size = new System.Drawing.Size(757, 49);
             this.groupBox3.TabIndex = 38;
             this.groupBox3.TabStop = false;
+            // 
+            // txtidcli
+            // 
+            this.txtidcli.Location = new System.Drawing.Point(566, 15);
+            this.txtidcli.Name = "txtidcli";
+            this.txtidcli.ReadOnly = true;
+            this.txtidcli.Size = new System.Drawing.Size(100, 20);
+            this.txtidcli.TabIndex = 31;
             // 
             // label10
             // 
@@ -315,23 +341,7 @@
             this.Tbla.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.Tbla.Size = new System.Drawing.Size(758, 232);
             this.Tbla.TabIndex = 43;
-            // 
-            // txtbuscar
-            // 
-            this.txtbuscar.Location = new System.Drawing.Point(566, 20);
-            this.txtbuscar.Name = "txtbuscar";
-            this.txtbuscar.Size = new System.Drawing.Size(178, 20);
-            this.txtbuscar.TabIndex = 32;
-            this.txtbuscar.TextChanged += new System.EventHandler(this.txtrnccom_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(520, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
-            this.label1.TabIndex = 33;
-            this.label1.Text = "Buscar:";
+            this.Tbla.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Tbla_CellDoubleClick);
             // 
             // groupBox4
             // 
@@ -363,14 +373,6 @@
             this.groupBox5.Size = new System.Drawing.Size(759, 53);
             this.groupBox5.TabIndex = 47;
             this.groupBox5.TabStop = false;
-            // 
-            // txtidcli
-            // 
-            this.txtidcli.Location = new System.Drawing.Point(566, 15);
-            this.txtidcli.Name = "txtidcli";
-            this.txtidcli.ReadOnly = true;
-            this.txtidcli.Size = new System.Drawing.Size(100, 20);
-            this.txtidcli.TabIndex = 31;
             // 
             // Cotizacion
             // 

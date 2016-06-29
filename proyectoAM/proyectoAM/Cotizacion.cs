@@ -130,7 +130,7 @@ namespace proyectoAM
             user = Environment.UserName.ToString();
             DateTime date2 = DateTime.Now; // will give the date for today
             dtVence.Value = date2;
-            
+            Tbla.Columns[4].Visible = false;
         }
 
 
@@ -197,7 +197,7 @@ namespace proyectoAM
 
                 tabla.Rows.Add(Convert.ToString(cantidad), cbDescripcion.Text.ToString(), din, Convert.ToString(string.Format("{0:n0}", precio)));
                 canttotal = canttotal + Convert.ToInt32(nudCantidad.Text.ToString());
-                reset();
+                
             }
         }
 
@@ -209,14 +209,61 @@ namespace proyectoAM
                 {
                     Tbla.Rows.RemoveAt(item.Index);
                 }
+                eliminacant();
             }
             btnEliminar.Enabled = false;
 
         }
 
+        public void guarda()
+        {
+            try
+            {
+                conecta();
+            }
+            catch { }
+
+
+            foreach (DataGridViewRow rows in Tbla.Rows)
+            {
+                itm.agregarItems(new string[] { txtidcli.Text, rows.Cells[0].Value.ToString(), rows.Cells[1].Value.ToString(), rows.Cells[3].Value.ToString(), vence });
+            }
+
+            if (fact.agregarCotizacion(new string[] { txtidcli.Text, cbPago.SelectedItem.ToString(), vence }))
+            {
+                // MessageBox.Show("Agregado a Base de datos");
+            }
+        }
+
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            exporta();
+            if (Tbla.RowCount == 0) { MessageBox.Show("La tabla esta vacia. Por favor agregar datos."); }
+            else
+            {
+                exporta();
+                if (MessageBox.Show("¿Desea guardar esta Factura?", "Save", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    guarda();
+                    MessageBox.Show("Factura Guardada.");
+                }
+                reset();
+            }
+            //exporta();
+        }
+
+        public void eliminacant()
+        {
+
+
+            esub = Convert.ToInt32(subtotal) - esub;
+            subtotal = esub;
+            subitbis = subitbis - eitbis;
+            // subitbis = (subtotal * 0.18) + esub;
+            total = total - pretotal;
+            // pretotal = total - pretotal;
+            txtSubtotal.Text = din + esub.ToString();
+            txtItebis.Text = din + subitbis.ToString();
+            txtTotal.Text = din + total.ToString();
         }
 
 
@@ -656,6 +703,39 @@ namespace proyectoAM
             doc.Close();
 
             MessageBox.Show("Cotización Creada en Mis Documentos como: Cotización " + cbNombre.Text + " " + date.ToString("dd-MM-yyyy") + ".pdf");
+        }
+
+        private void Tbla_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnEliminar.Visible = true;
+            btnEliminar.Enabled = true;
+            double preesub = double.Parse(Tbla.CurrentRow.Cells[3].Value.ToString());
+
+            esub = preesub;
+
+            eitbis = esub * 0.18;
+
+            pretotal = esub + eitbis;
+        }
+
+        private void cbNombre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                nombre = cbNombre.Text;
+                conecta();
+                string sql = "SELECT id, rnc FROM cliente WHERE nombre='" + nombre + "';";
+                cmd = new MySqlCommand(sql, cn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    txtRnc.Text = (reader["rnc"].ToString());
+                    txtidcli.Text = reader["id"].ToString();
+                    //txtidcli.Text = sql;
+                }
+                cn.Close();
+            }
+            catch (MySqlException ex) { MessageBox.Show("Error en: " + ex); }
         }
 
         private void txtrnccom_TextChanged(object sender, EventArgs e)

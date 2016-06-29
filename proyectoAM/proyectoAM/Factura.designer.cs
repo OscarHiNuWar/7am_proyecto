@@ -48,10 +48,11 @@
             this.txtItebis = new System.Windows.Forms.TextBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.txtNCF = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.nudCantidad = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cbDescripcion = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -59,13 +60,12 @@
             this.txtsubsin = new System.Windows.Forms.TextBox();
             this.txtitbsin = new System.Windows.Forms.TextBox();
             this.txttolsin = new System.Windows.Forms.TextBox();
-            this.cbPago = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.ckSinCompro = new System.Windows.Forms.CheckBox();
+            this.cbcompro = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.txtidcli = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Tbla)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -255,20 +255,11 @@
             // 
             // txtNCF
             // 
-            this.txtNCF.Location = new System.Drawing.Point(60, 17);
+            this.txtNCF.Location = new System.Drawing.Point(101, 17);
             this.txtNCF.Name = "txtNCF";
             this.txtNCF.ReadOnly = true;
             this.txtNCF.Size = new System.Drawing.Size(149, 20);
             this.txtNCF.TabIndex = 2;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(23, 21);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(28, 13);
-            this.label14.TabIndex = 31;
-            this.label14.Text = "NCF";
             // 
             // label15
             // 
@@ -310,6 +301,23 @@
             this.groupBox1.Size = new System.Drawing.Size(752, 57);
             this.groupBox1.TabIndex = 34;
             this.groupBox1.TabStop = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(384, 22);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(201, 20);
+            this.textBox1.TabIndex = 5;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(340, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Buscar:";
             // 
             // groupBox2
             // 
@@ -378,19 +386,9 @@
             this.txttolsin.Size = new System.Drawing.Size(100, 20);
             this.txttolsin.TabIndex = 41;
             // 
-            // cbPago
-            // 
-            this.cbPago.FormattingEnabled = true;
-            this.cbPago.Location = new System.Drawing.Point(13, 57);
-            this.cbPago.Name = "cbPago";
-            this.cbPago.Size = new System.Drawing.Size(127, 21);
-            this.cbPago.TabIndex = 9;
-            this.cbPago.Text = "Condición de Pago";
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Controls.Add(this.cbPago);
             this.groupBox4.Controls.Add(this.dtVence);
             this.groupBox4.Location = new System.Drawing.Point(539, 75);
             this.groupBox4.Name = "groupBox4";
@@ -400,13 +398,34 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.ckSinCompro);
+            this.groupBox5.Controls.Add(this.cbcompro);
             this.groupBox5.Controls.Add(this.txtNCF);
-            this.groupBox5.Controls.Add(this.label14);
             this.groupBox5.Location = new System.Drawing.Point(12, 172);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(752, 46);
             this.groupBox5.TabIndex = 43;
             this.groupBox5.TabStop = false;
+            // 
+            // ckSinCompro
+            // 
+            this.ckSinCompro.AutoSize = true;
+            this.ckSinCompro.Location = new System.Drawing.Point(257, 19);
+            this.ckSinCompro.Name = "ckSinCompro";
+            this.ckSinCompro.Size = new System.Drawing.Size(107, 17);
+            this.ckSinCompro.TabIndex = 33;
+            this.ckSinCompro.Text = "Sin Comprobante";
+            this.ckSinCompro.UseVisualStyleBackColor = true;
+            this.ckSinCompro.CheckedChanged += new System.EventHandler(this.ckSinCompro_CheckedChanged);
+            // 
+            // cbcompro
+            // 
+            this.cbcompro.FormattingEnabled = true;
+            this.cbcompro.Location = new System.Drawing.Point(18, 16);
+            this.cbcompro.Name = "cbcompro";
+            this.cbcompro.Size = new System.Drawing.Size(77, 21);
+            this.cbcompro.TabIndex = 32;
+            this.cbcompro.SelectedIndexChanged += new System.EventHandler(this.cbcompro_SelectedIndexChanged);
             // 
             // groupBox6
             // 
@@ -425,23 +444,6 @@
             this.txtidcli.Name = "txtidcli";
             this.txtidcli.Size = new System.Drawing.Size(100, 20);
             this.txtidcli.TabIndex = 45;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(340, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Buscar:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(384, 22);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(201, 20);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Factura
             // 
@@ -501,7 +503,6 @@
         private System.Windows.Forms.TextBox txtItebis;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.TextBox txtNCF;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.NumericUpDown nudCantidad;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -512,13 +513,14 @@
         private System.Windows.Forms.TextBox txtsubsin;
         private System.Windows.Forms.TextBox txtitbsin;
         private System.Windows.Forms.TextBox txttolsin;
-        private System.Windows.Forms.ComboBox cbPago;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox txtidcli;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbcompro;
+        private System.Windows.Forms.CheckBox ckSinCompro;
     }
 }
 

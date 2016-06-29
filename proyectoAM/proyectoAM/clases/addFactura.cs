@@ -31,7 +31,30 @@ namespace proyectoAM.clases
             {
                 //id_cliente,
 
-                string sql = "INSERT INTO factura (id_item, tipo_pago, fech_venc) VALUES('" + data[0] + "','" + data[1] + "','" + data[2] + "')";
+                string sql = "INSERT INTO factura (id_item, tipo_pago, fech_venc) VALUES('" + data[0] + "','" + data[1] + "','" + data[2] + "'); SELECT max(id) FROM factura";
+                cmd = new MySqlCommand(sql, cn);
+
+                id = Convert.ToInt32(cmd.ExecuteScalar());
+                cn.Close();
+                return true;
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return false;
+        }
+
+        public bool agregarCotizacion(string[] data)
+        {
+            conecta();
+
+            try
+            {
+                //id_cliente,
+
+                string sql = "INSERT INTO cotizacion (id_item, tipo_pago, fech_venc) VALUES('" + data[0] + "','" + data[1] + "','" + data[2] + "'); SELECT max(id) FROM cotizacion";
                 cmd = new MySqlCommand(sql, cn);
 
                 id = Convert.ToInt32(cmd.ExecuteScalar());

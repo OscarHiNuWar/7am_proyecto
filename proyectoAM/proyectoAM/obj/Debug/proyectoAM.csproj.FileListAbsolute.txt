@@ -46,3 +46,29 @@ G:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Properties.Resources.resources
 G:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.csproj.GenerateResource.Cache
 J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Login.login.resources
 G:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Login.login.resources
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\bin\Debug\proyectoAM.exe.config
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\obj\Debug\proyectoAM.exe
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\obj\Debug\proyectoAM.pdb
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\bin\Debug\proyectoAM.exe
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\bin\Debug\proyectoAM.pdb
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\bin\Debug\itextsharp.dll
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\bin\Debug\itextsharp.pdfa.dll
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\bin\Debug\itextsharp.xtra.dll
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\bin\Debug\System.Data.SQLite.dll
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\bin\Debug\itextsharp.xml
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\obj\Debug\proyectoAM.csprojResolveAssemblyReference.cache
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Cotizacion.resources
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Alerta.alerta.resources
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Alerta.crear_alerta.resources
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Clientes.add_cliente.resources
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\obj\Debug\proyectoAM.agregar_cliente.resources
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Factura.resources
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Clientes.consultar_clientes.resources
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Clientes.mostrar_factura.resources
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Login.login.resources
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\obj\Debug\proyectoAM.menuprincipal.resources
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Properties.Resources.resources
+C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\obj\Debug\proyectoAM.csproj.GenerateResource.Cache
+J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Comprobante.Comprobante.resources
+J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.cotizacion.consultar_cotizacion.resources
+J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.cotizacion.mostrar_cotizacion.resources

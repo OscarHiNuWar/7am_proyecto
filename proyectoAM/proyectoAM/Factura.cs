@@ -26,7 +26,7 @@ namespace proyectoAM
         int cantidad=0;
         int canttotal = 0;
         string nombre; //Aca va el dato "nombre" de la tabla cliente
-        string codenfc = "A0100100115";
+       // string codenfc = "A0100100115";
         int numnfc = 0;
         string nfc; //Aca va el dato "NFC" de la tabla cliente
         string rnc; //Aca va el dato "RNC" de la tabla cliente
@@ -47,10 +47,13 @@ namespace proyectoAM
         MySqlConnection cn;
         MySqlCommand cmd;
         addFactura fact = new addFactura();
+        comprobante com = new comprobante();
         addItem itm = new addItem();
         double esub, eitbis, pretotal;
         string din;
-
+        int nf;
+        int fin;
+        string tipo, valo,ini; 
 
 
 
@@ -114,8 +117,8 @@ namespace proyectoAM
 
         void addCondicionPago()
         {
-            cbPago.Items.Add("Efectivo");
-            cbPago.Items.Add("Cheque");
+           /* cbPago.Items.Add("Efectivo");
+            cbPago.Items.Add("Cheque");*/
         }
 
         void addMoneda()
@@ -134,12 +137,18 @@ namespace proyectoAM
             cbDescripcion.Items.Add("Contrato mantenimiento de pagina");
         }
 
+        void addcompro()
+        {
+            cbcompro.Items.Add("Negocio");
+            cbcompro.Items.Add("Gubernamental");
+        }
+
         void reset()
         {
             txtPrecio.Text = null;
             nudCantidad.Value = 1;
             cbDescripcion.Text = null;
-            txtidcli.Text = "";
+            
             //btnAgregar.Enabled = false;
         }
 
@@ -152,7 +161,8 @@ namespace proyectoAM
             addNombre();
             addCompania();
             addTrabajo();
-            addCondicionPago();
+            addcompro();
+           // addCondicionPago();
             addMoneda();
             addDescripcion();
             user = Environment.UserName.ToString();
@@ -160,10 +170,79 @@ namespace proyectoAM
             dtVence.Value = date2;
             numnfc += 1;
             //txtNCF.Text = codenfc + Convert.ToString(numnfc);
+            Tbla.Columns[4].Visible = false;
+            connfc();
             
+
         }
 
+        public void connfc()
+        {
+            try { 
 
+            id = com.traerid();
+            if(id == com.traerid())
+            { id++;
+            }
+                tipo = com.traertipo();
+            ini = com.traerinicio();
+            valo = com.traervalor();
+            txtNCF.Text = com.traeractual();
+            nf = int.Parse(txtNCF.Text);
+            fin = com.traermax();
+            int prefin = fin - nf;
+                nf++;
+				
+            if(fin >= prefin)
+            {
+                MessageBox.Show("Quedan "+prefin+" NFCs");
+            }
+            if(nf == fin || nf>fin)
+            {
+                MessageBox.Show("No quedan NFCs. No puede facturar.");
+                btnAgregar.Enabled = false;
+            }
+            txtNCF.Text = com.traervalor()+(nf).ToString();
+            } catch(Exception ex)
+            {
+                MessageBox.Show("Nesesita un comprobante.");
+                btnAgregar.Visible = false;
+            }
+           
+
+        }
+		
+		public void guberna(){
+			try { 
+            id = com.traerid();
+            if(id == com.traerid())
+            { id++;
+            }
+            ini = com.traerinicio();
+            valo = com.traervalor();
+            txtNCF.Text = com.traeractual();
+            nf = int.Parse(txtNCF.Text);
+            fin = com.traermax();
+            int prefin = fin - nf;
+                nf++;
+				
+            if(fin >= prefin)
+            {
+                MessageBox.Show("Quedan "+prefin+" NFCs");
+            }
+            if(nf == fin || nf>fin)
+            {
+                MessageBox.Show("No quedan NFCs. No puede facturar.");
+                btnAgregar.Enabled = false;
+            }
+            txtNCF.Text = com.traervalor()+(nf).ToString();
+            } catch(Exception ex)
+            {
+                MessageBox.Show("Nesesita un comprobante.");
+                
+            }
+		
+		}
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -173,8 +252,8 @@ namespace proyectoAM
             else if (cbMoneda.Text == "") { MessageBox.Show("Favor de poner una moneda"); }
             else if (cbMoneda.SelectedItem == null) { MessageBox.Show("Favor de poner una moneda"); }
             // else if (cbTrabajo.Text == "") { MessageBox.Show("Favor de poner un Trabajo"); }
-            else if (cbPago.Text == "") { MessageBox.Show("Favor de poner una condicion de pago"); }
-            else if (cbPago.Text == "Condición de Pago") { MessageBox.Show("Favor de poner una condicion de pago"); }
+           /* else if (cbPago.Text == "") { MessageBox.Show("Favor de poner una condicion de pago"); }
+            else if (cbPago.Text == "Condición de Pago") { MessageBox.Show("Favor de poner una condicion de pago"); }*/
             else if (cbDescripcion.Text == "") { MessageBox.Show("Favor de poner un articulo"); }
 
             else {
@@ -224,12 +303,12 @@ namespace proyectoAM
             
             moneda = cbMoneda.Text.ToString();
             trabajo = "--";
-            pago = cbPago.SelectedItem.ToString();
+            //pago = cbPago.SelectedItem.ToString();
             
 
             tabla.Rows.Add(Convert.ToString(cantidad), cbDescripcion.Text.ToString(), din, Convert.ToString(string.Format("{0:C}", precio)), precio);
             canttotal = canttotal + Convert.ToInt32(nudCantidad.Text.ToString());
-                //reset();
+                reset();
             }
         }
 
@@ -252,10 +331,11 @@ namespace proyectoAM
                 itm.agregarItems(new string[] { txtidcli.Text, rows.Cells[0].Value.ToString(), rows.Cells[1].Value.ToString(), rows.Cells[3].Value.ToString(), vence });
             }
 
-            if (fact.agregarFactura(new string[] { txtidcli.Text, cbPago.SelectedItem.ToString(), vence }))
+            if (fact.agregarFactura(new string[] { txtidcli.Text, "", vence }))
             {
                 // MessageBox.Show("Agregado a Base de datos");
             }
+            com.agregarActu(new string[] { tipo, valo, ini, nf.ToString("D6"), fin.ToString("D6")});
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -340,6 +420,8 @@ namespace proyectoAM
 
         private void Tbla_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (Tbla.RowCount == 0) { }
+            else { 
             btnEliminar.Visible = true;
              btnEliminar.Enabled = true;
             double preesub = double.Parse(Tbla.CurrentRow.Cells[4].Value.ToString());
@@ -351,6 +433,7 @@ namespace proyectoAM
             eitbis = esub * 0.18;
 
             pretotal = esub+eitbis;
+            }
 
         }
 
@@ -397,6 +480,27 @@ namespace proyectoAM
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             buscar(textBox1.Text);
+        }
+
+        private void ckSinCompro_CheckedChanged(object sender, EventArgs e)
+        {
+            if(ckSinCompro.Checked == true)
+            {
+                txtNCF.Text = "";
+                cbcompro.Items.Clear();
+            }
+        }
+
+        private void cbcompro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbcompro.SelectedItem == "Negocio")
+            {
+
+            }
+            else if(cbcompro.SelectedItem == "Negocio")
+            {
+
+            }
         }
 
         public void buscar(string nombre)
@@ -495,7 +599,9 @@ namespace proyectoAM
             empty.Colspan=1;
             empty.Border = 0;
 
-            PdfPCell rnce = new PdfPCell( new Phrase("NFC: " + txtNCF.Text + "\n\n", texton));
+            string ne = txtNCF.Text;
+            
+            PdfPCell rnce = new PdfPCell( new Phrase("NFC: " + valo + nf.ToString("D6") + "\n\n", texton));
             rnce.HorizontalAlignment = 0;
             rnce.Colspan = 1;
             rnce.Border = 0;
@@ -567,7 +673,7 @@ namespace proyectoAM
             condicion.Colspan = 1;
             condicion.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
             condicion.Padding = 5;
-            PdfPCell cpago = new PdfPCell(new Phrase(cbPago.SelectedItem.ToString(), texto));
+            PdfPCell cpago = new PdfPCell(new Phrase("", texto));
             cpago.Colspan = 1;
             cpago.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
             cpago.Padding = 5;
@@ -834,7 +940,7 @@ namespace proyectoAM
             PdfPTable firm = new PdfPTable(2);
             firm.WidthPercentage = 85f;
             PdfPCell prefirma = new PdfPCell(new Phrase("Facturado por: ", textfirma));
-            PdfPCell firma = new PdfPCell(new Phrase("Madelyn", textfirma));
+            PdfPCell firma = new PdfPCell(new Phrase("", textfirma));
             float[] widths5 = new float[] { 20f,80f };
             firm.SetWidths(widths5);
             prefirma.Border = 0; firma.Border = 0; firma.BorderWidthBottom = .5f;
