@@ -101,7 +101,11 @@ namespace proyectoAM.clases
             addCli();
                 // string sql = "SELECT factura.id, cliente.nombre, factura.tipo_pago, factura.fech_venc FROM `factura`, cliente, items WHERE cliente.nombre=cliente.nombre and cliente.id='" + id + "' and items.id_cliente=cliente.id and factura.id_item = items.id";
                 //SELECT factura.id, cliente.nombre, factura.tipo_pago, factura.fech_venc FROM `factura`, cliente, items WHERE items.id = factura.id_item and cliente.id = items.id_cliente and factura.fech_venc='22/6/16'
+<<<<<<< HEAD
                 string sql = "SELECT DISTINCT factura.id, cliente.nombre, factura.tipo_pago, factura.fech_venc FROM `factura`, cliente, items WHERE items.id_cliente = cliente.id and factura.fech_venc = items.fech_venc ";
+=======
+                string sql = "SELECT factura.id, cliente.nombre, factura.tipo_pago, factura.fech_venc FROM `factura`, cliente, items WHERE items.id_cliente = cliente.id and factura.fech_venc = items.fech_venc ";
+>>>>>>> origin/master
                 cmd = new MySqlCommand(sql, cn);
             reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -117,6 +121,7 @@ namespace proyectoAM.clases
         }
             return tabla;
     }
+<<<<<<< HEAD
 
         public DataTable mostrarCotiza()
         {
@@ -143,6 +148,8 @@ namespace proyectoAM.clases
             }
             return tabla;
         }
+=======
+>>>>>>> origin/master
         public string mostrarrnc(string nombre)
         {
             conecta();
@@ -152,7 +159,11 @@ namespace proyectoAM.clases
                 string sql = "SELECT rnc FROM cliente WHERE nombre='" + nombre + "'";
                 cmd = new MySqlCommand(sql, cn);
                 reader = cmd.ExecuteReader();
+<<<<<<< HEAD
                 string rc = reader.GetString(sql);
+=======
+                string rc = reader.GetString(nombre);
+>>>>>>> origin/master
                 cn.Close();
                 return rc;
             }
@@ -190,7 +201,11 @@ namespace proyectoAM.clases
             conecta();
                 //addColumns();
                 // string sql = "SELECT `nombre` FROM `cliente` WHERE 1";
+<<<<<<< HEAD
                 string sql = "SELECT factura.id, cliente.nombre, factura.tipo_pago, factura.fech_venc FROM `factura`, cliente, items WHERE cliente.nombre LIKE '%"+nombre+"%' or factura.fech_venc LIKE '%"+fecha+"%'";
+=======
+                string sql = "SELECT factura.id, cliente.nombre, factura.tipo_pago, factura.fech_venc FROM `factura`, cliente, items WHERE cliente.nombre LIKE '%"+nombre+"%' or factura.fech_venc LIKE '%"+fecha+"'%";
+>>>>>>> origin/master
                 cmd = new MySqlCommand(sql, cn);
                 reader = cmd.ExecuteReader();
                 while (reader.Read())

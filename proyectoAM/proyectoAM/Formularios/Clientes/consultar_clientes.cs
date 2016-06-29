@@ -57,8 +57,12 @@ namespace proyectoAM.Formularios.Clientes
         {
             ide = dtvTabla.CurrentRow.Cells[0].Value.ToString();
             cliente = dtvTabla.CurrentRow.Cells[1].Value.ToString();
+<<<<<<< HEAD
             //tiempo = dtpTiempo.Value.ToString("dd/M/yy");
             tiempo = dtvTabla.CurrentRow.Cells[2].Value.ToString();
+=======
+            tiempo = dtpTiempo.Value.ToString("dd/M/yy");
+>>>>>>> origin/master
             mostrar_factura mf = new mostrar_factura();
             mf.ShowDialog();
         }

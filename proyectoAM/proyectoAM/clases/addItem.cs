@@ -79,7 +79,11 @@ namespace proyectoAM.clases
                 conecta();
                 //addColumns();
                 // string sql = "SELECT * FROM cliente;";
+<<<<<<< HEAD
                 string sql = "SELECT DISTINCT factura.id, cliente.nombre, items.cantidad, items.descripcion, items.precio, factura.fech_venc FROM items, cliente, factura WHERE factura.id = '"+id+"' AND factura.id_item=factura.id AND items.id_cliente = cliente.id AND cliente.nombre = '"+nombre+"' AND items.fech_venc = '"+fecha+"'";
+=======
+                string sql = "SELECT factura.id, cliente.nombre, items.cantidad, items.descripcion, items.precio, factura.fech_venc FROM items, cliente, factura WHERE factura.id = '"+id+"' AND cliente.id = '"+id+"' AND items.id_cliente = cliente.id AND cliente.nombre = '"+nombre+"' AND factura.fech_venc = '"+fecha+"'";
+>>>>>>> origin/master
            
                 cmd = new MySqlCommand(sql, cn);
                 reader = cmd.ExecuteReader();

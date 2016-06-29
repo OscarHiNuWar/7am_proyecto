@@ -45,6 +45,7 @@ G:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.menuprincipal.resources
 G:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Properties.Resources.resources
 G:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.csproj.GenerateResource.Cache
 J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Login.login.resources
+<<<<<<< HEAD
 G:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Login.login.resources
 C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\bin\Debug\proyectoAM.exe.config
 C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\obj\Debug\proyectoAM.exe
@@ -72,3 +73,5 @@ C:\Users\Oscar E\Desktop\proyectoAM\proyectoAM\obj\Debug\proyectoAM.csproj.Gener
 J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Comprobante.Comprobante.resources
 J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.cotizacion.consultar_cotizacion.resources
 J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.cotizacion.mostrar_cotizacion.resources
+=======
+>>>>>>> origin/master

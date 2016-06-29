@@ -31,7 +31,11 @@ namespace proyectoAM.clases
             {
                 //id_cliente,
 
+<<<<<<< HEAD
                 string sql = "INSERT INTO factura (id_item, tipo_pago, fech_venc) VALUES('" + data[0] + "','" + data[1] + "','" + data[2] + "'); SELECT max(id) FROM factura";
+=======
+                string sql = "INSERT INTO factura (id_item, tipo_pago, fech_venc) VALUES('" + data[0] + "','" + data[1] + "','" + data[2] + "')";
+>>>>>>> origin/master
                 cmd = new MySqlCommand(sql, cn);
 
                 id = Convert.ToInt32(cmd.ExecuteScalar());
@@ -45,6 +49,7 @@ namespace proyectoAM.clases
             }
             return false;
         }
+<<<<<<< HEAD
 
         public bool agregarCotizacion(string[] data)
         {
@@ -68,6 +73,8 @@ namespace proyectoAM.clases
             }
             return false;
         }
+=======
+>>>>>>> origin/master
 
         public bool modifica(string[] data)
         {

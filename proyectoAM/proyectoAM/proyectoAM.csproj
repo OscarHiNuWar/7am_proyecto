@@ -62,7 +62,10 @@
   <ItemGroup>
     <Compile Include="clases\addCliente.cs" />
     <Compile Include="clases\addItem.cs" />
+<<<<<<< HEAD
     <Compile Include="clases\comprobante.cs" />
+=======
+>>>>>>> origin/master
     <Compile Include="Cotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +118,7 @@
     <Compile Include="Formularios\Clientes\mostrar_factura.Designer.cs">
       <DependentUpon>mostrar_factura.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Formularios\Comprobante\Comprobante.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +137,8 @@
     <Compile Include="Formularios\cotizacion\mostrar_cotizacion.Designer.cs">
       <DependentUpon>mostrar_cotizacion.cs</DependentUpon>
     </Compile>
+=======
+>>>>>>> origin/master
     <Compile Include="Formularios\Login\login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +177,7 @@
     <EmbeddedResource Include="Formularios\Clientes\mostrar_factura.resx">
       <DependentUpon>mostrar_factura.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="Formularios\Comprobante\Comprobante.resx">
       <DependentUpon>Comprobante.cs</DependentUpon>
     </EmbeddedResource>
@@ -180,6 +187,8 @@
     <EmbeddedResource Include="Formularios\cotizacion\mostrar_cotizacion.resx">
       <DependentUpon>mostrar_cotizacion.cs</DependentUpon>
     </EmbeddedResource>
+=======
+>>>>>>> origin/master
     <EmbeddedResource Include="Formularios\Login\login.resx">
       <DependentUpon>login.cs</DependentUpon>
     </EmbeddedResource>

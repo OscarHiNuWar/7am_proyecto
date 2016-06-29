@@ -47,6 +47,7 @@ namespace proyectoAM
         MySqlConnection cn;
         MySqlCommand cmd;
         addFactura fact = new addFactura();
+<<<<<<< HEAD
         comprobante com = new comprobante();
         addItem itm = new addItem();
         double esub, eitbis, pretotal;
@@ -54,6 +55,11 @@ namespace proyectoAM
         int nf;
         int fin;
         string tipo, valo,ini; 
+=======
+        addItem itm = new addItem();
+        double esub, eitbis, pretotal;
+
+>>>>>>> origin/master
 
 
 
@@ -148,7 +154,11 @@ namespace proyectoAM
             txtPrecio.Text = null;
             nudCantidad.Value = 1;
             cbDescripcion.Text = null;
+<<<<<<< HEAD
             
+=======
+            txtidcli.Text = "";
+>>>>>>> origin/master
             //btnAgregar.Enabled = false;
         }
 
@@ -170,10 +180,14 @@ namespace proyectoAM
             dtVence.Value = date2;
             numnfc += 1;
             //txtNCF.Text = codenfc + Convert.ToString(numnfc);
+<<<<<<< HEAD
             Tbla.Columns[4].Visible = false;
             connfc();
             
 
+=======
+            
+>>>>>>> origin/master
         }
 
         public void connfc()
@@ -252,8 +266,13 @@ namespace proyectoAM
             else if (cbMoneda.Text == "") { MessageBox.Show("Favor de poner una moneda"); }
             else if (cbMoneda.SelectedItem == null) { MessageBox.Show("Favor de poner una moneda"); }
             // else if (cbTrabajo.Text == "") { MessageBox.Show("Favor de poner un Trabajo"); }
+<<<<<<< HEAD
            /* else if (cbPago.Text == "") { MessageBox.Show("Favor de poner una condicion de pago"); }
             else if (cbPago.Text == "Condición de Pago") { MessageBox.Show("Favor de poner una condicion de pago"); }*/
+=======
+            else if (cbPago.Text == "") { MessageBox.Show("Favor de poner una condicion de pago"); }
+            else if (cbPago.Text == "Condición de Pago") { MessageBox.Show("Favor de poner una condicion de pago"); }
+>>>>>>> origin/master
             else if (cbDescripcion.Text == "") { MessageBox.Show("Favor de poner un articulo"); }
 
             else {
@@ -284,6 +303,7 @@ namespace proyectoAM
             subitbis = (subtotal * 0.18);
             total = (subtotal + subitbis);
                 
+<<<<<<< HEAD
                
                 if (cbMoneda.Text == "RD$")
                 {
@@ -299,16 +319,42 @@ namespace proyectoAM
                     txtSubtotal.Text =  Convert.ToString(string.Format("{0:N}", subtotal));
                     txtItebis.Text =  Convert.ToString(string.Format("{0:N}", subitbis));
                     txtTotal.Text =  Convert.ToString(string.Format("{0:N}", total));
+=======
+               string din;
+                if (cbMoneda.Text == "Pesos Dominicanos")
+                {
+                    din = "RD$";
+                    // txtSubtotal.Text = "RD$ " + Convert.ToString(subtotal) + ".00";
+                    txtSubtotal.Text = "" + Convert.ToString(string.Format("{0:C}", subtotal));
+                    txtItebis.Text = "" + Convert.ToString(string.Format("{0:C}", subitbis));
+                    txtTotal.Text = "" + Convert.ToString(string.Format("{0:C}", total));
+                }
+                else
+                {
+                    din = "$";
+                    txtSubtotal.Text = " " + Convert.ToString(string.Format("{0:C}", subtotal));
+                    txtItebis.Text = " " + Convert.ToString(string.Format("{0:C}", subitbis));
+                    txtTotal.Text = " " + Convert.ToString(string.Format("{0:C}", total));
+>>>>>>> origin/master
                 }
             
             moneda = cbMoneda.Text.ToString();
             trabajo = "--";
+<<<<<<< HEAD
             //pago = cbPago.SelectedItem.ToString();
             
 
             tabla.Rows.Add(Convert.ToString(cantidad), cbDescripcion.Text.ToString(), din, Convert.ToString(string.Format("{0:C}", precio)), precio);
             canttotal = canttotal + Convert.ToInt32(nudCantidad.Text.ToString());
                 reset();
+=======
+            pago = cbPago.SelectedItem.ToString();
+            
+
+            tabla.Rows.Add(Convert.ToString(cantidad), cbDescripcion.Text.ToString(), "", Convert.ToString(string.Format("{0:C}", precio)), precio);
+            canttotal = canttotal + Convert.ToInt32(nudCantidad.Text.ToString());
+                //reset();
+>>>>>>> origin/master
             }
         }
 
@@ -324,18 +370,32 @@ namespace proyectoAM
                 conecta();
             }
             catch { }
+<<<<<<< HEAD
 
 
             foreach (DataGridViewRow rows in Tbla.Rows)
             {
                 itm.agregarItems(new string[] { txtidcli.Text, rows.Cells[0].Value.ToString(), rows.Cells[1].Value.ToString(), rows.Cells[3].Value.ToString(), vence });
             }
+=======
+>>>>>>> origin/master
 
             if (fact.agregarFactura(new string[] { txtidcli.Text, "", vence }))
             {
                 // MessageBox.Show("Agregado a Base de datos");
             }
             com.agregarActu(new string[] { tipo, valo, ini, nf.ToString("D6"), fin.ToString("D6")});
+        }
+
+            foreach (DataGridViewRow rows in Tbla.Rows)
+            {
+                itm.agregarItems(new string[] { txtidcli.Text, rows.Cells[0].Value.ToString(), rows.Cells[1].Value.ToString(), rows.Cells[3].Value.ToString(), vence });
+            }
+
+            if (fact.agregarFactura(new string[] { txtidcli.Text, cbPago.SelectedItem.ToString(), vence }))
+            {
+                // MessageBox.Show("Agregado a Base de datos");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -393,6 +453,7 @@ namespace proyectoAM
             
 
             esub = Convert.ToInt32(subtotal) - esub;
+<<<<<<< HEAD
             subtotal = esub;
             subitbis = subitbis - eitbis;
             // subitbis = (subtotal * 0.18) + esub;
@@ -401,6 +462,15 @@ namespace proyectoAM
             txtSubtotal.Text =din+ esub.ToString();
             txtItebis.Text = din + subitbis.ToString();
             txtTotal.Text = din + total.ToString();
+=======
+            subtotal = esub - subtotal;
+            subitbis = subitbis - eitbis;
+            total = total - pretotal;
+           // pretotal = total - pretotal;
+            txtSubtotal.Text = esub.ToString();
+            txtItebis.Text = eitbis.ToString();
+            txtTotal.Text = pretotal.ToString();
+>>>>>>> origin/master
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -420,10 +490,15 @@ namespace proyectoAM
 
         private void Tbla_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+<<<<<<< HEAD
             if (Tbla.RowCount == 0) { }
             else { 
             btnEliminar.Visible = true;
              btnEliminar.Enabled = true;
+=======
+           /*  btnEliminar.Visible = true;
+             btnEliminar.Enabled = true;*/
+>>>>>>> origin/master
             double preesub = double.Parse(Tbla.CurrentRow.Cells[4].Value.ToString());
 
             
@@ -433,7 +508,10 @@ namespace proyectoAM
             eitbis = esub * 0.18;
 
             pretotal = esub+eitbis;
+<<<<<<< HEAD
             }
+=======
+>>>>>>> origin/master
 
         }
 
@@ -482,6 +560,7 @@ namespace proyectoAM
             buscar(textBox1.Text);
         }
 
+<<<<<<< HEAD
         private void ckSinCompro_CheckedChanged(object sender, EventArgs e)
         {
             if(ckSinCompro.Checked == true)
@@ -503,6 +582,8 @@ namespace proyectoAM
             }
         }
 
+=======
+>>>>>>> origin/master
         public void buscar(string nombre)
         {
             try
@@ -940,7 +1021,11 @@ namespace proyectoAM
             PdfPTable firm = new PdfPTable(2);
             firm.WidthPercentage = 85f;
             PdfPCell prefirma = new PdfPCell(new Phrase("Facturado por: ", textfirma));
+<<<<<<< HEAD
             PdfPCell firma = new PdfPCell(new Phrase("", textfirma));
+=======
+            PdfPCell firma = new PdfPCell(new Phrase("Madelyn", textfirma));
+>>>>>>> origin/master
             float[] widths5 = new float[] { 20f,80f };
             firm.SetWidths(widths5);
             prefirma.Border = 0; firma.Border = 0; firma.BorderWidthBottom = .5f;

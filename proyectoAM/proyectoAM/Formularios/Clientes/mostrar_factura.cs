@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 ﻿using MySql.Data.MySqlClient;
 using System;
+=======
+﻿using System;
+>>>>>>> origin/master
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +23,7 @@ namespace proyectoAM.Formularios.Clientes
         public string id = consultar_clientes.ide;
         public string nombre = consultar_clientes.cliente;
         public string fecha = consultar_clientes.tiempo;
+<<<<<<< HEAD
         MySqlDataReader reader;
         MySqlConnection cn;
         MySqlCommand cmd;
@@ -26,11 +31,14 @@ namespace proyectoAM.Formularios.Clientes
         double precio, itbis, total;
 
         public void conecta() { cn = conDB.conecta(); cn.Open(); }
+=======
+>>>>>>> origin/master
 
         public mostrar_factura()
         {
             InitializeComponent();
             dgvFact.DataSource = ite.muestra(id, nombre, fecha);
+<<<<<<< HEAD
             rn();
             txtRnc.Text =rc;
             string sprecio;
@@ -74,5 +82,9 @@ namespace proyectoAM.Formularios.Clientes
             }
             return null;
         }
+=======
+            dgvFact.Columns[0].Visible = false;
+        }
+>>>>>>> origin/master
     }
 }

@@ -3,7 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
+<<<<<<< HEAD
 -- Tiempo de generación: 28-06-2016 a las 22:07:27
+=======
+-- Tiempo de generación: 24-06-2016 a las 20:54:38
+>>>>>>> origin/master
 -- Versión del servidor: 5.6.12-log
 -- Versión de PHP: 5.4.12
 
@@ -35,7 +39,11 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `telefono` varchar(44) NOT NULL,
   `correo` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
+<<<<<<< HEAD
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+=======
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+>>>>>>> origin/master
 
 --
 -- Volcado de datos para la tabla `cliente`
@@ -50,6 +58,7 @@ INSERT INTO `cliente` (`id`, `nombre`, `rnc`, `telefono`, `correo`) VALUES
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Estructura de tabla para la tabla `comprobante`
 --
 
@@ -94,10 +103,7 @@ CREATE TABLE IF NOT EXISTS `cotizacion` (
 
 INSERT INTO `cotizacion` (`id`, `id_item`, `tipo_pago`, `fech_venc`) VALUES
 (1, '2', 'Efectivo', '28/6/16 ');
-
--- --------------------------------------------------------
-
---
+=======
 -- Estructura de tabla para la tabla `factura`
 --
 
@@ -106,6 +112,59 @@ CREATE TABLE IF NOT EXISTS `factura` (
   `id_item` int(11) NOT NULL,
   `tipo_pago` varchar(20) NOT NULL,
   `fech_venc` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `factura`
+--
+
+INSERT INTO `factura` (`id`, `id_item`, `tipo_pago`, `fech_venc`) VALUES
+(2, 2, 'Efectivo', '24/6/16 '),
+(3, 3, 'Efectivo', '25/6/16 ');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `items`
+--
+
+CREATE TABLE IF NOT EXISTS `items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_cliente` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `descripcion` varchar(30) NOT NULL,
+  `precio` varchar(11) NOT NULL,
+  `fech_venc` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Volcado de datos para la tabla `items`
+--
+
+INSERT INTO `items` (`id`, `id_cliente`, `cantidad`, `descripcion`, `precio`, `fech_venc`) VALUES
+(3, 1, 1, 'Realización pagina web', 'RD$1,500.00', '24/6/16 '),
+(4, 1, 1, 'Diseño de línea grafica', 'RD$3,000.00', '24/6/16 '),
+(5, 1, 1, 'Realización pagina web', 'RD$2.00', '25/6/16 '),
+(6, 1, 1, 'Diseño de línea grafica', 'RD$4.00', '25/6/16 ');
+>>>>>>> origin/master
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `nfc`
+--
+
+CREATE TABLE IF NOT EXISTS `nfc` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+<<<<<<< HEAD
+  `id_item` int(11) NOT NULL,
+  `tipo_pago` varchar(20) NOT NULL,
+  `fech_venc` varchar(200) NOT NULL,
+=======
+  `codigo` varchar(255) NOT NULL,
+>>>>>>> origin/master
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
@@ -133,6 +192,7 @@ INSERT INTO `factura` (`id`, `id_item`, `tipo_pago`, `fech_venc`) VALUES
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Estructura de tabla para la tabla `items`
 --
 
@@ -177,8 +237,25 @@ INSERT INTO `items` (`id`, `id_cliente`, `cantidad`, `descripcion`, `precio`, `f
 CREATE TABLE IF NOT EXISTS `nfc` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `codigo` varchar(255) NOT NULL,
+=======
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user` varchar(255) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `class` varchar(255) NOT NULL,
+>>>>>>> origin/master
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `user`, `pass`, `class`) VALUES
+(1, 'Oscar', '123', 'administrador');
 
 -- --------------------------------------------------------
 
