@@ -57,7 +57,6 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.Tbla = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.cbPago = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -247,6 +246,7 @@
             this.txtidcli.ReadOnly = true;
             this.txtidcli.Size = new System.Drawing.Size(100, 20);
             this.txtidcli.TabIndex = 31;
+            this.txtidcli.Visible = false;
             // 
             // label10
             // 
@@ -345,7 +345,6 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.cbPago);
             this.groupBox4.Controls.Add(this.dtVence);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Location = new System.Drawing.Point(545, 76);
@@ -353,15 +352,6 @@
             this.groupBox4.Size = new System.Drawing.Size(226, 90);
             this.groupBox4.TabIndex = 46;
             this.groupBox4.TabStop = false;
-            // 
-            // cbPago
-            // 
-            this.cbPago.FormattingEnabled = true;
-            this.cbPago.Location = new System.Drawing.Point(11, 57);
-            this.cbPago.Name = "cbPago";
-            this.cbPago.Size = new System.Drawing.Size(127, 21);
-            this.cbPago.TabIndex = 17;
-            this.cbPago.Text = "Condición de Pago";
             // 
             // groupBox5
             // 
@@ -432,7 +422,6 @@
         private System.Windows.Forms.TextBox txtbuscar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ComboBox cbPago;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox txtidcli;
     }

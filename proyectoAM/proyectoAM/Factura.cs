@@ -47,24 +47,22 @@ namespace proyectoAM
         MySqlConnection cn;
         MySqlCommand cmd;
         addFactura fact = new addFactura();
-<<<<<<< HEAD
         comprobante com = new comprobante();
         addItem itm = new addItem();
         double esub, eitbis, pretotal;
         string din;
         int nf;
         int fin;
-        string tipo, valo,ini; 
-=======
-        addItem itm = new addItem();
-        double esub, eitbis, pretotal;
+        string tipo, valo,ini;
 
->>>>>>> origin/master
-
-
+        
 
         public void conecta() { cn = conDB.conecta(); cn.Open(); }
         
+        public void traeDatos()
+        {
+          // fact.
+        }
 
         DataTable addColumns()
         {
@@ -154,11 +152,7 @@ namespace proyectoAM
             txtPrecio.Text = null;
             nudCantidad.Value = 1;
             cbDescripcion.Text = null;
-<<<<<<< HEAD
             
-=======
-            txtidcli.Text = "";
->>>>>>> origin/master
             //btnAgregar.Enabled = false;
         }
 
@@ -178,16 +172,12 @@ namespace proyectoAM
             user = Environment.UserName.ToString();
             DateTime date2 = DateTime.Now; // will give the date for today
             dtVence.Value = date2;
-            numnfc += 1;
+            
             //txtNCF.Text = codenfc + Convert.ToString(numnfc);
-<<<<<<< HEAD
             Tbla.Columns[4].Visible = false;
-            connfc();
-            
-
-=======
-            
->>>>>>> origin/master
+           
+            cbcompro.Text = "Negocio";
+           // connfc();
         }
 
         public void connfc()
@@ -198,14 +188,14 @@ namespace proyectoAM
             if(id == com.traerid())
             { id++;
             }
-                tipo = com.traertipo();
-            ini = com.traerinicio();
-            valo = com.traervalor();
-            txtNCF.Text = com.traeractual();
+                tipo = com.traertipo(cbcompro.Text);
+            ini = com.traerinicio(cbcompro.Text);
+            valo = com.traervalor(cbcompro.Text);
+            txtNCF.Text = com.traeractual(cbcompro.Text);
             nf = int.Parse(txtNCF.Text);
-            fin = com.traermax();
+            fin = com.traermax(cbcompro.Text);
             int prefin = fin - nf;
-                nf++;
+             //   nf++;
 				
             if(fin >= prefin)
             {
@@ -215,48 +205,19 @@ namespace proyectoAM
             {
                 MessageBox.Show("No quedan NFCs. No puede facturar.");
                 btnAgregar.Enabled = false;
-            }
-            txtNCF.Text = com.traervalor()+(nf).ToString();
+                }else { btnAgregar.Visible = true; }
+            txtNCF.Text = com.traervalor(cbcompro.Text) +(nf).ToString();
             } catch(Exception ex)
             {
                 MessageBox.Show("Nesesita un comprobante.");
                 btnAgregar.Visible = false;
             }
+            
            
 
         }
 		
-		public void guberna(){
-			try { 
-            id = com.traerid();
-            if(id == com.traerid())
-            { id++;
-            }
-            ini = com.traerinicio();
-            valo = com.traervalor();
-            txtNCF.Text = com.traeractual();
-            nf = int.Parse(txtNCF.Text);
-            fin = com.traermax();
-            int prefin = fin - nf;
-                nf++;
-				
-            if(fin >= prefin)
-            {
-                MessageBox.Show("Quedan "+prefin+" NFCs");
-            }
-            if(nf == fin || nf>fin)
-            {
-                MessageBox.Show("No quedan NFCs. No puede facturar.");
-                btnAgregar.Enabled = false;
-            }
-            txtNCF.Text = com.traervalor()+(nf).ToString();
-            } catch(Exception ex)
-            {
-                MessageBox.Show("Nesesita un comprobante.");
-                
-            }
 		
-		}
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -266,13 +227,8 @@ namespace proyectoAM
             else if (cbMoneda.Text == "") { MessageBox.Show("Favor de poner una moneda"); }
             else if (cbMoneda.SelectedItem == null) { MessageBox.Show("Favor de poner una moneda"); }
             // else if (cbTrabajo.Text == "") { MessageBox.Show("Favor de poner un Trabajo"); }
-<<<<<<< HEAD
            /* else if (cbPago.Text == "") { MessageBox.Show("Favor de poner una condicion de pago"); }
             else if (cbPago.Text == "Condición de Pago") { MessageBox.Show("Favor de poner una condicion de pago"); }*/
-=======
-            else if (cbPago.Text == "") { MessageBox.Show("Favor de poner una condicion de pago"); }
-            else if (cbPago.Text == "Condición de Pago") { MessageBox.Show("Favor de poner una condicion de pago"); }
->>>>>>> origin/master
             else if (cbDescripcion.Text == "") { MessageBox.Show("Favor de poner un articulo"); }
 
             else {
@@ -303,7 +259,6 @@ namespace proyectoAM
             subitbis = (subtotal * 0.18);
             total = (subtotal + subitbis);
                 
-<<<<<<< HEAD
                
                 if (cbMoneda.Text == "RD$")
                 {
@@ -319,42 +274,16 @@ namespace proyectoAM
                     txtSubtotal.Text =  Convert.ToString(string.Format("{0:N}", subtotal));
                     txtItebis.Text =  Convert.ToString(string.Format("{0:N}", subitbis));
                     txtTotal.Text =  Convert.ToString(string.Format("{0:N}", total));
-=======
-               string din;
-                if (cbMoneda.Text == "Pesos Dominicanos")
-                {
-                    din = "RD$";
-                    // txtSubtotal.Text = "RD$ " + Convert.ToString(subtotal) + ".00";
-                    txtSubtotal.Text = "" + Convert.ToString(string.Format("{0:C}", subtotal));
-                    txtItebis.Text = "" + Convert.ToString(string.Format("{0:C}", subitbis));
-                    txtTotal.Text = "" + Convert.ToString(string.Format("{0:C}", total));
-                }
-                else
-                {
-                    din = "$";
-                    txtSubtotal.Text = " " + Convert.ToString(string.Format("{0:C}", subtotal));
-                    txtItebis.Text = " " + Convert.ToString(string.Format("{0:C}", subitbis));
-                    txtTotal.Text = " " + Convert.ToString(string.Format("{0:C}", total));
->>>>>>> origin/master
                 }
             
             moneda = cbMoneda.Text.ToString();
             trabajo = "--";
-<<<<<<< HEAD
             //pago = cbPago.SelectedItem.ToString();
             
 
             tabla.Rows.Add(Convert.ToString(cantidad), cbDescripcion.Text.ToString(), din, Convert.ToString(string.Format("{0:C}", precio)), precio);
             canttotal = canttotal + Convert.ToInt32(nudCantidad.Text.ToString());
                 reset();
-=======
-            pago = cbPago.SelectedItem.ToString();
-            
-
-            tabla.Rows.Add(Convert.ToString(cantidad), cbDescripcion.Text.ToString(), "", Convert.ToString(string.Format("{0:C}", precio)), precio);
-            canttotal = canttotal + Convert.ToInt32(nudCantidad.Text.ToString());
-                //reset();
->>>>>>> origin/master
             }
         }
 
@@ -370,32 +299,20 @@ namespace proyectoAM
                 conecta();
             }
             catch { }
-<<<<<<< HEAD
 
 
             foreach (DataGridViewRow rows in Tbla.Rows)
             {
                 itm.agregarItems(new string[] { txtidcli.Text, rows.Cells[0].Value.ToString(), rows.Cells[1].Value.ToString(), rows.Cells[3].Value.ToString(), vence });
             }
-=======
->>>>>>> origin/master
 
             if (fact.agregarFactura(new string[] { txtidcli.Text, "", vence }))
             {
                 // MessageBox.Show("Agregado a Base de datos");
             }
-            com.agregarActu(new string[] { tipo, valo, ini, nf.ToString("D6"), fin.ToString("D6")});
-        }
-
-            foreach (DataGridViewRow rows in Tbla.Rows)
-            {
-                itm.agregarItems(new string[] { txtidcli.Text, rows.Cells[0].Value.ToString(), rows.Cells[1].Value.ToString(), rows.Cells[3].Value.ToString(), vence });
-            }
-
-            if (fact.agregarFactura(new string[] { txtidcli.Text, cbPago.SelectedItem.ToString(), vence }))
-            {
-                // MessageBox.Show("Agregado a Base de datos");
-            }
+            nf++;
+            com.agregarActu(new string[] { tipo, valo, ini, nf.ToString("D8"), fin.ToString("D8")});
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -444,16 +361,13 @@ namespace proyectoAM
 
         private void Tbla_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-           btnEliminar.Visible = true;
+            btnEliminar.Visible = true;
             btnEliminar.Enabled = true;
         }
 
         public void eliminacant()
         {
-            
-
             esub = Convert.ToInt32(subtotal) - esub;
-<<<<<<< HEAD
             subtotal = esub;
             subitbis = subitbis - eitbis;
             // subitbis = (subtotal * 0.18) + esub;
@@ -462,23 +376,12 @@ namespace proyectoAM
             txtSubtotal.Text =din+ esub.ToString();
             txtItebis.Text = din + subitbis.ToString();
             txtTotal.Text = din + total.ToString();
-=======
-            subtotal = esub - subtotal;
-            subitbis = subitbis - eitbis;
-            total = total - pretotal;
-           // pretotal = total - pretotal;
-            txtSubtotal.Text = esub.ToString();
-            txtItebis.Text = eitbis.ToString();
-            txtTotal.Text = pretotal.ToString();
->>>>>>> origin/master
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Estas seguro de eliminar esta Tabla", "Eliminar Feriado", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                
-                
                 foreach (DataGridViewRow item in this.Tbla.SelectedRows)
                 {
                     Tbla.Rows.RemoveAt(item.Index);
@@ -490,15 +393,10 @@ namespace proyectoAM
 
         private void Tbla_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-<<<<<<< HEAD
             if (Tbla.RowCount == 0) { }
             else { 
             btnEliminar.Visible = true;
              btnEliminar.Enabled = true;
-=======
-           /*  btnEliminar.Visible = true;
-             btnEliminar.Enabled = true;*/
->>>>>>> origin/master
             double preesub = double.Parse(Tbla.CurrentRow.Cells[4].Value.ToString());
 
             
@@ -508,10 +406,7 @@ namespace proyectoAM
             eitbis = esub * 0.18;
 
             pretotal = esub+eitbis;
-<<<<<<< HEAD
             }
-=======
->>>>>>> origin/master
 
         }
 
@@ -560,30 +455,56 @@ namespace proyectoAM
             buscar(textBox1.Text);
         }
 
-<<<<<<< HEAD
         private void ckSinCompro_CheckedChanged(object sender, EventArgs e)
         {
             if(ckSinCompro.Checked == true)
             {
                 txtNCF.Text = "";
-                cbcompro.Items.Clear();
+                cbcompro.Enabled = false;
             }
+            else
+            {
+                cbcompro.Enabled = true;
+            }
+            
         }
 
         private void cbcompro_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(cbcompro.SelectedItem == "Negocio")
             {
+                
+                connfc();
 
             }
-            else if(cbcompro.SelectedItem == "Negocio")
+            else if(cbcompro.SelectedItem == "Gubernamental")
+            {
+               
+                connfc();
+            }
+            
+        }
+
+        void traenfc()
+        {
+            try
             {
 
+                cn.Open();
+                string sql = "SELECT valor, max(actual) as actual FROM `comprobante` WHERE tipo like '%" + cbcompro.SelectedItem.ToString() + "%'";
+                cmd = new MySqlCommand(sql, cn);
+                reader = cmd.ExecuteReader();
+                reader.Read();
+                txtNCF.Text = reader["valor"].ToString() + reader["actual"].ToString();
+                reader.Close();
+                cn.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error en: " + ex);
             }
         }
 
-=======
->>>>>>> origin/master
         public void buscar(string nombre)
         {
             try
@@ -682,7 +603,7 @@ namespace proyectoAM
 
             string ne = txtNCF.Text;
             
-            PdfPCell rnce = new PdfPCell( new Phrase("NFC: " + valo + nf.ToString("D6") + "\n\n", texton));
+            PdfPCell rnce = new PdfPCell( new Phrase("NFC: " + valo + nf.ToString("D8") + "\n\n", texton));
             rnce.HorizontalAlignment = 0;
             rnce.Colspan = 1;
             rnce.Border = 0;
@@ -1021,11 +942,7 @@ namespace proyectoAM
             PdfPTable firm = new PdfPTable(2);
             firm.WidthPercentage = 85f;
             PdfPCell prefirma = new PdfPCell(new Phrase("Facturado por: ", textfirma));
-<<<<<<< HEAD
             PdfPCell firma = new PdfPCell(new Phrase("", textfirma));
-=======
-            PdfPCell firma = new PdfPCell(new Phrase("Madelyn", textfirma));
->>>>>>> origin/master
             float[] widths5 = new float[] { 20f,80f };
             firm.SetWidths(widths5);
             prefirma.Border = 0; firma.Border = 0; firma.BorderWidthBottom = .5f;

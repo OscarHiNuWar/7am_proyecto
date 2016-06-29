@@ -84,8 +84,8 @@ namespace proyectoAM
   
         void addCondicionPago()
         {
-            cbPago.Items.Add("Efectivo");
-            cbPago.Items.Add("Cheque");
+           /* cbPago.Items.Add("Efectivo");
+            cbPago.Items.Add("Cheque");*/
         }
 
         void addMoneda()
@@ -118,10 +118,6 @@ namespace proyectoAM
         {
             InitializeComponent();
             btnEliminar.Enabled = false;
-            //btnExportar.Enabled = false;
-            //DataTable tabla = agrego.muestra();
-            //Programc pdf = new Programc();
-            //con.conectame();
             Tbla.DataSource = addColumns();
             addNombre();
             addCondicionPago();
@@ -142,7 +138,7 @@ namespace proyectoAM
             else if (cbNombre.Text == "") { MessageBox.Show("Favor de poner un cliente"); }
             else if (cbMoneda.Text == "") { MessageBox.Show("Favor de poner una moneda"); }
             
-            else if (cbPago.Text == "") { MessageBox.Show("Favor de poner una condicion de pago"); }
+            //else if (cbPago.Text == "") { MessageBox.Show("Favor de poner una condicion de pago"); }
             else if (cbDescripcion.Text == "") { MessageBox.Show("Favor de poner un articulo"); }
 
             else
@@ -157,10 +153,7 @@ namespace proyectoAM
                 string rnc = txtRnc.Text;
 
                 vence = dtVence.Value.ToString().Remove(8);
-                /* if (con.agregaruser(new string[] { nombre, nfc, rnc, email, telefono }))
-                      {
-
-                      }*/
+               
 
 
                 btnExportar.Enabled = true;
@@ -192,10 +185,10 @@ namespace proyectoAM
 
                 moneda = cbMoneda.Text.ToString();
                 trabajo = "--";
-                pago = cbPago.SelectedItem.ToString();
+                //pago = cbPago.SelectedItem.ToString();
                 vence = dtVence.Value.ToString().Remove(8);
 
-                tabla.Rows.Add(Convert.ToString(cantidad), cbDescripcion.Text.ToString(), din, Convert.ToString(string.Format("{0:n0}", precio)));
+                tabla.Rows.Add(Convert.ToString(cantidad), cbDescripcion.Text.ToString(), din, Convert.ToString(string.Format("{0:N}", precio)));
                 canttotal = canttotal + Convert.ToInt32(nudCantidad.Text.ToString());
                 
             }
@@ -229,7 +222,7 @@ namespace proyectoAM
                 itm.agregarItems(new string[] { txtidcli.Text, rows.Cells[0].Value.ToString(), rows.Cells[1].Value.ToString(), rows.Cells[3].Value.ToString(), vence });
             }
 
-            if (fact.agregarCotizacion(new string[] { txtidcli.Text, cbPago.SelectedItem.ToString(), vence }))
+            if (fact.agregarCotizacion(new string[] { txtidcli.Text, "", vence }))
             {
                 // MessageBox.Show("Agregado a Base de datos");
             }
@@ -416,7 +409,7 @@ namespace proyectoAM
             condicion.Colspan = 1;
             condicion.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
             condicion.Padding = 5;
-            PdfPCell cpago = new PdfPCell(new Phrase(cbPago.SelectedItem.ToString(), texto));
+            PdfPCell cpago = new PdfPCell(new Phrase("", texto));
             cpago.Colspan = 1;
             cpago.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
             cpago.Padding = 5;

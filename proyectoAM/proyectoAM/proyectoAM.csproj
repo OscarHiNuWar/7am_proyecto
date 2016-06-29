@@ -62,10 +62,7 @@
   <ItemGroup>
     <Compile Include="clases\addCliente.cs" />
     <Compile Include="clases\addItem.cs" />
-<<<<<<< HEAD
     <Compile Include="clases\comprobante.cs" />
-=======
->>>>>>> origin/master
     <Compile Include="Cotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,12 +87,6 @@
     <Compile Include="Formularios\Clientes\add_cliente.Designer.cs">
       <DependentUpon>add_cliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Clientes\agregar_cliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Clientes\agregar_cliente.Designer.cs">
-      <DependentUpon>agregar_cliente.cs</DependentUpon>
-    </Compile>
     <Compile Include="clases\addFactura.cs" />
     <Compile Include="clases\conDB.cs" />
     <Compile Include="conexion.cs" />
@@ -118,7 +109,12 @@
     <Compile Include="Formularios\Clientes\mostrar_factura.Designer.cs">
       <DependentUpon>mostrar_factura.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
+    <Compile Include="Formularios\Clientes\ver_clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Clientes\ver_clientes.Designer.cs">
+      <DependentUpon>ver_clientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Comprobante\Comprobante.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,8 +133,6 @@
     <Compile Include="Formularios\cotizacion\mostrar_cotizacion.Designer.cs">
       <DependentUpon>mostrar_cotizacion.cs</DependentUpon>
     </Compile>
-=======
->>>>>>> origin/master
     <Compile Include="Formularios\Login\login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,9 +159,6 @@
     <EmbeddedResource Include="Formularios\Clientes\add_cliente.resx">
       <DependentUpon>add_cliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Clientes\agregar_cliente.resx">
-      <DependentUpon>agregar_cliente.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Factura.resx">
       <DependentUpon>Factura.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,7 +168,9 @@
     <EmbeddedResource Include="Formularios\Clientes\mostrar_factura.resx">
       <DependentUpon>mostrar_factura.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
+    <EmbeddedResource Include="Formularios\Clientes\ver_clientes.resx">
+      <DependentUpon>ver_clientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Comprobante\Comprobante.resx">
       <DependentUpon>Comprobante.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,8 +180,6 @@
     <EmbeddedResource Include="Formularios\cotizacion\mostrar_cotizacion.resx">
       <DependentUpon>mostrar_cotizacion.cs</DependentUpon>
     </EmbeddedResource>
-=======
->>>>>>> origin/master
     <EmbeddedResource Include="Formularios\Login\login.resx">
       <DependentUpon>login.cs</DependentUpon>
     </EmbeddedResource>

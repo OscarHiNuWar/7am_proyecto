@@ -16,12 +16,8 @@ namespace proyectoAM
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< HEAD
             //Application.Run(new Formularios.Login.login());
             Application.Run(new menuprincipal());
-=======
-            Application.Run(new Formularios.Login.login());
->>>>>>> origin/master
         }
     }
 }

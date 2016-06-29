@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbNombre = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtRnc = new System.Windows.Forms.TextBox();
@@ -51,11 +51,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.nudCantidad = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-<<<<<<< HEAD
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-=======
->>>>>>> origin/master
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cbDescripcion = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -63,22 +60,12 @@
             this.txtsubsin = new System.Windows.Forms.TextBox();
             this.txtitbsin = new System.Windows.Forms.TextBox();
             this.txttolsin = new System.Windows.Forms.TextBox();
-<<<<<<< HEAD
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.ckSinCompro = new System.Windows.Forms.CheckBox();
             this.cbcompro = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.txtidcli = new System.Windows.Forms.TextBox();
-=======
-            this.cbPago = new System.Windows.Forms.ComboBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.txtidcli = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
->>>>>>> origin/master
             ((System.ComponentModel.ISupportInitialize)(this.Tbla)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -140,14 +127,14 @@
             this.Tbla.AllowUserToAddRows = false;
             this.Tbla.AllowUserToDeleteRows = false;
             this.Tbla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Tbla.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Tbla.DefaultCellStyle = dataGridViewCellStyle1;
             this.Tbla.Location = new System.Drawing.Point(13, 278);
             this.Tbla.Name = "Tbla";
             this.Tbla.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
@@ -268,28 +255,12 @@
             // 
             // txtNCF
             // 
-<<<<<<< HEAD
             this.txtNCF.Location = new System.Drawing.Point(101, 17);
-=======
-            this.txtNCF.Location = new System.Drawing.Point(60, 17);
->>>>>>> origin/master
             this.txtNCF.Name = "txtNCF";
             this.txtNCF.ReadOnly = true;
             this.txtNCF.Size = new System.Drawing.Size(149, 20);
             this.txtNCF.TabIndex = 2;
             // 
-<<<<<<< HEAD
-=======
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(23, 21);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(28, 13);
-            this.label14.TabIndex = 31;
-            this.label14.Text = "NCF";
-            // 
->>>>>>> origin/master
             // label15
             // 
             this.label15.AutoSize = true;
@@ -331,7 +302,6 @@
             this.groupBox1.TabIndex = 34;
             this.groupBox1.TabStop = false;
             // 
-<<<<<<< HEAD
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(384, 22);
@@ -349,8 +319,6 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Buscar:";
             // 
-=======
->>>>>>> origin/master
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.cbDescripcion);
@@ -418,25 +386,9 @@
             this.txttolsin.Size = new System.Drawing.Size(100, 20);
             this.txttolsin.TabIndex = 41;
             // 
-<<<<<<< HEAD
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label9);
-=======
-            // cbPago
-            // 
-            this.cbPago.FormattingEnabled = true;
-            this.cbPago.Location = new System.Drawing.Point(13, 57);
-            this.cbPago.Name = "cbPago";
-            this.cbPago.Size = new System.Drawing.Size(127, 21);
-            this.cbPago.TabIndex = 9;
-            this.cbPago.Text = "Condición de Pago";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Controls.Add(this.cbPago);
->>>>>>> origin/master
             this.groupBox4.Controls.Add(this.dtVence);
             this.groupBox4.Location = new System.Drawing.Point(539, 75);
             this.groupBox4.Name = "groupBox4";
@@ -446,21 +398,15 @@
             // 
             // groupBox5
             // 
-<<<<<<< HEAD
             this.groupBox5.Controls.Add(this.ckSinCompro);
             this.groupBox5.Controls.Add(this.cbcompro);
             this.groupBox5.Controls.Add(this.txtNCF);
-=======
-            this.groupBox5.Controls.Add(this.txtNCF);
-            this.groupBox5.Controls.Add(this.label14);
->>>>>>> origin/master
             this.groupBox5.Location = new System.Drawing.Point(12, 172);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(752, 46);
             this.groupBox5.TabIndex = 43;
             this.groupBox5.TabStop = false;
             // 
-<<<<<<< HEAD
             // ckSinCompro
             // 
             this.ckSinCompro.AutoSize = true;
@@ -474,6 +420,7 @@
             // 
             // cbcompro
             // 
+            this.cbcompro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbcompro.FormattingEnabled = true;
             this.cbcompro.Location = new System.Drawing.Point(18, 16);
             this.cbcompro.Name = "cbcompro";
@@ -481,8 +428,6 @@
             this.cbcompro.TabIndex = 32;
             this.cbcompro.SelectedIndexChanged += new System.EventHandler(this.cbcompro_SelectedIndexChanged);
             // 
-=======
->>>>>>> origin/master
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.btnAgregar);
@@ -500,26 +445,6 @@
             this.txtidcli.Name = "txtidcli";
             this.txtidcli.Size = new System.Drawing.Size(100, 20);
             this.txtidcli.TabIndex = 45;
-<<<<<<< HEAD
-=======
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(340, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Buscar:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(384, 22);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(201, 20);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
->>>>>>> origin/master
             // 
             // Factura
             // 
@@ -589,21 +514,14 @@
         private System.Windows.Forms.TextBox txtsubsin;
         private System.Windows.Forms.TextBox txtitbsin;
         private System.Windows.Forms.TextBox txttolsin;
-<<<<<<< HEAD
-=======
-        private System.Windows.Forms.ComboBox cbPago;
->>>>>>> origin/master
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox txtidcli;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
-<<<<<<< HEAD
         private System.Windows.Forms.ComboBox cbcompro;
         private System.Windows.Forms.CheckBox ckSinCompro;
-=======
->>>>>>> origin/master
     }
 }
 

@@ -24,8 +24,32 @@ namespace proyectoAM.Formularios.cotizacion
         MySqlCommand cmd;
         string rc;
         double precio, itbis, total;
+        string[] pasar;
+
+        clases.addFactura fact = new clases.addFactura();
+        
 
         public void conecta() { cn = conDB.conecta(); cn.Open(); }
+
+        public void mandaDatos()
+        {
+            pasar[0] = txtNombre.ToString();
+            foreach (DataGridViewRow row in dgvFact.Rows)
+            {
+
+                pasar[1] = row.Cells[0].ToString();
+                pasar[2] = row.Cells[1].ToString();
+                pasar[3] = row.Cells[3].ToString();
+                pasar[4] = row.Cells[4].ToString();
+               // pasar[5] = row.Cells[5].ToString();
+            }
+            fact.iniciarFactura(pasar);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            mandaDatos();
+        }
 
         public mostrar_cotizacion()
         {
@@ -38,7 +62,7 @@ namespace proyectoAM.Formularios.cotizacion
             foreach (DataGridViewRow row in dgvFact.Rows)
             {
                 sprecio = row.Cells[4].Value.ToString();
-                sprecio = sprecio.Remove(0, 3);
+                //sprecio = sprecio.Remove(0, 3);
                 precio = double.Parse(sprecio) + precio;
             }
             //string sprecio = dgvFact.RowsAdded.Cells[3].Value.ToString();

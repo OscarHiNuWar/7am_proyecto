@@ -52,6 +52,39 @@ namespace proyectoAM.clases
             return false;
         }
 
+        public bool llevaraFact(string[] data)
+        {
+            conecta();
+
+            try
+            {
+                //id_cliente,
+                string idcli;
+                string cantidad;
+                string descripcion;
+                string precio;
+                string vence;
+                string sql = "";
+                 idcli = data[0].ToString();
+                 cantidad = data[1].ToString();
+                 descripcion = data[2].ToString();
+                 precio = data[3].ToString();
+                 vence = data[4].ToString();
+                cmd = new MySqlCommand(sql, cn);
+                cmd.ExecuteNonQuery();
+
+                // ide = Convert.ToInt32(cmd.ExecuteScalar());
+                cn.Close();
+                return true;
+
+            }
+            catch (MySqlException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+            }
+            return false;
+        }
+
         DataTable addItems()
         {
             table = new DataTable();
@@ -79,11 +112,7 @@ namespace proyectoAM.clases
                 conecta();
                 //addColumns();
                 // string sql = "SELECT * FROM cliente;";
-<<<<<<< HEAD
                 string sql = "SELECT DISTINCT factura.id, cliente.nombre, items.cantidad, items.descripcion, items.precio, factura.fech_venc FROM items, cliente, factura WHERE factura.id = '"+id+"' AND factura.id_item=factura.id AND items.id_cliente = cliente.id AND cliente.nombre = '"+nombre+"' AND items.fech_venc = '"+fecha+"'";
-=======
-                string sql = "SELECT factura.id, cliente.nombre, items.cantidad, items.descripcion, items.precio, factura.fech_venc FROM items, cliente, factura WHERE factura.id = '"+id+"' AND cliente.id = '"+id+"' AND items.id_cliente = cliente.id AND cliente.nombre = '"+nombre+"' AND factura.fech_venc = '"+fecha+"'";
->>>>>>> origin/master
            
                 cmd = new MySqlCommand(sql, cn);
                 reader = cmd.ExecuteReader();

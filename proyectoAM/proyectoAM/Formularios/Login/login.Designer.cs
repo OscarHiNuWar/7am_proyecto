@@ -60,11 +60,7 @@
             this.button1.Location = new System.Drawing.Point(91, 100);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-<<<<<<< HEAD
             this.button1.TabIndex = 3;
-=======
-            this.button1.TabIndex = 2;
->>>>>>> origin/master
             this.button1.Text = "Acceder";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -74,11 +70,7 @@
             this.textBox1.Location = new System.Drawing.Point(75, 17);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(156, 20);
-<<<<<<< HEAD
             this.textBox1.TabIndex = 1;
-=======
-            this.textBox1.TabIndex = 3;
->>>>>>> origin/master
             // 
             // textBox2
             // 
@@ -86,11 +78,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(156, 20);
-<<<<<<< HEAD
             this.textBox2.TabIndex = 2;
-=======
-            this.textBox2.TabIndex = 4;
->>>>>>> origin/master
             // 
             // groupBox1
             // 
@@ -113,10 +101,7 @@
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
             this.Name = "login";
-<<<<<<< HEAD
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-=======
->>>>>>> origin/master
             this.Text = "login";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

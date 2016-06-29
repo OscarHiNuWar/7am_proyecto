@@ -44,7 +44,7 @@ namespace proyectoAM.clases
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+               // MessageBox.Show(ex.ToString());
             }
             return false;
         }
@@ -75,20 +75,20 @@ namespace proyectoAM.clases
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+              //  MessageBox.Show(ex.ToString());
             }
             return false;
         }
 
-        public string traeractual()
+        public string traeractual(string date)
         {
             conecta();
-
+            string tipo = date;
             try
             {
                 //id_cliente,
 
-                string sql = "SELECT max(actual)as actual FROM comprobante";
+                string sql = "SELECT max(actual)as actual FROM comprobante WHERE tipo LIKE '%"+tipo+"%'";
                 cmd = new MySqlCommand(sql, cn);
                 reader = cmd.ExecuteReader();
                 reader.Read();
@@ -103,20 +103,21 @@ namespace proyectoAM.clases
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+               // MessageBox.Show(ex.ToString());
             }
             return null;
         }
 
-        public string traertipo()
+        public string traertipo(string data)
         {
             conecta();
+
 
             try
             {
                 //id_cliente,
 
-                string sql = "SELECT tipo FROM comprobante";
+                string sql = "SELECT tipo FROM comprobante WHERE tipo like '"+data+"'";
                 cmd = new MySqlCommand(sql, cn);
                 reader = cmd.ExecuteReader();
                 reader.Read();
@@ -131,7 +132,7 @@ namespace proyectoAM.clases
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+              //  MessageBox.Show(ex.ToString());
             }
             return null;
         }
@@ -159,12 +160,12 @@ namespace proyectoAM.clases
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+               // MessageBox.Show(ex.ToString());
             }
             return 0;
         }
 
-        public int traermax()
+        public int traermax(string data)
         {
             conecta();
 
@@ -172,7 +173,7 @@ namespace proyectoAM.clases
             {
                 //id_cliente,
 
-                string sql = "Select fin from comprobante ORDER BY valor ASC ; ";
+                string sql = "Select distinct fin from comprobante WHERE  tipo LIKE '%"+data+"%' ; ";
                 cmd = new MySqlCommand(sql, cn);
                 reader = cmd.ExecuteReader();
                 reader.Read();
@@ -187,21 +188,21 @@ namespace proyectoAM.clases
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+               // MessageBox.Show(ex.ToString());
             }
             return 0;
         }
 
 
-        public string traervalor()
+        public string traervalor(string date)
         {
             conecta();
 
             try
             {
                 //id_cliente,
-
-                string sql = "SELECT valor FROM  `comprobante` ORDER BY valor ASC ;";
+                string valor = date;
+                string sql = "SELECT valor FROM  `comprobante` WHERE tipo LIKE '%"+valor+"%';";
                 cmd = new MySqlCommand(sql, cn);
                 reader = cmd.ExecuteReader();
                 reader.Read();
@@ -216,35 +217,36 @@ namespace proyectoAM.clases
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+                //MessageBox.Show(ex.ToString());
             }
             return null;
         }
 
-        public string traerinicio()
+        public string traerinicio(string tipo)
         {
             conecta();
+            
 
             try
             {
                 //id_cliente,
-
-                string sql = "SELECT inicio FROM  `comprobante` ORDER BY valor ASC ;";
+                string data = tipo;
+                string sql = "SELECT inicio FROM  `comprobante` where tipo like '%"+data+"%' ;";
                 cmd = new MySqlCommand(sql, cn);
                 reader = cmd.ExecuteReader();
                 reader.Read();
-                string data = reader["inicio"].ToString();
+                string inicio = reader["inicio"].ToString();
                 //string data2 = reader["actual"].ToString();
                 reader.Close();
                 //id = Convert.ToInt32(cmd.ExecuteScalar());
                 cn.Close();
 
-                return data;
+                return inicio;
 
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+               // MessageBox.Show(ex.ToString());
             }
             return null;
         }
@@ -268,7 +270,7 @@ namespace proyectoAM.clases
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+              //  MessageBox.Show(ex.ToString());
             }
             return false;
         }

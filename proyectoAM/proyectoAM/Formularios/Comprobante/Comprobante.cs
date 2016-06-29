@@ -17,6 +17,7 @@ namespace proyectoAM.Formularios.Comprobante
         {
             InitializeComponent();
             addCompro();
+            comboBox1.SelectedItem = "Negocio";
         }
 
         void addCompro()
@@ -30,7 +31,7 @@ namespace proyectoAM.Formularios.Comprobante
             int valor = int.Parse( numericUpDown1.Value.ToString());
             string tip = comboBox1.Text;
             int fin = int.Parse(textBox2.Text);
-            if (com.agregarCompro(new string[] { tip, textBox1.Text, valor.ToString("D6"),valor.ToString("D6"), fin.ToString("D6") }))
+            if (com.agregarCompro(new string[] { tip, textBox1.Text, valor.ToString("D8"),valor.ToString("D8"), fin.ToString("D8") }))
             {
                 MessageBox.Show("Comprobante guardado.");
             }

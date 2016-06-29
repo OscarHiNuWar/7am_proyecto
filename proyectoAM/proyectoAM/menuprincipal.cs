@@ -124,7 +124,6 @@ namespace proyectoAM
         {
             Application.Exit();
         }
-<<<<<<< HEAD
 
         private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -137,7 +136,12 @@ namespace proyectoAM
             Formularios.cotizacion.consultar_cotizacion conco = new Formularios.cotizacion.consultar_cotizacion();
             conco.Show();
         }
-=======
->>>>>>> origin/master
+
+        private void consultarFacturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Formularios.Clientes.ver_clientes ver = new Formularios.Clientes.ver_clientes();
+            ver.MdiParent = this;
+            ver.Show();
+        }
     }
 }

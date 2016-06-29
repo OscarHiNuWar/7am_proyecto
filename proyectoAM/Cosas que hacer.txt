@@ -1,13 +1,14 @@
 - NFC:
 
-* El NFC tienes dos versiones: Una gubernamental y una de Empresa (Por ende, llevan codigos diferentes) (semi done, probar)
-* Actualizar la Base de Datos para que tenga las Dos versiones de la misma. 
-* Hacer un conjunto de IFs que vaya eliminando cada "0" por cada 1^m . (Semi done, falta la version Gubernamental)
+* El NFC tienes dos versiones: Una gubernamental y una de Empresa (Done)
+* Actualizar la Base de Datos para que tenga las Dos versiones de la misma. (Done)
+* Hacer un conjunto de IFs que vaya eliminando cada "0" por cada 1^m . (Done, manera dinamica)
 
 - Cotizacion y Factura
 
 Factura: 
-* Agregar checkbox que deshabilite el agregar el NFC.
+* Agregar checkbox que deshabilite el agregar el NFC. (done, solo lo lanza vacio)
+
 
 Cotizacion:
 * Agregar un boton llamado "facturar" que lleve todos los datos desde "consultar cotizacion" a una factura.
