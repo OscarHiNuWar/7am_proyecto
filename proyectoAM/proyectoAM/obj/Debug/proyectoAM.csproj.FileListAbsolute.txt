@@ -13,7 +13,6 @@ J:\proyectoAM\proyectoAM\bin\Debug\itextsharp.dll
 J:\proyectoAM\proyectoAM\bin\Debug\itextsharp.pdfa.dll
 J:\proyectoAM\proyectoAM\bin\Debug\itextsharp.xtra.dll
 J:\proyectoAM\proyectoAM\bin\Debug\itextsharp.xml
-J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.agregar_cliente.resources
 J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Clientes.consultar_clientes.resources
 J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.menuprincipal.resources
 J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Cotizacion.resources
@@ -88,6 +87,7 @@ C:\Users\7AM\Documents\GitHub\7am_proyecto\proyectoAM\proyectoAM\obj\Debug\proye
 C:\Users\7AM\Documents\GitHub\7am_proyecto\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Alerta.alerta.resources
 C:\Users\7AM\Documents\GitHub\7am_proyecto\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Alerta.crear_alerta.resources
 C:\Users\7AM\Documents\GitHub\7am_proyecto\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Clientes.add_cliente.resources
+C:\Users\7AM\Documents\GitHub\7am_proyecto\proyectoAM\proyectoAM\obj\Debug\proyectoAM.agregar_cliente.resources
 C:\Users\7AM\Documents\GitHub\7am_proyecto\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Factura.resources
 C:\Users\7AM\Documents\GitHub\7am_proyecto\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Clientes.consultar_clientes.resources
 C:\Users\7AM\Documents\GitHub\7am_proyecto\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Clientes.mostrar_factura.resources
@@ -99,3 +99,4 @@ C:\Users\7AM\Documents\GitHub\7am_proyecto\proyectoAM\proyectoAM\obj\Debug\proye
 C:\Users\7AM\Documents\GitHub\7am_proyecto\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Properties.Resources.resources
 C:\Users\7AM\Documents\GitHub\7am_proyecto\proyectoAM\proyectoAM\obj\Debug\proyectoAM.csproj.GenerateResource.Cache
 C:\Users\7AM\Documents\GitHub\7am_proyecto\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Clientes.ver_clientes.resources
+J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Clientes.ver_clientes.resources

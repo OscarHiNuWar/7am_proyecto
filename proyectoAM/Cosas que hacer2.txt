@@ -1,0 +1,7 @@
+Facturar:
+
+- Debe llevar todos los datos de la tabla al formulario "Factura"
+- Debe llevar el nombre del cliente al ComboBox "cliente"
+- Los datos sub-total, ITBIS y Total deben calcularse automaticamente.
+
+//SELECT factura.id, cliente.nombre, items.cantidad, items.descripcion, items.precio, items.fech_venc FROM `items`, cliente, factura, cotizacion WHERE cotizacion.id_item = '1'

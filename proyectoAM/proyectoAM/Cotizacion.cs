@@ -674,7 +674,7 @@ namespace proyectoAM
             firm.WidthPercentage = 85f;
             firm.DefaultCell.BorderWidth = 0;
             PdfPCell prefirma = new PdfPCell(new Phrase("Firma por: "));
-            PdfPCell firma = new PdfPCell(new Phrase("Madelyn", textfirma));
+            PdfPCell firma = new PdfPCell(new Phrase("", textfirma));
             float[] widths5 = new float[] { 15f, 85f };
             firm.SetWidths(widths5);
             prefirma.Border = 0; firma.Border = 0; firma.BorderWidthBottom = .5f;

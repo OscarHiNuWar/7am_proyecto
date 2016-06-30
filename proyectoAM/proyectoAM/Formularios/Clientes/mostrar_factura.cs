@@ -38,7 +38,7 @@ namespace proyectoAM.Formularios.Clientes
             foreach (DataGridViewRow row in dgvFact.Rows)
             {
                  sprecio = row.Cells[4].Value.ToString();
-               // sprecio =  sprecio.Remove(0, 3);
+                sprecio =  sprecio.Remove(0, 3);
                 precio = double.Parse(sprecio) + precio ;
             }
             //string sprecio = dgvFact.RowsAdded.Cells[3].Value.ToString();

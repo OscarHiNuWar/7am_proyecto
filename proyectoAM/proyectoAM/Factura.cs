@@ -59,10 +59,6 @@ namespace proyectoAM
 
         public void conecta() { cn = conDB.conecta(); cn.Open(); }
         
-        public void traeDatos()
-        {
-          // fact.
-        }
 
         DataTable addColumns()
         {
@@ -533,7 +529,7 @@ namespace proyectoAM
 
             var color = new BaseColor(0, 0, 0);
 
-
+            
             //EL FONT!
             BaseFont trebutchet = BaseFont.CreateFont("Resources/Font/Trebuchet_MS.ttf", BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
             BaseFont trebutchetbold = BaseFont.CreateFont("Resources/Font/Trebuchet_MS_Bold.ttf", BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
@@ -561,7 +557,7 @@ namespace proyectoAM
 
             //Letra del texto Nota
             iTextSharp.text.Font notafinal = new iTextSharp.text.Font(trebutchet, 9, iTextSharp.text.Font.BOLD);
-
+            
 
             var date = DateTime.Now; // will give the date for today
             string dateWithFormat = Convert.ToString(date.Date);
@@ -636,8 +632,8 @@ namespace proyectoAM
 
             
             PdfPCell email = new PdfPCell(new Phrase("EMAIL:\n info@agencia7am.com \n\n", texton)); email.Border = 0; email.HorizontalAlignment = 0; email.Colspan = 2; adjust.AddCell(email);
-            if (string.IsNullOrEmpty(cbNombre.Text)) { PdfPCell parag = new PdfPCell(new Phrase( ("CLIENTE: "  + cbNombre.SelectedItem.ToString() + " " + txtRnc.Text), cliente)); parag.Border = 0; parag.HorizontalAlignment = 0; parag.Colspan = 2; adjust.AddCell(parag); }
-            else { PdfPCell parag = new PdfPCell(new Phrase ("CLIENTE: " + cbNombre.Text.ToString() + " " +txtRnc.Text , cliente)); parag.Border = 0; parag.HorizontalAlignment = 0; parag.Colspan = 2; adjust.AddCell(parag); }
+            if (string.IsNullOrEmpty(cbNombre.Text)) { PdfPCell parag = new PdfPCell(new Phrase( ("CLIENTE: "  + cbNombre.SelectedItem.ToString() + " " + txtRnc.Text), texton)); parag.Border = 0; parag.HorizontalAlignment = 0; parag.Colspan = 2; adjust.AddCell(parag); }
+            else { PdfPCell parag = new PdfPCell(new Phrase ("CLIENTE: " + cbNombre.Text.ToString() + " " +txtRnc.Text, texton)); parag.Border = 0; parag.HorizontalAlignment = 0; parag.Colspan = 2; adjust.AddCell(parag); }
             doc.Add(adjust);
 
             PdfPTable pdfTable = new PdfPTable(5);
@@ -664,7 +660,7 @@ namespace proyectoAM
             trabajo.Colspan = 1;
             trabajo.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
             trabajo.Padding = 5;
-            PdfPCell ctrabajo = new PdfPCell(new Phrase("--", texto));
+            PdfPCell ctrabajo = new PdfPCell(new Phrase("--"));
             ctrabajo.Colspan = 1;
             ctrabajo.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
             ctrabajo.Padding = 5;
@@ -675,7 +671,7 @@ namespace proyectoAM
             condicion.Colspan = 1;
             condicion.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
             condicion.Padding = 5;
-            PdfPCell cpago = new PdfPCell(new Phrase("", texto));
+            PdfPCell cpago = new PdfPCell(new Phrase(""));
             cpago.Colspan = 1;
             cpago.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
             cpago.Padding = 5;
@@ -737,9 +733,8 @@ namespace proyectoAM
             grantable.AddCell(descripcion);
 
             //VACIO
-            var FontColour = new BaseColor(255, 255, 255);
-            var MyFont = FontFactory.GetFont("Times New Roman", 11, FontColour);
-            PdfPCell vacio = new PdfPCell(new Phrase("B", MyFont));
+           
+            PdfPCell vacio = new PdfPCell(new Phrase(" "));
             vacio.Colspan = 1;
            // vacio.BorderWidthLeft = 0;
             vacio.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
@@ -814,7 +809,7 @@ namespace proyectoAM
                    
 
             //CANTIDAD
-            PdfPCell cantidad = new PdfPCell(new Phrase(canttotal.ToString(), tablatitulo));
+            PdfPCell cantidad = new PdfPCell(new Phrase(canttotal.ToString()));
             cantidad.Colspan = 1;
             cantidad.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
 
@@ -941,8 +936,8 @@ namespace proyectoAM
 
             PdfPTable firm = new PdfPTable(2);
             firm.WidthPercentage = 85f;
-            PdfPCell prefirma = new PdfPCell(new Phrase("Facturado por: ", textfirma));
-            PdfPCell firma = new PdfPCell(new Phrase("", textfirma));
+            PdfPCell prefirma = new PdfPCell(new Phrase("Facturado por: "));
+            PdfPCell firma = new PdfPCell(new Phrase(""));
             float[] widths5 = new float[] { 20f,80f };
             firm.SetWidths(widths5);
             prefirma.Border = 0; firma.Border = 0; firma.BorderWidthBottom = .5f;
@@ -953,7 +948,7 @@ namespace proyectoAM
             clien.WidthPercentage = 85f;
             float[] widths7 = new float[] { 21f, 79f };
             clien.SetWidths(widths7);
-            PdfPCell preclient = new PdfPCell(new Phrase("Firma del Cliente: ", textfirma));
+            PdfPCell preclient = new PdfPCell(new Phrase("Firma del Cliente: "));
             preclient.HorizontalAlignment = 0;
             PdfPCell client = new PdfPCell(new Phrase("\n"));
             client.HorizontalAlignment = 0;
@@ -964,7 +959,7 @@ namespace proyectoAM
 
             PdfPTable end = new PdfPTable(1);
             end.WidthPercentage = 85f;
-            PdfPCell nota = new PdfPCell(new Phrase("NOTA:\nFavor de realizar los pagos en cheques a nombre de 7AM AGENCIA MULTIMEDIA SRL.", notafinal));
+            PdfPCell nota = new PdfPCell(new Phrase("NOTA:\nFavor de realizar los pagos en cheques a nombre de 7AM AGENCIA MULTIMEDIA SRL."));
             nota.Border = 0;
 
 

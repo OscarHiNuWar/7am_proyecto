@@ -21,8 +21,8 @@ namespace proyectoAM
                  string uid = "root";
                  string pass = "";
 
-                // MySqlConnection conectar = new MySqlConnection("Server=74.208.205.141; Port=3306; User=testoscar; Password=testoscar; database=testoscar;");
-                MySqlConnection conectar = new MySqlConnection("Server="+ server + "; Port=3306; User="+ uid + "; Password="+ pass + "; database="+ db + ";");
+                MySqlConnection conectar = new MySqlConnection("Server=74.208.205.141; Port=3306; User=testoscar; Password=testoscar; database=testoscar;");
+               // MySqlConnection conectar = new MySqlConnection("Server="+ server + "; Port=3306; User="+ uid + "; Password="+ pass + "; database="+ db + ";");
 
                 //conectar.Open();
                 //MessageBox.Show("Conectado");

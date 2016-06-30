@@ -21,14 +21,7 @@ namespace proyectoAM.clases
 
         public void conecta() { cn = conDB.conecta();  cn.Open(); }
 
-        public void iniciarFactura(string[] data)
-        {
-            string nombre = data[0].ToString();
-            string cantidad = data[1].ToString();
-            string descripcion = data[2].ToString();
-            string precio = data[3].ToString();
-            string incog = data[4].ToString();
-        }
+      
 
         public bool agregarFactura(string[] data)
         {
