@@ -24,6 +24,10 @@ namespace proyectoAM.Formularios.cotizacion
         MySqlCommand cmd;
         string rc;
         double precio, itbis, total;
+        public static string ide;
+        public static string tiempo;
+        public static string cliente;
+        public bool facturar = false;
 
         clases.addFactura fact = new clases.addFactura();
         
@@ -32,25 +36,28 @@ namespace proyectoAM.Formularios.cotizacion
 
         private void button1_Click(object sender, EventArgs e)
         {
-            /* foreach (DataGridViewRow row in dgvFact.Rows)
-             {
-                 fact.facturae(row.Cells[0].Value.ToString());
-             }*/
+            ide = dgvFact.CurrentRow.Cells[0].Value.ToString();
+            cliente = dgvFact.CurrentRow.Cells[1].Value.ToString();
+            //tiempo = dtpTiempo.Value.ToString("dd/M/yy");
+            tiempo = dgvFact.CurrentRow.Cells[5].Value.ToString();
+            facturar = true;
+
             Factura fa = new Factura();
+            fa.sigue(ide, cliente, tiempo, facturar);
             fa.Show();
         }
 
         public mostrar_cotizacion()
         {
             InitializeComponent();
-            dgvFact.DataSource = ite.muestra(id, nombre, fecha);
+            dgvFact.DataSource = ite.muestraCo(id, nombre, fecha);
             rn();
             txtRnc.Text = rc;
             string sprecio;
 
             foreach (DataGridViewRow row in dgvFact.Rows)
             {
-                sprecio = row.Cells[4].Value.ToString();
+                sprecio = row.Cells[2].Value.ToString();
                 //sprecio = sprecio.Remove(0, 3);
                 precio = double.Parse(sprecio) + precio;
             }

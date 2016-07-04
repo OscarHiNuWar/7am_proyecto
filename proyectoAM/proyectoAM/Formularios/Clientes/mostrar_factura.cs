@@ -22,7 +22,8 @@ namespace proyectoAM.Formularios.Clientes
         MySqlDataReader reader;
         MySqlConnection cn;
         MySqlCommand cmd;
-        string rc;
+        string rc, nfc;
+       
         double precio, itbis, total;
 
         public void conecta() { cn = conDB.conecta(); cn.Open(); }
@@ -32,7 +33,9 @@ namespace proyectoAM.Formularios.Clientes
             InitializeComponent();
             dgvFact.DataSource = ite.muestra(id, nombre, fecha);
             rn();
+            nf();
             txtRnc.Text =rc;
+            txtNfc.Text = nfc;
             string sprecio;
             
             foreach (DataGridViewRow row in dgvFact.Rows)
@@ -67,6 +70,30 @@ namespace proyectoAM.Formularios.Clientes
                 rc = reader["rnc"].ToString(); ;
                 cn.Close();
                 return rc;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error en: " + ex);
+            }
+            return null;
+        }
+
+        public string nf()
+        {
+            conecta();
+
+            try
+            {
+                string sql = "SELECT compro_valor, compro_actual FROM factura WHERE id_item='" + id + "'";
+                cmd = new MySqlCommand(sql, cn);
+                reader = cmd.ExecuteReader();
+                reader.Read();
+                string prenfc = reader["compro_valor"].ToString(); 
+                int nf = int.Parse(reader["compro_actual"].ToString());
+                prenfc = prenfc + nf.ToString("D8");
+                cn.Close();
+                nfc = prenfc;
+                return nfc;
             }
             catch (MySqlException ex)
             {

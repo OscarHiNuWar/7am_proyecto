@@ -97,11 +97,7 @@ namespace proyectoAM.clases
             return table;
         }
 
-        public DataTable client()
-        {
-
-            return table;
-        }
+        
 
 
         public DataTable muestra(string id, string nombre, string fecha)
@@ -119,6 +115,77 @@ namespace proyectoAM.clases
                 while (reader.Read())
                 {
                     table.Rows.Add(reader["id"].ToString(), reader["nombre"].ToString(), reader["cantidad"].ToString(), reader["descripcion"].ToString(), reader["precio"].ToString(), reader["fech_venc"].ToString());
+                }
+                reader.Close();
+                cn.Close();
+                return table;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error en: " + ex);
+            }
+            return table;
+        }
+
+        public DataTable muestraCo(string id, string nombre, string fecha)
+        {
+            try
+            {
+                addItems();
+                conecta();
+                //addColumns();
+                // string sql = "SELECT * FROM cliente;";
+                 string sql = "SELECT DISTINCT cotizacion.id, cliente.nombre, items.cantidad, items.descripcion, items.precio, cotizacion.fech_venc FROM items, cliente, cotizacion WHERE cotizacion.id = '" + id + "' AND cotizacion.id_item=cotizacion.id AND items.id_cliente = cliente.id AND cliente.nombre = '" + nombre + "' AND items.fech_venc = '" + fecha + "'";
+                
+                cmd = new MySqlCommand(sql, cn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    table.Rows.Add(reader["id"].ToString(), reader["nombre"].ToString(), reader["cantidad"].ToString(), reader["descripcion"].ToString(), reader["precio"].ToString(), reader["fech_venc"].ToString());
+                }
+                reader.Close();
+                cn.Close();
+                return table;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error en: " + ex);
+            }
+            return table;
+        }
+
+        DataTable addColumns()
+        {
+            table = new DataTable();
+            //Parte Inferior de la Tabla
+            table.Columns.Add("Cantidad");
+            table.Columns.Add("Descripcion");
+            table.Columns.Add("");
+            table.Columns.Add("Precio");
+            table.Columns.Add("Precio-SinMoneda");
+            /*  tabla.Columns.Add("Sub-Total");
+             tabla.Columns.Add("ITBIS");
+             tabla.Columns.Add("Total");*/
+
+            return table;
+        }
+
+        public DataTable PasaCo(string id, string nombre, string fecha)
+        {
+            try
+            {
+                //addItems();
+                conecta();
+                addColumns();
+                // string sql = "SELECT * FROM cliente;";
+                string sql = "SELECT DISTINCT  items.cantidad, items.descripcion, items.precio FROM items, cliente, cotizacion WHERE cotizacion.id = '" + id + "' AND cotizacion.id_item=cotizacion.id AND items.id_cliente = cliente.id AND cliente.nombre = '" + nombre + "' AND items.fech_venc = '" + fecha + "'";
+
+                cmd = new MySqlCommand(sql, cn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    string cantidad = reader["cantidad"].ToString(), descripcion = reader["descripcion"].ToString(), precio = reader["precio"].ToString();
+                    table.Rows.Add( reader["cantidad"].ToString(), reader["descripcion"].ToString(), "", reader["precio"].ToString());
                 }
                 reader.Close();
                 cn.Close();

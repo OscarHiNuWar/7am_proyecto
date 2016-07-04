@@ -26,12 +26,18 @@ namespace proyectoAM.clases
         public bool agregarFactura(string[] data)
         {
             conecta();
+            string ma = data[0];
+            string me = data[1];
+            string mi = data[2];
+            string mo = data[3];
+            string mu = data[4];
+            string maa = data[5];
 
             try
             {
                 //id_cliente,
 
-                string sql = "INSERT INTO factura (id_item, tipo_pago, fech_venc) VALUES('" + data[0] + "','" + data[1] + "','" + data[2] + "'); SELECT max(id) FROM factura";
+                string sql = "INSERT INTO factura (id_item, tipo_pago, fech_actual, fech_venc, compro_valor, compro_actual) VALUES('" + data[0] + "','" + data[1] + "','" + data[2] + "','" + data[3] + "','" + data[4] + "','" + data[5] + "'); SELECT max(id) FROM factura";
                 cmd = new MySqlCommand(sql, cn);
 
                 id = Convert.ToInt32(cmd.ExecuteScalar());

@@ -54,8 +54,16 @@ namespace proyectoAM
         int nf;
         int fin;
         string tipo, valo,ini;
+        DateTime date2;
+        string dat;
 
+        public static string ide;
+        public static string tiempo;
+        public static string cliente;
+        public static bool facturar = false;
         
+      
+
 
         public void conecta() { cn = conDB.conecta(); cn.Open(); }
         
@@ -166,14 +174,68 @@ namespace proyectoAM
             addMoneda();
             addDescripcion();
             user = Environment.UserName.ToString();
-            DateTime date2 = DateTime.Now; // will give the date for today
+            date2 = DateTime.Now; // will give the date for today
             dtVence.Value = date2;
-            
+            dat = string.Format("{0:d/M/yy}", date2);
+
             //txtNCF.Text = codenfc + Convert.ToString(numnfc);
             Tbla.Columns[4].Visible = false;
            
             cbcompro.Text = "Negocio";
-           // connfc();
+
+            
+
+            // connfc();
+        }
+
+        public bool sigue(string ide, string nombre, string tiempo, bool ft)
+        {
+            if (ft == true)
+            {
+                //Tbla.DataSource = addColumns();
+                Tbla.DataSource = itm.PasaCo(ide, nombre, tiempo);
+                cbNombre.Text = nombre;
+                
+                foreach (DataGridViewRow row in Tbla.Rows) {
+                   // string ia = row.Cells[0].Value.ToString();
+                    string preprecio = row.Cells[3].Value.ToString();
+                    //preprecio.Remove(4);
+                   // cbMoneda.Text = preprecio;
+                    double precio = double.Parse( row.Cells[3].Value.ToString());
+                    //precio.Remove(0, 3);
+                    //txtSubtotal.Text = precio;
+                    cantidad = Convert.ToInt32(row.Cells[0].Value.ToString());
+                    
+
+
+                    subtotal = (precio * cantidad) + subtotal;
+                    // subitbis = (subtotal * 0.18) + subitbis;
+                    subitbis = (subtotal * 0.18);
+                    total = (subtotal + subitbis);
+
+
+                    if (cbMoneda.Text == "RD$")
+                    {
+                        din = "RD$";
+                        // txtSubtotal.Text = "RD$ " + Convert.ToString(subtotal) + ".00";
+                        txtSubtotal.Text = Convert.ToString(string.Format("{0:N}", subtotal));
+                        txtItebis.Text = Convert.ToString(string.Format("{0:N}", subitbis));
+                        txtTotal.Text = Convert.ToString(string.Format("{0:N}", total));
+                    }
+                    else
+                    {
+                        din = "US$";
+                        txtSubtotal.Text = Convert.ToString(string.Format("{0:N}", subtotal));
+                        txtItebis.Text = Convert.ToString(string.Format("{0:N}", subitbis));
+                        txtTotal.Text = Convert.ToString(string.Format("{0:N}", total));
+                    }
+                }
+                //string preprecio = Tbla.
+                //precio =
+
+                return true;
+            }
+            return false;
         }
 
         public void connfc()
@@ -193,7 +255,7 @@ namespace proyectoAM
             int prefin = fin - nf;
              //   nf++;
 				
-            if(fin >= prefin)
+            if(fin <= 20)
             {
                 MessageBox.Show("Quedan "+prefin+" NFCs");
             }
@@ -222,9 +284,10 @@ namespace proyectoAM
             else if (cbNombre.Text == "") { MessageBox.Show("Favor de poner un cliente"); }
             else if (cbMoneda.Text == "") { MessageBox.Show("Favor de poner una moneda"); }
             else if (cbMoneda.SelectedItem == null) { MessageBox.Show("Favor de poner una moneda"); }
+            else if (cbMoneda.SelectedItem == "MONEDA") { MessageBox.Show("Favor de poner una moneda"); }
             // else if (cbTrabajo.Text == "") { MessageBox.Show("Favor de poner un Trabajo"); }
-           /* else if (cbPago.Text == "") { MessageBox.Show("Favor de poner una condicion de pago"); }
-            else if (cbPago.Text == "Condición de Pago") { MessageBox.Show("Favor de poner una condicion de pago"); }*/
+            /* else if (cbPago.Text == "") { MessageBox.Show("Favor de poner una condicion de pago"); }
+             else if (cbPago.Text == "Condición de Pago") { MessageBox.Show("Favor de poner una condicion de pago"); }*/
             else if (cbDescripcion.Text == "") { MessageBox.Show("Favor de poner un articulo"); }
 
             else {
@@ -237,7 +300,7 @@ namespace proyectoAM
                 nfc = txtNCF.Text;
                 rnc = txtRnc.Text;
                 
-                vence = dtVence.Value.ToString().Remove(8);
+                vence = dtVence.Value.ToString("dd/M/yyyy");
 
                 
 
@@ -277,7 +340,7 @@ namespace proyectoAM
             //pago = cbPago.SelectedItem.ToString();
             
 
-            tabla.Rows.Add(Convert.ToString(cantidad), cbDescripcion.Text.ToString(), din, Convert.ToString(string.Format("{0:C}", precio)), precio);
+            tabla.Rows.Add(Convert.ToString(cantidad), cbDescripcion.Text.ToString(), din, /*Convert.ToString(string.Format("{0:C}", precio)),*/ precio.ToString("N2"), precio);
             canttotal = canttotal + Convert.ToInt32(nudCantidad.Text.ToString());
                 reset();
             }
@@ -295,33 +358,39 @@ namespace proyectoAM
                 conecta();
             }
             catch { }
-
+            
 
             foreach (DataGridViewRow rows in Tbla.Rows)
             {
-                itm.agregarItems(new string[] { txtidcli.Text, rows.Cells[0].Value.ToString(), rows.Cells[1].Value.ToString(), rows.Cells[3].Value.ToString(), vence });
+                itm.agregarItems(new string[] { txtidcli.Text, rows.Cells[0].Value.ToString(), rows.Cells[1].Value.ToString(), rows.Cells[3].Value.ToString(),  vence });
             }
 
-            if (fact.agregarFactura(new string[] { txtidcli.Text, "", vence }))
+            if (fact.agregarFactura(new string[] { txtidcli.Text, txtTipoTrabajo.Text, dat, vence, valo, nf.ToString() }))
             {
                 // MessageBox.Show("Agregado a Base de datos");
             }
-            nf++;
-            com.agregarActu(new string[] { tipo, valo, ini, nf.ToString("D8"), fin.ToString("D8")});
             
+            com.agregarActu(new string[] { tipo, valo, ini, nf.ToString("D8"), fin.ToString("D8")});
+            nf++;
+            com.agregarActu(new string[] { tipo, valo, ini, nf.ToString("D8"), fin.ToString("D8") });
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (Tbla.RowCount == 0) { MessageBox.Show("La tabla esta vacia. Por favor agregar datos."); }
-            else{ 
-            exporta();
-           if( MessageBox.Show("¿Desea guardar esta Factura?", "Save", MessageBoxButtons.YesNo) == DialogResult.Yes){
-                guarda();
-                MessageBox.Show("Factura Guardada.");
+            else{
+                if (cbMoneda.Text == "MONEDA") { MessageBox.Show("Favor de poner una moneda"); }
+                else { exporta();
+                    if (MessageBox.Show("¿Desea guardar esta Factura?", "Save", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        guarda();
+                        MessageBox.Show("Factura Guardada.");
+                    }
+                    reset();
+                }
             }
-            reset();
-            }
+                
+           
         }
 
         
@@ -461,6 +530,7 @@ namespace proyectoAM
             else
             {
                 cbcompro.Enabled = true;
+                cbcompro.SelectedItem = cbcompro.SelectedItem;
             }
             
         }
@@ -648,7 +718,7 @@ namespace proyectoAM
             moneda.Colspan = 1;
             moneda.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
             moneda.Padding = 5;
-            PdfPCell cmoneda = new PdfPCell(new Phrase(cbMoneda.SelectedItem.ToString(), texto));
+            PdfPCell cmoneda = new PdfPCell(new Phrase(cbMoneda.Text.ToString(), texto));
             cmoneda.Colspan = 1;
             cmoneda.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
             cmoneda.PaddingTop = 5;
@@ -779,7 +849,7 @@ namespace proyectoAM
                // vaco.BorderWidthBottom = 0;
 
 
-                PdfPCell tolt = new PdfPCell(new Phrase(Tbla[3, k].Value.ToString(), texto));
+                PdfPCell tolt = new PdfPCell(new Phrase(cbMoneda.Text + Tbla[3, k].Value.ToString(), texto));
                 tolt.BackgroundColor = new iTextSharp.text.BaseColor(219, 229, 241);
                 tolt.HorizontalAlignment = 0;
                 tolt.PaddingTop = 5;

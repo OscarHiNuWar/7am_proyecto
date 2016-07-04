@@ -47,7 +47,10 @@ namespace proyectoAM
         addFactura fact = new addFactura();
         addItem itm = new addItem();
         double esub, eitbis, pretotal;
-        string din;
+        string din, dat;
+        DateTime date2;
+
+       
 
         public void conecta() { cn = conDB.conecta(); cn.Open(); }
 
@@ -127,6 +130,7 @@ namespace proyectoAM
             DateTime date2 = DateTime.Now; // will give the date for today
             dtVence.Value = date2;
             Tbla.Columns[4].Visible = false;
+           // dat = string.Format("{0:dd/M/yyyy}", date2);
         }
 
 
@@ -166,7 +170,7 @@ namespace proyectoAM
                 subtotal = (precio * cantidad) + subtotal;
                 subitbis = (subtotal * itbis);
                 total = (subtotal + subitbis);
-                string din;
+                
                 if (cbMoneda.Text == "RD$")
                 {
                     din = "RD$";
@@ -186,9 +190,9 @@ namespace proyectoAM
                 moneda = cbMoneda.Text.ToString();
                 trabajo = "--";
                 //pago = cbPago.SelectedItem.ToString();
-                vence = dtVence.Value.ToString().Remove(8);
+                vence = dtVence.Value.ToString("dd/M/yy");
 
-                tabla.Rows.Add(Convert.ToString(cantidad), cbDescripcion.Text.ToString(), din, Convert.ToString(string.Format("{0:N}", precio)));
+                tabla.Rows.Add(Convert.ToString(cantidad), cbDescripcion.Text.ToString(), din, /*Convert.ToString(string.Format("{0:C}", precio)),*/ precio.ToString("N2"), precio);
                 canttotal = canttotal + Convert.ToInt32(nudCantidad.Text.ToString());
                 
             }
@@ -517,7 +521,7 @@ namespace proyectoAM
                 // vaco.BorderWidthBottom = 0;
 
 
-                PdfPCell tolt = new PdfPCell(new Phrase(Tbla[3, k].Value.ToString(), texto));
+                PdfPCell tolt = new PdfPCell(new Phrase(Tbla[2,k].Value.ToString() + Tbla[3, k].Value.ToString(), texto));
                 tolt.BackgroundColor = new iTextSharp.text.BaseColor(219, 229, 241);
                 tolt.HorizontalAlignment = 0;
                 tolt.PaddingTop = 5;
@@ -572,7 +576,7 @@ namespace proyectoAM
 
 
 
-            PdfPCell sub = new PdfPCell(new Phrase(din + txtSubtotal.Text, numero));
+            PdfPCell sub = new PdfPCell(new Phrase(cbMoneda.Text + txtSubtotal.Text, numero));
             sub.Colspan = 1;
             sub.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
             sub.BackgroundColor = new iTextSharp.text.BaseColor(219, 229, 241);
@@ -603,7 +607,7 @@ namespace proyectoAM
             itbis.PaddingLeft = 10;
 
 
-            PdfPCell it = new PdfPCell(new Phrase(din + txtItebis.Text, numero));
+            PdfPCell it = new PdfPCell(new Phrase(cbMoneda.Text + txtItebis.Text, numero));
             it.Colspan = 1;
             it.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
             it.BackgroundColor = new iTextSharp.text.BaseColor(219, 229, 241);
@@ -633,7 +637,7 @@ namespace proyectoAM
             total.PaddingBottom = 6;
             total.PaddingLeft = 10;
 
-            PdfPCell to = new PdfPCell(new Phrase(din + txtTotal.Text, numero));
+            PdfPCell to = new PdfPCell(new Phrase(cbMoneda.Text + txtTotal.Text, numero));
             to.Colspan = 1;
             to.HorizontalAlignment = 1; //0=left, 1=center, 2=right*/
             to.BackgroundColor = new iTextSharp.text.BaseColor(219, 229, 241);

@@ -66,6 +66,7 @@
             this.cbcompro = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.txtidcli = new System.Windows.Forms.TextBox();
+            this.txtTipoTrabajo = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Tbla)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -398,6 +399,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.txtTipoTrabajo);
             this.groupBox5.Controls.Add(this.ckSinCompro);
             this.groupBox5.Controls.Add(this.cbcompro);
             this.groupBox5.Controls.Add(this.txtNCF);
@@ -445,6 +447,14 @@
             this.txtidcli.Name = "txtidcli";
             this.txtidcli.Size = new System.Drawing.Size(100, 20);
             this.txtidcli.TabIndex = 45;
+            // 
+            // txtTipoTrabajo
+            // 
+            this.txtTipoTrabajo.Location = new System.Drawing.Point(540, 17);
+            this.txtTipoTrabajo.Name = "txtTipoTrabajo";
+            this.txtTipoTrabajo.Size = new System.Drawing.Size(201, 20);
+            this.txtTipoTrabajo.TabIndex = 34;
+            this.txtTipoTrabajo.Text = "Tipo de Trabajo";
             // 
             // Factura
             // 
@@ -522,6 +532,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbcompro;
         private System.Windows.Forms.CheckBox ckSinCompro;
+        private System.Windows.Forms.TextBox txtTipoTrabajo;
     }
 }
 

@@ -4,4 +4,15 @@ Facturar:
 - Debe llevar el nombre del cliente al ComboBox "cliente"
 - Los datos sub-total, ITBIS y Total deben calcularse automaticamente.
 
-//SELECT factura.id, cliente.nombre, items.cantidad, items.descripcion, items.precio, items.fech_venc FROM `items`, cliente, factura, cotizacion WHERE cotizacion.id_item = '1'
+DONE!
+
+//SELECT cotizacion.id, cliente.nombre, items.cantidad, items.descripcion, items.precio, items.fech_venc FROM `items`, cliente, cotizacion WHERE cotizacion.id_item = '1'
+
+//INSERT INTO factura () VALUES()
+
+//SELECT DISTINCT cotizacion.id, cliente.nombre, items.cantidad, items.descripcion, items.precio, cotizacion.fech_venc FROM items, cliente, cotizacion WHERE cotizacion.id = '1'  AND items.id_cliente = cliente.id AND cliente.nombre = 'Oscar' AND items.fech_venc = '01/7/2016'
+
+1
+Renuevo
+101163984
+808-534-1437
