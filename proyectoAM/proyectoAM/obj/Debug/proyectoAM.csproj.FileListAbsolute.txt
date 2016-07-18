@@ -99,3 +99,4 @@ C:\Users\7AM\Documents\GitHub\7am_proyecto\proyectoAM\proyectoAM\obj\Debug\proye
 C:\Users\7AM\Documents\GitHub\7am_proyecto\proyectoAM\proyectoAM\obj\Debug\proyectoAM.csproj.GenerateResource.Cache
 C:\Users\7AM\Documents\GitHub\7am_proyecto\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Clientes.ver_clientes.resources
 J:\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Clientes.ver_clientes.resources
+C:\Users\7AM\Documents\GitHub\7am_proyecto\proyectoAM\proyectoAM\obj\Debug\proyectoAM.Formularios.Alerta_pagina.ver_paginas.resources

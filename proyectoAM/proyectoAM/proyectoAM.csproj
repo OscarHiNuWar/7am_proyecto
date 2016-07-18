@@ -63,6 +63,7 @@
     <Compile Include="clases\addCliente.cs" />
     <Compile Include="clases\addItem.cs" />
     <Compile Include="clases\comprobante.cs" />
+    <Compile Include="clases\conDB_chequeo.cs" />
     <Compile Include="Cotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +81,12 @@
     </Compile>
     <Compile Include="Formularios\Alerta\crear_alerta.Designer.cs">
       <DependentUpon>crear_alerta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Alerta_pagina\ver_paginas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Alerta_pagina\ver_paginas.Designer.cs">
+      <DependentUpon>ver_paginas.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Clientes\add_cliente.cs">
       <SubType>Form</SubType>
@@ -155,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Alerta\crear_alerta.resx">
       <DependentUpon>crear_alerta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Alerta_pagina\ver_paginas.resx">
+      <DependentUpon>ver_paginas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Clientes\add_cliente.resx">
       <DependentUpon>add_cliente.cs</DependentUpon>

@@ -74,6 +74,7 @@ namespace proyectoAM
             //Parte Inferior de la Tabla
             tabla.Columns.Add("Cantidad");
             tabla.Columns.Add("Descripcion");
+            
             tabla.Columns.Add("");
             tabla.Columns.Add("Precio");
             tabla.Columns.Add("Precio-SinMoneda");
@@ -169,6 +170,9 @@ namespace proyectoAM
             addNombre();
             addCompania();
             addTrabajo();
+            DataGridViewColumn column = Tbla.Columns[1];
+
+            column.Width = 500;
             addcompro();
            // addCondicionPago();
             addMoneda();
@@ -333,6 +337,15 @@ namespace proyectoAM
                     txtSubtotal.Text =  Convert.ToString(string.Format("{0:N}", subtotal));
                     txtItebis.Text =  Convert.ToString(string.Format("{0:N}", subitbis));
                     txtTotal.Text =  Convert.ToString(string.Format("{0:N}", total));
+                }
+                if(checkBox1.Checked == true)
+                {
+                    txtItebis.Text = "0";
+                    total = (subtotal);
+                    txtTotal.Text = Convert.ToString(string.Format("{0:N}", total));
+                }else
+                {
+
                 }
             
             moneda = cbMoneda.Text.ToString();
@@ -549,6 +562,47 @@ namespace proyectoAM
                 connfc();
             }
             
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                txtItebis.Text = "0";
+                total = (subtotal);
+                txtTotal.Text = Convert.ToString(string.Format("{0:N}", total));
+
+            }
+            else
+            {
+
+               // subtotal = (precio * cantidad) + subtotal;
+                // subitbis = (subtotal * 0.18) + subitbis;
+                subitbis = (subtotal * 0.18);
+                total = (subtotal + subitbis);
+
+
+                if (cbMoneda.Text == "RD$")
+                {
+                    din = "RD$";
+                    // txtSubtotal.Text = "RD$ " + Convert.ToString(subtotal) + ".00";
+                   // txtSubtotal.Text = Convert.ToString(string.Format("{0:N}", subtotal));
+                    txtItebis.Text = Convert.ToString(string.Format("{0:N}", subitbis));
+                   txtTotal.Text = Convert.ToString(string.Format("{0:N}", total));
+                }
+                else
+                {
+                    din = "US$";
+                    //txtSubtotal.Text = Convert.ToString(string.Format("{0:N}", subtotal));
+                    txtItebis.Text = Convert.ToString(string.Format("{0:N}", subitbis));
+                    txtTotal.Text = Convert.ToString(string.Format("{0:N}", total));
+                }
+            }
         }
 
         void traenfc()

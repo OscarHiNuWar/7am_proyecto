@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbNombre = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtRnc = new System.Windows.Forms.TextBox();
@@ -62,11 +62,12 @@
             this.txttolsin = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtTipoTrabajo = new System.Windows.Forms.TextBox();
             this.ckSinCompro = new System.Windows.Forms.CheckBox();
             this.cbcompro = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.txtidcli = new System.Windows.Forms.TextBox();
-            this.txtTipoTrabajo = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.Tbla)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -128,14 +129,14 @@
             this.Tbla.AllowUserToAddRows = false;
             this.Tbla.AllowUserToDeleteRows = false;
             this.Tbla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Tbla.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Tbla.DefaultCellStyle = dataGridViewCellStyle2;
             this.Tbla.Location = new System.Drawing.Point(13, 278);
             this.Tbla.Name = "Tbla";
             this.Tbla.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
@@ -399,6 +400,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.checkBox1);
             this.groupBox5.Controls.Add(this.txtTipoTrabajo);
             this.groupBox5.Controls.Add(this.ckSinCompro);
             this.groupBox5.Controls.Add(this.cbcompro);
@@ -408,6 +410,14 @@
             this.groupBox5.Size = new System.Drawing.Size(752, 46);
             this.groupBox5.TabIndex = 43;
             this.groupBox5.TabStop = false;
+            // 
+            // txtTipoTrabajo
+            // 
+            this.txtTipoTrabajo.Location = new System.Drawing.Point(540, 17);
+            this.txtTipoTrabajo.Name = "txtTipoTrabajo";
+            this.txtTipoTrabajo.Size = new System.Drawing.Size(201, 20);
+            this.txtTipoTrabajo.TabIndex = 34;
+            this.txtTipoTrabajo.Text = "Tipo de Trabajo";
             // 
             // ckSinCompro
             // 
@@ -448,13 +458,17 @@
             this.txtidcli.Size = new System.Drawing.Size(100, 20);
             this.txtidcli.TabIndex = 45;
             // 
-            // txtTipoTrabajo
+            // checkBox1
             // 
-            this.txtTipoTrabajo.Location = new System.Drawing.Point(540, 17);
-            this.txtTipoTrabajo.Name = "txtTipoTrabajo";
-            this.txtTipoTrabajo.Size = new System.Drawing.Size(201, 20);
-            this.txtTipoTrabajo.TabIndex = 34;
-            this.txtTipoTrabajo.Text = "Tipo de Trabajo";
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(370, 18);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(71, 17);
+            this.checkBox1.TabIndex = 31;
+            this.checkBox1.Text = "Sin ITBIS";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.btnAgregar_Click);
+            this.checkBox1.CheckStateChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
             // 
             // Factura
             // 
@@ -533,6 +547,7 @@
         private System.Windows.Forms.ComboBox cbcompro;
         private System.Windows.Forms.CheckBox ckSinCompro;
         private System.Windows.Forms.TextBox txtTipoTrabajo;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
